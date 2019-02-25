@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>altpred</title>
+      <link>/projects/altpred/</link>
+      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
+      
+      <guid>/projects/altpred/</guid>
+      <description>An independent study trying to understand the relationship between scholarly articles and social media reference indicators.</description>
+    </item>
+    
+    <item>
       <title>m.bot</title>
       <link>/projects/m.bot/</link>
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
@@ -36,6 +45,15 @@
       
       <guid>/projects/pubundsci/</guid>
       <description>An independent study examining the effects of public understanding of scientific literature on real world. The core idea is to mathematically frame the relationship between scientific literature and the its impact on general public and use machine learning models to prove the established hypothesis.</description>
+    </item>
+    
+    <item>
+      <title>reproducibility</title>
+      <link>/projects/reproducibility/</link>
+      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
+      
+      <guid>/projects/reproducibility/</guid>
+      <description>An independent study focussing on understanding the aspect of reproducibility in research papers.</description>
     </item>
     
   </channel>
