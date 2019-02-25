@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Akhil Pandey</title>
+    <link>/blog/</link>
+    <description>Recent content in Blog on Akhil Pandey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Sat, 22 Aug 2015 06:42:21 -0700</lastBuildDate>
+    
+	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Signalling theory and its application on one’s own ethos</title>
+      <link>/blog/signalling-theory-and-its-application-on-ones-own-ethos/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/signalling-theory-and-its-application-on-ones-own-ethos/</guid>
+      <description>What is signalling theory ? It is concept in evolutionary biology that focusses on understanding the relationship between the signals given by species and how they are understood by other species. The specific concept I am interested to talk in this blog post is about zahavian signals.
+What is a Zahavian Signal ? Amotz Zahavi, an Israeli evolutionary biologist best known for his work about handicap principle talks about cost signalling in which he describes that for a signal to be honest it has to be costly.</description>
+    </item>
+    
+    <item>
+      <title>Morality - it&#39;s influence on thought and action</title>
+      <link>/blog/morality-its-influence-on-thought-and-action/</link>
+      <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/morality-its-influence-on-thought-and-action/</guid>
+      <description>I am not a philosopher but I observe the fundamental nature of things in my surroundings. Right from my childhood to this moment when I am orchestrating this article there are countless thoughts that surround my head when my inner self whispers “morality”. My thought process takes quick writhing movements wandering around searching for answers. The reason for me writing this piece is to both look for answers and portray my ethos.</description>
+    </item>
+    
+    <item>
+      <title>The three C&#39;s of Javascript</title>
+      <link>/blog/the-three-cs-of-javascript/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/the-three-cs-of-javascript/</guid>
+      <description>You might be wondering what the three C’s are :
+ Currying Closures Callbacks  Ok what are those ?
+Before I start, let me tell you that in Javascript Functions are Objects. So every object in Javascript, be it Number, String, Array; Every Object in javascript has a prototype object. For instance if the object is declared using an object literal then, it has access to Object.prototype, Similarly all the arrays so declared have access to the Array.</description>
+    </item>
+    
+    <item>
+      <title>numgo - ND Array based math library for Go</title>
+      <link>/blog/numgo-nd-array-based-math-library-for-go/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/numgo-nd-array-based-math-library-for-go/</guid>
+      <description>numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.</description>
+    </item>
+    
+    <item>
+      <title>pubundsci - An independent research study</title>
+      <link>/blog/pubundsci-an-independent-research-study/</link>
+      <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pubundsci-an-independent-research-study/</guid>
+      <description>While technological and scientific advancement paved its way in the 20th century giving scope for researchers to publish of a plethora of scientific literature, “Public Understanding of Science” has been at the center stage of discussion among researchers for the past decade. This very concern sprouts from the fact that most of the scientific reportage that occurs on News Media is subject to personal interpretation. Also, the misapprehensions of the scientific findings can cause repercussions of unimaginable scale in the real world.</description>
+    </item>
+    
+    <item>
+      <title>Compatibility for the Web</title>
+      <link>/blog/compatibility-for-the-web/</link>
+      <pubDate>Wed, 05 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/compatibility-for-the-web/</guid>
+      <description>Webcompat, is one of the recent interests that I find myself occupied with. The community is wonderful and the whole idea of having a place where users can report problems is quite fantastic. I believe that this can evolve as something greater, since webcompat.com is not only a website that focusses on bug reporting and problems, since I believe that it is a common ecosystem where users, developers and site owners are notified with the issues on the web.</description>
+    </item>
+    
+    <item>
+      <title>Tuning the GNU/Linux System</title>
+      <link>/blog/tuning-the-gnu/linux-system/</link>
+      <pubDate>Mon, 12 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/tuning-the-gnu/linux-system/</guid>
+      <description>I always used to find myself in a difficult situation when I had to travel and work. The main reason for this is my machine had a GNU/Linux based distro running and I couldn’t stay away from a charging spot for more than two hours. I always was intrigued to explore this segment and solve this very problem in order to better my travel experience. Basically there are couple of things to be kept in mind before you go out and try the tricks mentioned here, Consider them basics; So they are : * The Kernel plays a major role in providing support to enhance battery life.</description>
+    </item>
+    
+  </channel>
+</rss>
