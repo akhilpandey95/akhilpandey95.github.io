@@ -23,10 +23,10 @@ What is a Zahavian Signal ? Amotz Zahavi, an Israeli evolutionary biologist best
     
     <item>
       <title>Morality - it&#39;s influence on thought and action</title>
-      <link>/blog/morality-its-influence-on-thought-and-action/</link>
+      <link>/blog/morality---its-influence-on-thought-and-action/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/blog/morality-its-influence-on-thought-and-action/</guid>
+      <guid>/blog/morality---its-influence-on-thought-and-action/</guid>
       <description>I am not a philosopher but I observe the fundamental nature of things in my surroundings. Right from my childhood to this moment when I am orchestrating this article there are countless thoughts that surround my head when my inner self whispers “morality”. My thought process takes quick writhing movements wandering around searching for answers. The reason for me writing this piece is to both look for answers and portray my ethos.</description>
     </item>
     
@@ -43,19 +43,19 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
     
     <item>
       <title>numgo - ND Array based math library for Go</title>
-      <link>/blog/numgo-nd-array-based-math-library-for-go/</link>
+      <link>/blog/numgo---nd-array-based-math-library-for-go/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/numgo-nd-array-based-math-library-for-go/</guid>
+      <guid>/blog/numgo---nd-array-based-math-library-for-go/</guid>
       <description>numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.</description>
     </item>
     
     <item>
       <title>pubundsci - An independent research study</title>
-      <link>/blog/pubundsci-an-independent-research-study/</link>
+      <link>/blog/pubundsci---an-independent-research-study/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/blog/pubundsci-an-independent-research-study/</guid>
+      <guid>/blog/pubundsci---an-independent-research-study/</guid>
       <description>While technological and scientific advancement paved its way in the 20th century giving scope for researchers to publish of a plethora of scientific literature, “Public Understanding of Science” has been at the center stage of discussion among researchers for the past decade. This very concern sprouts from the fact that most of the scientific reportage that occurs on News Media is subject to personal interpretation. Also, the misapprehensions of the scientific findings can cause repercussions of unimaginable scale in the real world.</description>
     </item>
     
