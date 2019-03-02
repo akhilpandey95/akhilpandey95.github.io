@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Akhil Pandey</title>
-    <link>/projects/</link>
+    <link>https://akhilpandey95.com/projects/</link>
     <description>Recent content in Projects on Akhil Pandey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 19 Aug 2015 20:29:37 -0700</lastBuildDate>
     
-	<atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://akhilpandey95.com/projects/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LearnJs</title>
-      <link>/projects/learnjs/</link>
+      <link>https://akhilpandey95.com/projects/learnjs/</link>
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
       
-      <guid>/projects/learnjs/</guid>
+      <guid>https://akhilpandey95.com/projects/learnjs/</guid>
       <description>A Javascript cheatsheet for beginners. The project explains about Javascript and its functionalities with short examples. It is an attempt to portray the best parts of Javascript that are pretty tough and hard to find. It is a congregation of best practices, language constructs, and other simple yet effective snippets that gives us an essence of how we can harness the best out of the language</description>
     </item>
     
     <item>
       <title>altpred</title>
-      <link>/projects/altpred/</link>
+      <link>https://akhilpandey95.com/projects/altpred/</link>
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
       
-      <guid>/projects/altpred/</guid>
+      <guid>https://akhilpandey95.com/projects/altpred/</guid>
       <description>An independent study trying to understand the relationship between scholarly articles and social media reference indicators.</description>
     </item>
     
     <item>
       <title>m.bot</title>
-      <link>/projects/m.bot/</link>
+      <link>https://akhilpandey95.com/projects/m.bot/</link>
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
       
-      <guid>/projects/m.bot/</guid>
+      <guid>https://akhilpandey95.com/projects/m.bot/</guid>
       <description>A conversation AI that would be assisting researchers to gain scholarly insights. It analyzing documents, extracts information from images and answers questions based on the knowledge acquired.(under-development)</description>
     </item>
     
     <item>
       <title>pubudnsci</title>
-      <link>/projects/pubundsci/</link>
+      <link>https://akhilpandey95.com/projects/pubundsci/</link>
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
       
-      <guid>/projects/pubundsci/</guid>
+      <guid>https://akhilpandey95.com/projects/pubundsci/</guid>
       <description>An independent study examining the effects of public understanding of scientific literature on real world. The core idea is to mathematically frame the relationship between scientific literature and the its impact on general public and use machine learning models to prove the established hypothesis.</description>
     </item>
     
     <item>
       <title>reproducibility</title>
-      <link>/projects/reproducibility/</link>
+      <link>https://akhilpandey95.com/projects/reproducibility/</link>
       <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
       
-      <guid>/projects/reproducibility/</guid>
+      <guid>https://akhilpandey95.com/projects/reproducibility/</guid>
       <description>An independent study focussing on understanding the aspect of reproducibility in research papers.</description>
     </item>
     
