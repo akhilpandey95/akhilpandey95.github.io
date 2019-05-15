@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/akhilpandey95
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://akhilpandey95.com
+  * I am akhilpandey95 (https://keybase.io/akhilpandey95) on keybase.
+  * I have a public key with fingerprint 63D7 ABD6 1685 CD4F A7F5  677B 2AA8 87C2 307A 84D3
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101bb109541f6e094901f1e4f1ace86507e9e99acef44e453b3ec6e2e15012ea06f0a",
+      "fingerprint": "63d7abd61685cd4fa7f5677b2aa887c2307a84d3",
+      "host": "keybase.io",
+      "key_id": "2aa887c2307a84d3",
+      "kid": "0101bb109541f6e094901f1e4f1ace86507e9e99acef44e453b3ec6e2e15012ea06f0a",
+      "uid": "52502c61b45f053072f19b05957ce719",
+      "username": "akhilpandey95"
+    },
+    "service": {
+      "hostname": "akhilpandey95.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1557951162,
+  "expire_in": 157680000,
+  "prev": "9e10951523bd970d9da3e60f3ede2da417b99b7337f40a259aa122412f553d91",
+  "seqno": 3,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.0
+Comment: https://keybase.io/crypto
+
+yMNDAnicrVJ/UBRlGD4uZYI0MI2xsbIWErwu2m93v93bS8aUHAoxEhJxZLj2x7ew
+HeyedweGzGEj0BF5CFoWFv4oQhgNbBz5NSBBJ6hhRTBKWjlpEDNCiI0gFNouU//5
+Z98/37zv+zzP+7zvvP6FDxiCA0y13i58R1F/wDedR3IMaT85W/MxXhXzMGs+Zkdz
+H8oSkctts8siZsVwgAOeBzgLKSDRCGcpFgcSQJQEOAFZaIgziEUsqwUSRSEKkjyJ
+BBoRCEAcEIjDaQnnMDMmyUoGcjqcsuLWZGlSZDhepAFtgYJISRwjQZpheILjLBZG
+IEic4SyUSGrETNWlMzRzPOdC0bKq5bTANmfvPvj/2XfOnBwkIE4INOApKOFQ60ZI
+gOVxyEJGQAxgdaALORUuG2lozp4pZzk4RUR5LMQ8Zkwr5coC0rerj3M/WLSgZmsq
+DqfqVgU1Sytnut0Ol1Wnu/McOn474m3/Ktl4WRG1jWqMXOR0yaqCWYGGFNyyLg0g
+ZFgIAE2YMfSWQ3Yim6wjIENbcO3pfVCuJskifUUAEiQvsgwusiJHIhqXSCQiQuQo
+wPAsyzMkyUgUzhGQ5ThAEBQgJAhJkQWYPts2RcWspGaTy9AkXXKGwrlznAjzdHWm
+zTMEBBsC5xv1SzMEB4X+d3/ltpB7ngUzT6H0w4sOXvemyL0v/DXlv3E2pT1g5qOY
+a9cK/FvP+CoSeq8PdOeHVT7vPho+iCQ5f+hCcGRLZnxH6qbW1A1v7tkSTQWszdk/
+qxTcyh97PdVef9qyaV3vBdeWX28WQMv3A49On19k2vnJ8qL0U8fad26rKKpeePf4
+t/b1e11tJy+/F3bxs4aZZzusd6c8ZbG+0rdhsy1ybL1vafm8srR3AmMmu4TVE6co
+u6Oi1XeosLtuzdK8wsNV3kfCf/QGPpS2kjE+15aw7hmSmW8cGqlvLIvAZ+Pf3/px
+jFhlPDr7+74/x8voqNcMBfRk8+DoLxV711qmC0OjFjt2eYsrYletaky+/Vtsct0H
+mYkNj43e2Jy9xP/ppYsRoXXmsls12VcP4LuV80lPvNHg8Z774eQ+nuzr3vWkIxE6
+ewsXlGS9KOyxmVe/MuRhOjrXPN4+Mx1xs+l29sr95VcK71WO91S5doDmmijF+FXE
+5qKkxJFe/rJ5ccehYbb43KsnPreklI5u3L3i7HdNKY1TIf1RkXeClBjzuxuPqf4v
+SiKqJ9JDcNhyvHvaV3tpMKZk+cEPjV+fHkHxcaafu5a1HQivG6hP6B+/Ohz3cs34
+zJ3iB1uufJncFnjCv91X8LBqqu7pU+ImnqZLa01ngoenS+tfOtK04vrQHybPWE9S
+ZVBoS5+XXPZ32NQGtCRpMukfUF3Mfg==
+=Wm5O
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/akhilpandey95
+
+==================================================================
+
