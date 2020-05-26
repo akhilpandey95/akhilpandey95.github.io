@@ -3,9 +3,63 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://akhilpandey95.com/</loc>
-    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://akhilpandey95.com/blog/present-the-paradox-of-inexistance-coupled-with-reality/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/conceptnet---a-new-proposition-for-interpreting-deep-learning-models/</loc>
+    <lastmod>2019-12-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/intelligence-that-which-deep-learning-models-do-not-have/</loc>
+    <lastmod>2019-11-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/on-thesis-the-journey-of-masters-study-and-ph.d/</loc>
+    <lastmod>2019-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/using-metal-backend-for-training-deep-learning-architectures/</loc>
+    <lastmod>2019-06-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/understanding-topic-modelling-with-the-help-of-deep-learning-models/</loc>
+    <lastmod>2019-05-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/rambling-about-random-things/</loc>
+    <lastmod>2019-05-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/understanding-atlanta-using-relay/</loc>
+    <lastmod>2019-04-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/neural-networks-a-mathematical-understanding-about-the-concept/</loc>
+    <lastmod>2019-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/visualising-daily-commute-with-geo-spatial-data/</loc>
+    <lastmod>2019-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/sequence-to-sequence-neural-attention-model-for-text-summarisation/</loc>
+    <lastmod>2019-01-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/blog/building-word-embedding-based-models-with/</loc>
+    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -14,7 +68,7 @@
   </url>
   
   <url>
-    <loc>https://akhilpandey95.com/blog/morality-its-influence-on-thought-and-action/</loc>
+    <loc>https://akhilpandey95.com/blog/morality---its-influence-on-thought-and-action/</loc>
     <lastmod>2018-07-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -24,12 +78,12 @@
   </url>
   
   <url>
-    <loc>https://akhilpandey95.com/blog/numgo-nd-array-based-math-library-for-go/</loc>
+    <loc>https://akhilpandey95.com/blog/numgo---nd-array-based-math-library-for-go/</loc>
     <lastmod>2017-11-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://akhilpandey95.com/blog/pubundsci-an-independent-research-study/</loc>
+    <loc>https://akhilpandey95.com/blog/pubundsci---an-independent-research-study/</loc>
     <lastmod>2017-10-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -59,12 +113,6 @@
   </url>
   
   <url>
-    <loc>https://akhilpandey95.com/projects/</loc>
-    <lastmod>2015-08-19T20:29:37-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://akhilpandey95.com/projects/altpred/</loc>
     <lastmod>2015-08-19T20:29:37-07:00</lastmod>
   </url>
@@ -85,7 +133,19 @@
   </url>
   
   <url>
+    <loc>https://akhilpandey95.com/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://akhilpandey95.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://akhilpandey95.com/projects/</loc>
+    <lastmod>2015-08-19T20:29:37-07:00</lastmod>
     <priority>0</priority>
   </url>
   
