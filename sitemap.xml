@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://akhilpandey95.com/blog/how-do-we-quantify-uncertainty-in-deep-learning-models-/</loc>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://akhilpandey95.com/blog/dimensionality-reduction-in-graphs-using-representation-learning/</loc>
     <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -139,7 +144,7 @@
   
   <url>
     <loc>https://akhilpandey95.com/</loc>
-    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
