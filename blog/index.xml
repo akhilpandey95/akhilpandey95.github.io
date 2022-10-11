@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Akhil Pandey</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Blog on Akhil Pandey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Sat, 22 Aug 2015 06:42:21 -0700</lastBuildDate>
-    
-	<atom:link href="https://akhilpandey95.com/blog/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 22 Aug 2015 06:42:21 -0700</lastBuildDate><atom:link href="https://akhilpandey95.com/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Conversation with Albert Camus on Death</title>
       <link>https://akhilpandey95.com/blog/a-conversation-with-albert-camus-on-death/</link>
@@ -20,15 +16,15 @@
       <description>Parochialism is an unconscious choice human beings partake in, where smaller aspects of an issue tend to become the focal point rather than the issue in its essence. I call this an unconscious choice because this choice succinctly falls in line with the concept of the Unconscious Mind.
 Admiring Camus in the colloquial sense
  The validity of the situation
- What do we mean when we say uncertainty ?</description>
+ What do we mean when we say uncertainty ? TBA</description>
     </item>
     
     <item>
       <title>How do we quantify uncertainty in deep learning models ?</title>
-      <link>https://akhilpandey95.com/blog/how-do-we-quantify-uncertainty-in-deep-learning-models-/</link>
+      <link>https://akhilpandey95.com/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/</link>
       <pubDate>Fri, 07 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://akhilpandey95.com/blog/how-do-we-quantify-uncertainty-in-deep-learning-models-/</guid>
+      <guid>https://akhilpandey95.com/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/</guid>
       <description>Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.</description>
     </item>
     
@@ -54,10 +50,10 @@ The idea of present The culmination of thought and reality in our</description>
     
     <item>
       <title>conceptNet - A new proposition for interpreting deep learning models</title>
-      <link>https://akhilpandey95.com/blog/conceptnet---a-new-proposition-for-interpreting-deep-learning-models/</link>
+      <link>https://akhilpandey95.com/blog/conceptnet-a-new-proposition-for-interpreting-deep-learning-models/</link>
       <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://akhilpandey95.com/blog/conceptnet---a-new-proposition-for-interpreting-deep-learning-models/</guid>
+      <guid>https://akhilpandey95.com/blog/conceptnet-a-new-proposition-for-interpreting-deep-learning-models/</guid>
       <description>Interpretability is one of the important problems of this century</description>
     </item>
     
@@ -85,7 +81,7 @@ The idea of present The culmination of thought and reality in our</description>
       <pubDate>Sun, 09 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://akhilpandey95.com/blog/using-metal-backend-for-training-deep-learning-architectures/</guid>
-      <description> In order to take advantage of the AMD GPU’s for running memory intensive programs on a device running macOS Training a deep learning model
+      <description>In order to take advantage of the AMD GPU’s for running memory intensive programs on a device running macOS Training a deep learning model
 Some jargon that might be helpful  cupy: It is numpy library that supports operation on a CUDA GPU. pyopenCL: It is an OpenCL implementation of the library pyopenGL.  </description>
     </item>
     
@@ -104,7 +100,7 @@ Some jargon that might be helpful  cupy: It is numpy library that supports opera
       <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://akhilpandey95.com/blog/rambling-about-random-things/</guid>
-      <description> I sometimes wonder if the desire to question the fundamental nature of things is somewhat too a
+      <description>I sometimes wonder if the desire to question the fundamental nature of things is somewhat too a
 On conventions On education On language On relationships On conversations On philosophy On philology On childhood On responsibility On coherence On influence On movies </description>
     </item>
     
@@ -165,10 +161,10 @@ What is a Zahavian Signal ? Amotz Zahavi, an Israeli evolutionary biologist best
     
     <item>
       <title>Morality - it&#39;s influence on thought and action</title>
-      <link>https://akhilpandey95.com/blog/morality---its-influence-on-thought-and-action/</link>
+      <link>https://akhilpandey95.com/blog/morality-its-influence-on-thought-and-action/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://akhilpandey95.com/blog/morality---its-influence-on-thought-and-action/</guid>
+      <guid>https://akhilpandey95.com/blog/morality-its-influence-on-thought-and-action/</guid>
       <description>I am not a philosopher but I observe the fundamental nature of things in my surroundings. Right from my childhood to this moment when I am orchestrating this article there are countless thoughts that surround my head when my inner self whispers “morality”. My thought process takes quick writhing movements wandering around searching for answers. The reason for me writing this piece is to both look for answers and portray my ethos.</description>
     </item>
     
@@ -185,19 +181,19 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
     
     <item>
       <title>numgo - ND Array based math library for Go</title>
-      <link>https://akhilpandey95.com/blog/numgo---nd-array-based-math-library-for-go/</link>
+      <link>https://akhilpandey95.com/blog/numgo-nd-array-based-math-library-for-go/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://akhilpandey95.com/blog/numgo---nd-array-based-math-library-for-go/</guid>
+      <guid>https://akhilpandey95.com/blog/numgo-nd-array-based-math-library-for-go/</guid>
       <description>numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.</description>
     </item>
     
     <item>
       <title>pubundsci - An independent research study</title>
-      <link>https://akhilpandey95.com/blog/pubundsci---an-independent-research-study/</link>
+      <link>https://akhilpandey95.com/blog/pubundsci-an-independent-research-study/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://akhilpandey95.com/blog/pubundsci---an-independent-research-study/</guid>
+      <guid>https://akhilpandey95.com/blog/pubundsci-an-independent-research-study/</guid>
       <description>While technological and scientific advancement paved its way in the 20th century giving scope for researchers to publish of a plethora of scientific literature, “Public Understanding of Science” has been at the center stage of discussion among researchers for the past decade. This very concern sprouts from the fact that most of the scientific reportage that occurs on News Media is subject to personal interpretation. Also, the misapprehensions of the scientific findings can cause repercussions of unimaginable scale in the real world.</description>
     </item>
     
@@ -216,7 +212,7 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
       <pubDate>Mon, 12 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://akhilpandey95.com/blog/tuning-the-gnu/linux-system/</guid>
-      <description>I always used to find myself in a difficult situation when I had to travel and work. The main reason for this is my machine had a GNU/Linux based distro running and I couldn’t stay away from a charging spot for more than two hours. I always was intrigued to explore this segment and solve this very problem in order to better my travel experience. Basically there are couple of things to be kept in mind before you go out and try the tricks mentioned here, Consider them basics; So they are : * The Kernel plays a major role in providing support to enhance battery life.</description>
+      <description>I always used to find myself in a difficult situation when I had to travel and work. The main reason for this is my machine had a GNU/Linux based distro running and I couldn’t stay away from a charging spot for more than two hours. I always was intrigued to explore this segment and solve this very problem in order to better my travel experience. Basically there are couple of things to be kept in mind before you go out and try the tricks mentioned here, Consider them basics; So they are :</description>
     </item>
     
   </channel>
