@@ -1,217 +1,240 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en" dir="auto">
 
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="Akhil Pandey">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>numgo - ND Array based math library for Go | Akhil Pandey</title>
+<meta name="keywords" content="">
 <meta name="description" content="numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.">
+<meta name="author" content="Akhil Pandey">
+<link rel="canonical" href="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="https://akhilpandey95.github.io/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-<meta property="og:title" content="numgo - ND Array based math library for Go" />
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-135077366-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="numgo - ND Array based math library for Go" />
 <meta property="og:description" content="numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2017-11-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2017-11-01T00:00:00+00:00" />
 
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="numgo - ND Array based math library for Go"/>
+<meta name="twitter:description" content="numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered."/>
 
 
-<title>
-
-
-     numgo - ND Array based math library for Go 
-
-</title>
-<link rel="canonical" href="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/">
-
-
-
-
-
-
-
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
-  
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
-
-
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "https://akhilpandey95.github.io/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "numgo - ND Array based math library for Go",
+      "item": "https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "numgo - ND Array based math library for Go",
+  "name": "numgo - ND Array based math library for Go",
+  "description": "numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.",
+  "keywords": [
     
-    <link rel="stylesheet" href="https://akhilpandey95.github.io/css/reset.css?t=2023-10-08%2015%3a52%3a42.973968685%20-0500%20CDT%20m%3d%2b0.032487513">
-    <link rel="stylesheet" href="https://akhilpandey95.github.io/css/pygments.css?t=2023-10-08%2015%3a52%3a42.973968685%20-0500%20CDT%20m%3d%2b0.032487513">
-    <link rel="stylesheet" href="https://akhilpandey95.github.io/css/main.css?t=2023-10-08%2015%3a52%3a42.973968685%20-0500%20CDT%20m%3d%2b0.032487513">
-    
-        <link rel="stylesheet" href="https://akhilpandey95.github.io/css/override.css?t=2023-10-08%2015%3a52%3a42.973968685%20-0500%20CDT%20m%3d%2b0.032487513">
-    
-
-
-
-
-<link rel="shortcut icon"
-
-    href="https://akhilpandey95.github.io/img/favicon.ico"
-
->
-
-
-
-
-
-
-
-
-
-
+  ],
+  "articleBody": "numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in go-lang. As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy.\nND Array\nAn N-Dimensional array is a multidimensional array that contains items of fixed size and type. The number of elements present in the N-D array can be calculated using the dimensions of the array. For suppose, D is a tuple indicative of the Dimensions attributed to the 1N-D Array then the number of elements that could fit in to the array would be calculated by d1,d2,d3,……..dn. So, an array of shape {1, 2, 3, 4} would fit 1*2*3*4 i.e 24 elements. Also, there is no limitation to the potential of the N-D Array with regard to the data type which N-D Array belongs to. An n-dimensional float array or an n-dimensional string array will have the same potential. Although, all the member functions supporting a float type cannot equally support string type there is no restriction to the scale at which operations could be performed on both the arrays.\nAlgorithm\nfunc NDArrayGenElements(value float64, details ...float64) []float64 { parameters := extract_parameters(details) if len(parameters) \u003e 0 { dim := parameters[0] rem := parameters[1:] arr := []float64{} for i := 0; i \u003c int(dim); i++ { arr = append(arr, NDArrayGenElements(value, rem...)...) } return arr } else { return []float64{value} } } func NDArray(details ...float64) (n *NArray) { parameters := extract_parameters(details) n = \u0026NArray{ Data: NDArrayGenElements(0, details...), Details: parameters, Index: make([]float64, len(parameters)), } return n } Areas to be covered\nnumgo aims to broadly cover the following concepts:\nAlgebra Arithmatics Trigonometry Exponents and logarithms Universal Functions Logical Functions The toughest part involved with writing code for numgo is to support N-Dimensional array creation, manipulation over various data types. Although, the initial support is given only for float64 there is an intention to support N-Dimensional array operations for the types string and complex. Since, it is not ideal to have heterogeneous arrays there is no plan to extend support in that direction.\nUsage\npackage main import ( \"fmt\" \"github.com/akhilpandey95/numgo\" ) func main() { fmt.Println(numgo.NDArray(3, 3, 3)) // would init a NDArray of shape 3,3,3 fmt.Println(numgo.Xrange(8, 20)) // would print from 8 to 20 fmt.Println(numgo.Xrange(8, 9, 0.1)) // would print from 8.1 to 8.9 } Documentation on other methods could be found here\nv0.1\nThe package in its entirety is under development v0.1 will most likely be shipped by the end of December 2017 or mid January 2018.\nGithub repository: numgo .\nThe repository is licensed under MPL(Mozilla Public License) so feel free to fork it. If you like the implementation give it a star. If there is something wrong with the code, please raise an issue. Also, I would be grateful to have someone contribute to the repository.\nThats it folks, Happy Hacking !!\n",
+  "wordCount" : "561",
+  "inLanguage": "en",
+  "datePublished": "2017-11-01T00:00:00Z",
+  "dateModified": "2017-11-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Akhil Pandey"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Akhil Pandey",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akhilpandey95.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-<body lang="">
+</script>
 
-<section class="header">
-    <div class="container">
-        <div class="content">
-            
-                
-                
-                
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                
-                <a href="https://akhilpandey95.github.io/"><img class="avatar" src="https://akhilpandey95.github.io/img/me.jpeg" srcset="https://akhilpandey95.github.io/img/me.jpeg 1x"></a>
-            
-            <a href="https://akhilpandey95.github.io/"><div class="name">Akhil Pandey</div></a>
-            
-            <nav>
-                <ul>
-                    
-                        
-                        <li class="nav-about"><a href="https://akhilpandey95.github.io/about/"><span>About</span></a></li>
-                    
-                        
-                        <li class="nav-blog"><a href="https://akhilpandey95.github.io/blog/"><span>Blog</span></a></li>
-                    
-                        
-                        <li class="nav-projects"><a href="https://akhilpandey95.github.io/projects/"><span>Projects</span></a></li>
-                    
-                </ul>
-            </nav>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey (Alt + H)">Akhil Pandey</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+        <ul id="menu">
+            <li>
+                <a href="https://akhilpandey95.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-<section class="icons">
-    <div class="container">
-        <div class="content">
-        
-            <a href="https://github.com/akhilpandey95" target="_blank" rel="noopener"><img class="icon" src="https://akhilpandey95.github.io/img/github.svg" alt="github" /></a>
-        
-
-        
-
-        
-
-	
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-            <a href="mailto:akhilpandey95@icloud.com"><img class="icon" src="https://akhilpandey95.github.io/img/email.svg" alt="email" /></a>
-        
-
-        
-        
-        
-
-        
-        </div>
-    </div>
-</section>
-
-
-<section class="main post non-narrow zero-top-spacing">
-    <div class="container">
-        <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
-    numgo - ND Array based math library for Go
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      numgo - ND Array based math library for Go
+    </h1>
+    <div class="post-meta"><span title='2017-11-01 00:00:00 +0000 UTC'>November 1, 2017</span>&nbsp;·&nbsp;Akhil Pandey
 
 </div>
-
-                    <div class="initials"><a href="https://akhilpandey95.github.io/">ad</a></div>
-                </div>
-                <div class="meta">
-                    
-                    <div class="date" title='Wed Nov 1 2017 00:00:00 UTC'>Nov 1, 2017</div>
-                    
-                    
-		    <div class="reading-time"><div class="middot"></div>3 minutes read</div>
-                    
-                </div>
-            </div>
-            <div class="markdown">
-                <h1 id="numgo---nd-array-based-math-library-for-go">numgo - ND Array based math library for Go</h1>
+  </header> 
+  <div class="post-content"><h1 id="numgo---nd-array-based-math-library-for-go">numgo - ND Array based math library for Go<a hidden class="anchor" aria-hidden="true" href="#numgo---nd-array-based-math-library-for-go">#</a></h1>
 <p>Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s <strong>numpy</strong> library to <strong>go-lang.</strong> The name of the project is  <a href="https://github.com/akhilpandey95/numgo">numgo.</a>  After learning <strong>go-lang</strong> I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in <strong>go-lang.</strong> As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy.</p>
 <p><strong>ND Array</strong></p>
 <p>An N-Dimensional array is a multidimensional array that contains items of fixed size and type. The number of elements present in the N-D array can be calculated using the dimensions of the array. For suppose, <em>D</em> is a tuple indicative of the Dimensions attributed to the 1N-D Array then the number of elements that could fit in to the array would be calculated by <em>d1</em>,<em>d2</em>,<em>d3</em>,<em>……..dn</em>. So, an array of shape <em>{1, 2, 3, 4}</em> would fit <code>1*2*3*4</code> i.e 24 elements. Also, there is no limitation to the potential of the N-D Array with regard to the data type which N-D Array belongs to. An n-dimensional float array or an n-dimensional string array will have the same potential. Although, all the member functions supporting a float type cannot equally support string type there is no restriction to the scale at which operations could be performed on both the arrays.</p>
 <p><strong>Algorithm</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="nx">value</span> <span class="kt">float64</span><span class="p">,</span> <span class="nx">details</span> <span class="o">...</span><span class="kt">float64</span><span class="p">)</span> <span class="p">[]</span><span class="kt">float64</span> <span class="p">{</span>
-  <span class="nx">parameters</span> <span class="o">:=</span> <span class="nf">extract_parameters</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span>
-  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
-    <span class="nx">dim</span> <span class="o">:=</span> <span class="nx">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="nx">rem</span> <span class="o">:=</span> <span class="nx">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-    <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">float64</span><span class="p">{}</span>
-    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">int</span><span class="p">(</span><span class="nx">dim</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-      <span class="nx">arr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">rem</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">arr</span>
-    <span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">[]</span><span class="kt">float64</span><span class="p">{</span><span class="nx">value</span><span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-<span class="kd">func</span> <span class="nf">NDArray</span><span class="p">(</span><span class="nx">details</span> <span class="o">...</span><span class="kt">float64</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">NArray</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">parameters</span> <span class="o">:=</span> <span class="nf">extract_parameters</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span>
-  <span class="nx">n</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">NArray</span><span class="p">{</span>
-    <span class="nx">Data</span><span class="p">:</span>    <span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">details</span><span class="o">...</span><span class="p">),</span>
-    <span class="nx">Details</span><span class="p">:</span> <span class="nx">parameters</span><span class="p">,</span>
-    <span class="nx">Index</span><span class="p">:</span>   <span class="nb">make</span><span class="p">([]</span><span class="kt">float64</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)),</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">n</span>
-<span class="p">}</span>
-</code></pre></div><p><strong>Areas to be covered</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="nx">value</span> <span class="kt">float64</span><span class="p">,</span> <span class="nx">details</span> <span class="o">...</span><span class="kt">float64</span><span class="p">)</span> <span class="p">[]</span><span class="kt">float64</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parameters</span> <span class="o">:=</span> <span class="nf">extract_parameters</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">dim</span> <span class="o">:=</span> <span class="nx">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rem</span> <span class="o">:=</span> <span class="nx">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">arr</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">float64</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">int</span><span class="p">(</span><span class="nx">dim</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">arr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">rem</span><span class="o">...</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">arr</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">[]</span><span class="kt">float64</span><span class="p">{</span><span class="nx">value</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NDArray</span><span class="p">(</span><span class="nx">details</span> <span class="o">...</span><span class="kt">float64</span><span class="p">)</span> <span class="p">(</span><span class="nx">n</span> <span class="o">*</span><span class="nx">NArray</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parameters</span> <span class="o">:=</span> <span class="nf">extract_parameters</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">n</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">NArray</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Data</span><span class="p">:</span>    <span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">details</span><span class="o">...</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Details</span><span class="p">:</span> <span class="nx">parameters</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">Index</span><span class="p">:</span>   <span class="nb">make</span><span class="p">([]</span><span class="kt">float64</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">n</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p><strong>Areas to be covered</strong></p>
 <p><code>numgo </code>aims to broadly cover the following concepts:</p>
 <ul>
 <li>Algebra</li>
@@ -223,19 +246,19 @@
 </ul>
 <p>The toughest part involved with writing code for <code>numgo</code> is to support N-Dimensional array creation, manipulation over various data types. Although, the initial support is given only for float64 there is an intention to support N-Dimensional array operations for the types string and complex. Since, it is not ideal to have heterogeneous arrays there is no plan to extend support in that direction.</p>
 <p><strong>Usage</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
-
-<span class="kn">import</span> <span class="p">(</span>
-  <span class="s">&#34;fmt&#34;</span>
-  <span class="s">&#34;github.com/akhilpandey95/numgo&#34;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">NDArray</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1">// would init a NDArray of shape 3,3,3
-</span><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">Xrange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>     <span class="c1">// would print from 8 to 20
-</span><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">Xrange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span> <span class="c1">// would print from 8.1 to 8.9
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><p>Documentation on other methods could be found  <a href="https://github.com/akhilpandey95/numGo/blob/master/README.md">here</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;github.com/akhilpandey95/numgo&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">NDArray</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1">// would init a NDArray of shape 3,3,3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">Xrange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>     <span class="c1">// would print from 8 to 20
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">Xrange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span> <span class="c1">// would print from 8.1 to 8.9
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>Documentation on other methods could be found  <a href="https://github.com/akhilpandey95/numGo/blob/master/README.md">here</a></p>
 <p><strong>v0.1</strong></p>
 <p>The package in its entirety is under development v0.1 will most likely be shipped by the end of December 2017 or mid January 2018.</p>
 <p><strong>Github repository:</strong>  <a href="https://github.com/akhilpandey95/numgo">numgo</a> .</p>
@@ -243,46 +266,84 @@
 <p>Thats it folks,
 Happy Hacking !!</p>
 
-                <br>
-                
-                <p class="back-to-posts"><a href="https://akhilpandey95.github.io/blog">Back to posts</a></p>
-            </div>
-            <br>
-            <div class="disqus">
-                
-            </div>
-            
-        </div>
-    </div>
-</section>
 
+  </div>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-135077366-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
     
-  
-  <script type="text/javascript">
-    hljs.initHighlightingOnLoad();
-  </script>
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://akhilpandey95.github.io/">Akhil Pandey</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
 </body>
-</html>
 
+</html>

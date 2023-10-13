@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Akhil Pandey</title>
     <link>https://akhilpandey95.github.io/</link>
@@ -32,7 +32,7 @@
       
       <guid>https://akhilpandey95.github.io/blog/the-three-cs-of-javascript/</guid>
       <description>You might be wondering what the three C’s are :
- Currying Closures Callbacks  Ok what are those ?
+Currying Closures Callbacks Ok what are those ?
 Before I start, let me tell you that in Javascript Functions are Objects. So every object in Javascript, be it Number, String, Array; Every Object in javascript has a prototype object. For instance if the object is declared using an object literal then, it has access to Object.prototype, Similarly all the arrays so declared have access to the Array.</description>
     </item>
     

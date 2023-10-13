@@ -1,247 +1,308 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en" dir="auto">
 
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
-<meta name="author" content="Akhil Pandey">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>How do we quantify uncertainty in deep learning models ? | Akhil Pandey</title>
+<meta name="keywords" content="">
 <meta name="description" content="Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.">
+<meta name="author" content="“Akhil Pandey”">
+<link rel="canonical" href="https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="https://akhilpandey95.github.io/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-<meta property="og:title" content="How do we quantify uncertainty in deep learning models ?" />
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-135077366-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script><meta property="og:title" content="How do we quantify uncertainty in deep learning models ?" />
 <meta property="og:description" content="Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2020-08-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-08-07T00:00:00+00:00" />
 
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How do we quantify uncertainty in deep learning models ?"/>
+<meta name="twitter:description" content="Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks."/>
 
 
-<title>
-
-
-     How do we quantify uncertainty in deep learning models ? 
-
-</title>
-<link rel="canonical" href="https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/">
-
-
-
-
-
-
-
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/default.min.css">
-  
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
-
-
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "https://akhilpandey95.github.io/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "How do we quantify uncertainty in deep learning models ?",
+      "item": "https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How do we quantify uncertainty in deep learning models ?",
+  "name": "How do we quantify uncertainty in deep learning models ?",
+  "description": "Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.",
+  "keywords": [
     
-    <link rel="stylesheet" href="https://akhilpandey95.github.io/css/reset.css?t=2023-10-08%2015%3a52%3a42.970157813%20-0500%20CDT%20m%3d%2b0.028676642">
-    <link rel="stylesheet" href="https://akhilpandey95.github.io/css/pygments.css?t=2023-10-08%2015%3a52%3a42.970157813%20-0500%20CDT%20m%3d%2b0.028676642">
-    <link rel="stylesheet" href="https://akhilpandey95.github.io/css/main.css?t=2023-10-08%2015%3a52%3a42.970157813%20-0500%20CDT%20m%3d%2b0.028676642">
-    
-        <link rel="stylesheet" href="https://akhilpandey95.github.io/css/override.css?t=2023-10-08%2015%3a52%3a42.970157813%20-0500%20CDT%20m%3d%2b0.028676642">
-    
-
-
-
-
-<link rel="shortcut icon"
-
-    href="https://akhilpandey95.github.io/img/favicon.ico"
-
->
-
-
-
-
-
-
-
-
-
-
+  ],
+  "articleBody": "Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.\nBayesian Neural Networks as the name suggests is a Bayesian variant of Neural Network. The fundamental difference lies in training process of the Bayesian model and this difference allows these models to estimate the error on the predictions. This change in the operational philosophy gives credence to the predictions made by the Bayesian Neural Network because it is capable of saying, “I don’t know” towards uncertain predictions or border cases. Unlike a traditional Neural Network, Bayesian Neural Networks do not coerce the models to make a prediction when the probability of the prediction is close to another prediction. This potentially allows Bayesian Neural Networks to be a force for good when used in sensitive areas such as Healthcare, Retail and Finance, and Self-driving cars.\nDo we really know what is a Neural Network ? Traditionally Neural networks (NN’s) are these models whose goal is to approximate some function f. These networks define a mapping, Y = f (x, θ) and learn the values of the parameters θ and the result is the best function approximation. Optimization is the process of finding the appropriate parameters for the network that reduce some cost function. Cost function is an objective function that we expect the model to reduce so that it improves some performance measure P.\nBefore we have a primordial understanding of a Bayesian Neural Network, there is a necessity to re-calibrate how we observe the functionality of Neural Networks. We must understand that at its core a neural network is just a probabilistic model P (y | X, w) gathering point estimates of the outputs for a given input and the trained weights. If the outputs are a set of classes then, the probabilistic model P (y | X, w) is a categorical distribution. If the outputs are continuous in nature, then the probabilistic model P (y | X, w) is a Gaussian distribution.\nWhat do we mean when we say Uncertainty or Uncertainty Quantification ? Uncertainty quantification or UQ is the process of quantifying the uncertainties in the prediction process of a model. Often NNs are regarded as being unreliable black box models for their lack of interpretability. Fundamentally, UQ as a concept promotes trust, reliability, and robustness in the models by helping us understand where the model is not certain. This makes sense if you imagine a situation having a NN predicting toxicity in drugs and having UQ in that model can potentially change the life altering dynamics associated here. This motivation can be extended to forecasting, predicting stock prices, self driving cars and many other areas that fall under the umbrella of Applied AI.\nThere are two types of uncertainties, called \\textit{aleatoric} uncertainty, and \\textit{epistemic} uncertainty. The plot Fig. \\ref{fig:uncertainty} \\footnote{https://www.inovex.de/blog/uncertainty-quantification-deep-learning/} succinctly shows depiction of both the uncertainties in a noisy toy data set. The red line is some deterministic mean function and the generated noisy inputs closer to the line account for the vertical spread, i.e aleatory uncertainty. And, the absence of samples on the input domain account for the horizontal spread, i.e the epistemic uncertainty.\nWhat are Bayesian Neural Networks ? Bayesian neural networks have a conceptual difference from fully connected neural networks. As mentioned in the introduction, fully connected neural networks are just piping out a point estimate for a prediction and the final weights that are obtained after the training process has concluded are just single values. In a Bayesian Neural Network the weights are assigned as probability distributions and instead of having a point estimate we now have a distribution of values. Extending the definition These probability distributions describe the uncertainty in weights and can be used to estimate uncertainty in predictions. Training a Bayesian neural network via variational inference learns the parameters of these distributions instead of the weights directly.\nHow do these models perform ? We can observe the performance of the models from Figure \\ref{fig:uncertainty}. Figure \\ref{fig:data} shows the data set that was used for evaluating the performance was Sine, consisting of 1500 samples in the range of $[-5, 5]$. The Aleatoric uncertainty that is inherent to the noise in the generated Sine Data can be observed in Figure \\ref{fig:bnn_aleatoric}. The point that is ought to be noted is that the blue area encapsulates the noise inherent to the Sine Data. The Epistemic uncertainty from the predictions of the model can be observed in Figure \\ref{fig:bnn_epistemic}. We can notice that the area that doesn’t consist of samples shows a highlighted area indicating that the epistemic uncertainty is localized to the region where there aren’t enough samples. This implies that the model is uncertain when trying to make a prediction on inputs that it hasn’t seen before. This very behaviour enables Bayesian Neural Networks to stand out from deterministic models because the stochastic nature of the predictions is addressed and the standard error is plotted. Therefore, we are aware of the uncertainties in the predictions.\nThe aforementioned benefits are not available when you use a deterministic model. The apparent observation from Figure \\ref{fig:fcn} is the predictive mean of the model aligning with the true line, although the model performs a good job there is no7. The observations made on the performance of the models when using the Sine Data set is not limited in scope. We can extend these intuitions to other problems in the machine learning as well.\nEq. 1 outlines the posterior predictive distribution of the inputs and it highlights how the model has to learn over the entire distribution of values instead of point estimates when gathering the weights of the network. Eq. 1 is not analytically tractable and hence, the cost function that we use to train the Bayesian Neural Network has to learn over the variational distribution $q (\\textbf{w} | \\theta)$ of the parameters. This problem is solved using KL divergence shown in Eq. 2 where the divergence of the true posterior distribution $p(\\textbf{w} | D )$ and the variational distribution $q (\\textbf{w} | \\theta)$ is measured and the cost is calculated for every iteration.\nWhen we expand the KL terms in Eq. 2, we observe the equation split into three parts, and the Expectation of the first two just capture the divergence between the distributions and the last term captures the negative log-likelihood of the predictions. Eq. 4 simplifies the expression in Eq. 3 to approximate the cost of the predictions.\nTakeaways ? The efficacy of these models translates into a multitude of beneficial factors. Firstly, having uncertainty in sectors like Finance, Healthcare would allow people\n",
+  "wordCount" : "1151",
+  "inLanguage": "en",
+  "datePublished": "2020-08-07T00:00:00Z",
+  "dateModified": "2020-08-07T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "“Akhil Pandey”"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Akhil Pandey",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akhilpandey95.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-<body lang="">
+</script>
 
-<section class="header">
-    <div class="container">
-        <div class="content">
-            
-                
-                
-                
-                
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                
-                <a href="https://akhilpandey95.github.io/"><img class="avatar" src="https://akhilpandey95.github.io/img/me.jpeg" srcset="https://akhilpandey95.github.io/img/me.jpeg 1x"></a>
-            
-            <a href="https://akhilpandey95.github.io/"><div class="name">Akhil Pandey</div></a>
-            
-            <nav>
-                <ul>
-                    
-                        
-                        <li class="nav-about"><a href="https://akhilpandey95.github.io/about/"><span>About</span></a></li>
-                    
-                        
-                        <li class="nav-blog"><a href="https://akhilpandey95.github.io/blog/"><span>Blog</span></a></li>
-                    
-                        
-                        <li class="nav-projects"><a href="https://akhilpandey95.github.io/projects/"><span>Projects</span></a></li>
-                    
-                </ul>
-            </nav>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey (Alt + H)">Akhil Pandey</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </div>
-</section>
+        <ul id="menu">
+            <li>
+                <a href="https://akhilpandey95.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-<section class="icons">
-    <div class="container">
-        <div class="content">
-        
-            <a href="https://github.com/akhilpandey95" target="_blank" rel="noopener"><img class="icon" src="https://akhilpandey95.github.io/img/github.svg" alt="github" /></a>
-        
-
-        
-
-        
-
-	
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-            <a href="mailto:akhilpandey95@icloud.com"><img class="icon" src="https://akhilpandey95.github.io/img/email.svg" alt="email" /></a>
-        
-
-        
-        
-        
-
-        
-        </div>
-    </div>
-</section>
-
-
-<section class="main post non-narrow zero-top-spacing">
-    <div class="container">
-        <div class="content">
-            <div class="front-matter">
-                <div class="title-container">
-                    <div class="page-heading">
-
-    How do we quantify uncertainty in deep learning models ?
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      How do we quantify uncertainty in deep learning models ?
+    </h1>
+    <div class="post-meta"><span title='2020-08-07 00:00:00 +0000 UTC'>August 7, 2020</span>&nbsp;·&nbsp;“Akhil Pandey”
 
 </div>
-
-                    <div class="initials"><a href="https://akhilpandey95.github.io/">ad</a></div>
-                </div>
-                <div class="meta">
-                    
-                    <div class="date" title='Fri Aug 7 2020 00:00:00 UTC'>Aug 7, 2020</div>
-                    
-                    
-		    <div class="reading-time"><div class="middot"></div>6 minutes read</div>
-                    
-                </div>
-            </div>
-            <div class="markdown">
-                <h3 id="neural-networks-everywhere">Neural Networks Everywhere</h3>
+  </header> 
+  <div class="post-content"><h3 id="neural-networks-everywhere">Neural Networks Everywhere<a hidden class="anchor" aria-hidden="true" href="#neural-networks-everywhere">#</a></h3>
 <p>The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.</p>
 <p>Bayesian Neural Networks as the name suggests is a Bayesian variant of Neural Network. The fundamental difference lies in training process of the Bayesian model and this difference allows these models to estimate the error on the predictions. This change in the operational philosophy gives credence to the predictions made by the Bayesian Neural Network because it is capable of saying, <em>&ldquo;I don&rsquo;t know&rdquo;</em> towards uncertain predictions or border cases. Unlike a traditional Neural Network, Bayesian Neural Networks do not coerce the models to make a prediction when the probability of the prediction is close to another prediction. This potentially allows Bayesian Neural Networks to be a force for good when used in sensitive areas such as Healthcare, Retail and Finance, and Self-driving cars.</p>
-<h3 id="do-we-really-know-what-is-a-neural-network-">Do we really know what is a Neural Network ?</h3>
+<h3 id="do-we-really-know-what-is-a-neural-network-">Do we really know what is a Neural Network ?<a hidden class="anchor" aria-hidden="true" href="#do-we-really-know-what-is-a-neural-network-">#</a></h3>
 <p>Traditionally Neural networks (NN&rsquo;s) are these models whose goal is to approximate some function <em>f</em>. These networks define a mapping, <em>Y</em> = <em>f</em> (<em>x</em>, θ) and learn the values of the parameters θ and the result is the best function approximation. Optimization is the process of finding the appropriate parameters for the network that reduce some cost function. Cost function is an objective function that we expect the model to reduce so that it improves some performance measure <em>P</em>.</p>
 <p>Before we have a primordial understanding of a Bayesian Neural Network, there is a necessity to re-calibrate how we observe the functionality of Neural Networks. We must understand that at its core a neural network is just a probabilistic model <em>P</em> (<em>y</em> | <strong>X</strong>, <em>w</em>) gathering point estimates of the outputs for a given input and the trained weights. If the outputs are a set of classes then, the probabilistic model <em>P</em> (<em>y</em> | <strong>X</strong>, <em>w</em>) is a categorical distribution. If the outputs are continuous in nature, then the probabilistic model <em>P</em> (<em>y</em> | <strong>X</strong>, <em>w</em>) is a Gaussian distribution.</p>
-<h3 id="what-do-we-mean-when-we-say-uncertainty-or-uncertainty-quantification-">What do we mean when we say Uncertainty or Uncertainty Quantification ?</h3>
+<h3 id="what-do-we-mean-when-we-say-uncertainty-or-uncertainty-quantification-">What do we mean when we say Uncertainty or Uncertainty Quantification ?<a hidden class="anchor" aria-hidden="true" href="#what-do-we-mean-when-we-say-uncertainty-or-uncertainty-quantification-">#</a></h3>
 <p>Uncertainty quantification or UQ is the process of quantifying the uncertainties in the prediction process of a model. Often NNs are regarded as being unreliable black box models for their lack of interpretability. Fundamentally, UQ as a concept promotes trust, reliability, and robustness in the models by helping us understand where the model is not certain. This makes sense if you imagine a situation having a NN predicting toxicity in drugs and having UQ in that model can potentially change the life altering dynamics associated here. This motivation can be extended to forecasting, predicting stock prices, self driving cars and many other areas that fall under the umbrella of Applied AI.</p>
 <p>There are two types of uncertainties, called \textit{aleatoric} uncertainty, and \textit{epistemic} uncertainty. The plot Fig. \ref{fig:uncertainty} \footnote{https://www.inovex.de/blog/uncertainty-quantification-deep-learning/} succinctly shows depiction of both the uncertainties in a noisy toy data set. The red line is some deterministic mean function and the generated noisy inputs closer to the line account for the vertical spread, i.e aleatory uncertainty. And, the absence of samples on the input domain account for the horizontal spread, i.e the epistemic uncertainty.</p>
-<h3 id="what-are-bayesian-neural-networks-">What are Bayesian Neural Networks ?</h3>
+<h3 id="what-are-bayesian-neural-networks-">What are Bayesian Neural Networks ?<a hidden class="anchor" aria-hidden="true" href="#what-are-bayesian-neural-networks-">#</a></h3>
 <p>Bayesian neural networks have a conceptual difference from fully connected neural networks. As mentioned in the introduction, fully connected neural networks are just piping out a point estimate for a prediction and the final weights that are obtained after the training process has concluded are just single values. In a Bayesian Neural Network the weights are assigned as probability distributions and instead of having a point estimate we now have a distribution of values. Extending the definition These probability distributions describe the uncertainty in weights and can be used to estimate uncertainty in predictions. Training a Bayesian neural network via variational inference learns the parameters of these distributions instead of the weights directly.</p>
-<h3 id="how-do-these-models-perform-">How do these models perform ?</h3>
+<h3 id="how-do-these-models-perform-">How do these models perform ?<a hidden class="anchor" aria-hidden="true" href="#how-do-these-models-perform-">#</a></h3>
 <p>We can observe the performance of the models from Figure \ref{fig:uncertainty}. Figure \ref{fig:data} shows the data set that was used for evaluating the performance was Sine, consisting of 1500 samples in the range of $[-5, 5]$. The Aleatoric uncertainty that is inherent to the noise in the generated Sine Data can be observed in Figure \ref{fig:bnn_aleatoric}. The point that is ought to be noted is that the blue area encapsulates the noise inherent to the Sine Data. The Epistemic uncertainty from the predictions of the model can be observed in Figure \ref{fig:bnn_epistemic}. We can notice that the area that doesn&rsquo;t consist of samples shows a highlighted area indicating that the epistemic uncertainty is localized to the region where there aren&rsquo;t enough samples. This implies that the model is uncertain when trying to make a prediction on inputs that it hasn&rsquo;t seen before. This very behaviour enables Bayesian Neural Networks to stand out from deterministic models because the stochastic nature of the predictions is addressed and the standard error is plotted. Therefore, we are aware of the uncertainties in the predictions.</p>
 <p>The aforementioned benefits are not available when you use a deterministic model. The apparent observation from Figure \ref{fig:fcn} is the predictive mean of the model aligning with the true line, although the model performs a good job there is no7. The observations made on the performance of the models when using the Sine Data set is not limited in scope. We can extend these intuitions to other problems in the machine learning as well.</p>
 <!-- raw HTML omitted -->
 <p>Eq. 1 outlines the posterior predictive distribution of the inputs and it highlights how the model has to learn over the entire distribution of values instead of point estimates when gathering the weights of the network. Eq. 1 is not analytically tractable and hence, the cost function that we use to train the Bayesian Neural Network has to learn over the variational distribution $q (\textbf{w} | \theta)$ of the  parameters. This problem is solved using KL divergence shown in Eq. 2 where the divergence of the true posterior distribution $p(\textbf{w} | D )$ and the variational distribution $q (\textbf{w} | \theta)$ is measured and the cost is calculated for every iteration.</p>
 <p>When we expand the KL terms in Eq. 2, we observe the equation split into three parts, and the Expectation of the first two just capture the divergence between the distributions and the last term captures the negative log-likelihood of the predictions. Eq. 4 simplifies the expression in Eq. 3 to approximate the cost of the predictions.</p>
-<h2 id="takeaways-">Takeaways ?</h2>
+<h2 id="takeaways-">Takeaways ?<a hidden class="anchor" aria-hidden="true" href="#takeaways-">#</a></h2>
 <p>The efficacy of these models translates into a multitude of beneficial factors. Firstly, having uncertainty in sectors like Finance, Healthcare would allow people</p>
 
-                <br>
-                
-                <p class="back-to-posts"><a href="https://akhilpandey95.github.io/blog">Back to posts</a></p>
-            </div>
-            <br>
-            <div class="disqus">
-                
-            </div>
-            
-        </div>
-    </div>
-</section>
 
+  </div>
 
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-135077366-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
     
-  
-  <script type="text/javascript">
-    hljs.initHighlightingOnLoad();
-  </script>
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://akhilpandey95.github.io/">Akhil Pandey</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
 
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
 
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
 
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
 
+</script>
 </body>
-</html>
 
+</html>
