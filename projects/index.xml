@@ -4,53 +4,67 @@
     <title>Projects on Akhil Pandey</title>
     <link>https://akhilpandey95.github.io/projects/</link>
     <description>Recent content in Projects on Akhil Pandey</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.136.5</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 19 Aug 2015 20:29:37 -0700</lastBuildDate><atom:link href="https://akhilpandey95.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://akhilpandey95.github.io/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>altpred</title>
-      <link>https://akhilpandey95.github.io/projects/altpred/</link>
-      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
-      
-      <guid>https://akhilpandey95.github.io/projects/altpred/</guid>
-      <description>An independent study trying to understand the relationship between scholarly articles and social media reference indicators.</description>
+      <title>Navigating the Landscape of Reproducible Research: A Predictive Modeling Approach</title>
+      <link>https://akhilpandey95.github.io/projects/repropredmodeling/</link>
+      <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/repropredmodeling/</guid>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;The reproducibility of scientific articles is central to the advancement of science. Despite this importance, evaluating reproducibility remains challenging due to the scarcity of ground truth data. Predictive models can address this limitation by streamlining the tedious evaluation process. Typically, a paper&amp;rsquo;s reproducibility is inferred based on the availability of artifacts such as code, data, or supplemental information, often without extensive empirical investigation. To address these issues, we utilized artifacts of papers as fundamental units to develop a novel, dual-spectrum framework that focuses on author-centric and external-agent perspectives. We used the author-centric spectrum, followed by the external-agent spectrum, to guide a structured, model-based approach to quantify and assess reproducibility. We explored the interdependencies between different factors influencing reproducibility and found that linguistic features such as readability and lexical diversity are strongly correlated with papers achieving the highest statuses on both spectrums. Our work provides a model-driven pathway for evaluating the reproducibility of scientific research.&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>LearnJs</title>
-      <link>https://akhilpandey95.github.io/projects/learnjs/</link>
-      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
-      
-      <guid>https://akhilpandey95.github.io/projects/learnjs/</guid>
-      <description>A Javascript cheatsheet for beginners. The project explains about Javascript and its functionalities with short examples. It is an attempt to portray the best parts of Javascript that are pretty tough and hard to find. It is a congregation of best practices, language constructs, and other simple yet effective snippets that gives us an essence of how we can harness the best out of the language</description>
+      <title>Influence of Reproducibility on Scientific Impact</title>
+      <link>https://akhilpandey95.github.io/projects/influencerepro/</link>
+      <pubDate>Wed, 03 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/influencerepro/</guid>
+      <description>&lt;h1 id=&#34;irsi&#34;&gt;IRSI&lt;/h1&gt;
+&lt;p&gt;Reproducibility is an important feature of science; experiments are retested, and analyses are repeated.we examine a myriad of features in scholarly articles published in computer science conferences and journals and model how they influence scientific impact.&lt;/p&gt;
+&lt;h3 id=&#34;reproducibility-spectrum&#34;&gt;Reproducibility Spectrum&lt;/h3&gt;
+&lt;p&gt;The author-centric framework focuses on acknowledging availability, accessibility, and quality of the artifact available within scientific document to signal satisfying prerequisites to reproduce a paper. The Author-Centric framework within the spectrum includes, $A_i = A_{PWA}$ (Papers without artifacts), $A_{PUNX}$ (Papers with artifacts that aren&amp;rsquo;t permanantly archived), and $A_{PAX}$ (Papers with artifacts that are permanantly archived).&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>m.bot</title>
-      <link>https://akhilpandey95.github.io/projects/m.bot/</link>
-      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
-      
-      <guid>https://akhilpandey95.github.io/projects/m.bot/</guid>
-      <description>A conversation AI that would be assisting researchers to gain scholarly insights. It analyzing documents, extracts information from images and answers questions based on the knowledge acquired.(under-development)</description>
+      <title>Reproducibility Signals in Science: A preliminary analysis</title>
+      <link>https://akhilpandey95.github.io/projects/reprosignals/</link>
+      <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/reprosignals/</guid>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;Reproducibility is an important feature of science; experiments are retested, and analyses are repeated. Trust in the findings increases when consistent results are achieved. Despite the importance of reproducibility, significant work is often involved in these efforts, and some published findings may not be reproducible due to oversights or errors. In this paper, we examine a myriad of features in scholarly articles published in computer science conferences and journals and test how they correlate with reproducibility. We collected data from three different sources that labeled publications as either reproducible or irreproducible and employed statistical significance tests to identify features of those publications that hold clues about reproducibility. We found the readability of the scholarly article and accessibility of the software artifacts through hyperlinks to be strong signals noticeable amongst reproducible scholarly articles.&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>pubudnsci</title>
+      <title>Laying Foundations to Quantify the “Effort of Reproducibility”</title>
+      <link>https://akhilpandey95.github.io/projects/effortly/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/effortly/</guid>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;Why are some research studies easy to reproduce while others are difficult? Casting doubt on the accuracy of scientific work is not fruitful, especially when an individual researcher cannot reproduce the claims made in the paper. There could be many subjective reasons behind the inability to reproduce a scientific paper. The field of Machine Learning (ML) faces a reproducibility crisis, and surveying a portion of published articles has resulted in a group realization that although sharing code repositories would be appreciable, code bases are not the end all be all for determining the reproducibility of an article. Various parties involved in the publication process have come forward to address the reproducibility crisis and solutions such as badging articles as reproducible, reproducibility checklists at conferences (NeurIPS, ICML, ICLR, etc.), and sharing artifacts on OpenReview come across as promising solutions to the core problem. The breadth of literature on reproducibility focuses on measures required to avoid ir-reproducibility, and there is not much research into the effort behind reproducing these articles. In this paper, we investigate the factors that contribute to the easiness and difficulty of reproducing previously published studies and report on the foundational framework to quantify effort of reproducibility.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Brief Survey on Representation Learning based Graph Dimensionality Reduction Techniques</title>
+      <link>https://akhilpandey95.github.io/projects/graphreprlearning/</link>
+      <pubDate>Sat, 22 Oct 2022 20:29:37 -0700</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/graphreprlearning/</guid>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;Dimensionality reduction techniques map data represented on higher dimensions onto lower dimensions with varying degrees of information loss. Graph dimensionality reduction techniques adopt the same principle of providing latent representations of the graph structure with minor adaptations to the output representations along with the input data. There exist several cutting edge techniques that are efficient at generating embeddings from graph data and projecting them onto low dimensional latent spaces. Due to variations in the operational philosophy, the benefits of a particular graph dimensionality reduction technique might not prove advantageous to every scenario or rather every dataset. As a result, some techniques are efficient at representing the relationship between nodes at lower dimensions, while others are good at encapsulating the entire graph structure on low dimensional space. We present this survey to outline the benefits as well as problems associated with the existing graph dimensionality reduction techniques. We also attempted to connect the dots regarding the potential improvements to some of the techniques. This survey could be helpful for upcoming researchers interested in exploring the usage of graph representation learning to effectively produce low-dimensional graph embeddings with varying degrees of granularity.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Early indicators of scientific impact: Predicting citations with altmetrics</title>
+      <link>https://akhilpandey95.github.io/projects/scholarlyimpact/</link>
+      <pubDate>Thu, 11 Feb 2021 20:29:37 -0700</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/scholarlyimpact/</guid>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;Identifying important scholarly literature at an early stage is vital to the academic research community and other stakeholders such as technology companies and government bodies. Due to the sheer amount of research published and the growth of ever-changing interdisciplinary areas, researchers need an efficient way to identify important scholarly work. The number of citations a given research publication has accrued has been used for this purpose, but these take time to occur and longer to accumulate. In this article, we use altmetrics to predict the short-term and long-term citations that a scholarly publication could receive. We build various classification and regression models and evaluate their performance, finding neural networks and ensemble models to perform best for these tasks. We also find that Mendeley readership is the most important factor in predicting the early citations, followed by other factors such as the academic status of the readers (e.g., student, postdoc, professor), followers on Twitter, online post length, author count, and the number of mentions on Twitter, Wikipedia, and across different countries.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Using social media and scholarly text to predict public understanding of science</title>
       <link>https://akhilpandey95.github.io/projects/pubundsci/</link>
-      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
-      
+      <pubDate>Wed, 23 May 2018 20:29:37 -0700</pubDate>
       <guid>https://akhilpandey95.github.io/projects/pubundsci/</guid>
-      <description>An independent study examining the effects of public understanding of scientific literature on real world. The core idea is to mathematically frame the relationship between scientific literature and the its impact on general public and use machine learning models to prove the established hypothesis.</description>
+      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
+&lt;p&gt;People often struggle to understand scientific texts, which leads to miscommunication and often to inaccurate and even sensationalistic reports of research. Identifying and achieving a better understanding of the factors that affect comprehension would be helpful to analyze what improves public understanding of science. In this study, we generate features from scientific text that represent some common text structures and use them to predict the semantic similarity between the scientific text and the textual content posted by the general public about the same scientific text online. In this endeavor, we built regression models to achieve this purpose and evaluated them based on their R-squared values and mean squared errors. R-squared values as high as 0.73 were observed, indicating a high chance of a relationship between certain textual features and the public&amp;rsquo;s understanding of science.&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title>reproducibility</title>
-      <link>https://akhilpandey95.github.io/projects/reproducibility/</link>
-      <pubDate>Wed, 19 Aug 2015 20:29:37 -0700</pubDate>
-      
-      <guid>https://akhilpandey95.github.io/projects/reproducibility/</guid>
-      <description>An independent study focussing on understanding the aspect of reproducibility in research papers.</description>
-    </item>
-    
   </channel>
 </rss>

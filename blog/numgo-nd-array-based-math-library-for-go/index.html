@@ -7,12 +7,12 @@
 <meta name="robots" content="index, follow">
 <title>numgo - ND Array based math library for Go | Akhil Pandey</title>
 <meta name="keywords" content="">
-<meta name="description" content="numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.">
+<meta name="description" content="numgo - ND Array based math library for Go
+Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is  numgo.  After learning go-lang I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in go-lang. As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy.">
 <meta name="author" content="Akhil Pandey">
 <link rel="canonical" href="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css" integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U&#43;6hYRq/Ez/nm5vg=" rel="preload stylesheet" as="style">
-<script defer crossorigin="anonymous" src="https://akhilpandey95.github.io/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
-    onload="hljs.initHighlightingOnLoad();"></script>
+<meta name="google-site-verification" content="UA-135077366-1">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
@@ -20,6 +20,7 @@
 <link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/">
 <noscript>
     <style>
         #theme-toggle,
@@ -37,7 +38,7 @@
                 --secondary: rgb(155, 156, 157);
                 --tertiary: rgb(65, 66, 68);
                 --content: rgb(196, 196, 197);
-                --hljs-bg: rgb(46, 46, 51);
+                --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
             }
@@ -56,20 +57,9 @@
         }
 
     </style>
-</noscript>
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-135077366-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script><meta property="og:title" content="numgo - ND Array based math library for Go" />
-<meta property="og:description" content="numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered." />
+</noscript><meta property="og:title" content="numgo - ND Array based math library for Go" />
+<meta property="og:description" content="numgo - ND Array based math library for Go
+Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is  numgo.  After learning go-lang I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in go-lang. As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2017-11-01T00:00:00+00:00" />
@@ -77,7 +67,8 @@ if (!doNotTrack) {
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="numgo - ND Array based math library for Go"/>
-<meta name="twitter:description" content="numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered."/>
+<meta name="twitter:description" content="numgo - ND Array based math library for Go
+Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is  numgo.  After learning go-lang I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in go-lang. As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy."/>
 
 
 <script type="application/ld+json">
@@ -106,7 +97,7 @@ if (!doNotTrack) {
   "@type": "BlogPosting",
   "headline": "numgo - ND Array based math library for Go",
   "name": "numgo - ND Array based math library for Go",
-  "description": "numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered.",
+  "description": "numgo - ND Array based math library for Go Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s numpy library to go-lang. The name of the project is numgo. After learning go-lang I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in go-lang. As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy.\n",
   "keywords": [
     
   ],
@@ -198,7 +189,7 @@ if (!doNotTrack) {
 <article class="post-single">
   <header class="post-header">
     
-    <h1 class="post-title">
+    <h1 class="post-title entry-hint-parent">
       numgo - ND Array based math library for Go
     </h1>
     <div class="post-meta"><span title='2017-11-01 00:00:00 +0000 UTC'>November 1, 2017</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Akhil Pandey
@@ -291,7 +282,8 @@ Happy Hacking !!</p>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://akhilpandey95.github.io/">Akhil Pandey</a></span>
+        <span>&copy; 2024 <a href="https://akhilpandey95.github.io/">Akhil Pandey</a></span> · 
+
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
