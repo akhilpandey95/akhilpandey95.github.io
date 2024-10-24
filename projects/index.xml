@@ -21,10 +21,7 @@
       <link>https://akhilpandey95.github.io/projects/influencerepro/</link>
       <pubDate>Wed, 03 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/projects/influencerepro/</guid>
-      <description>&lt;h1 id=&#34;irsi&#34;&gt;IRSI&lt;/h1&gt;
-&lt;p&gt;Reproducibility is an important feature of science; experiments are retested, and analyses are repeated.we examine a myriad of features in scholarly articles published in computer science conferences and journals and model how they influence scientific impact.&lt;/p&gt;
-&lt;h3 id=&#34;reproducibility-spectrum&#34;&gt;Reproducibility Spectrum&lt;/h3&gt;
-&lt;p&gt;The author-centric framework focuses on acknowledging availability, accessibility, and quality of the artifact available within scientific document to signal satisfying prerequisites to reproduce a paper. The Author-Centric framework within the spectrum includes, $A_i = A_{PWA}$ (Papers without artifacts), $A_{PUNX}$ (Papers with artifacts that aren&amp;rsquo;t permanantly archived), and $A_{PAX}$ (Papers with artifacts that are permanantly archived).&lt;/p&gt;</description>
+      <description>ICSSI&amp;#39;24 Best Poster Award</description>
     </item>
     <item>
       <title>Reproducibility Signals in Science: A preliminary analysis</title>
