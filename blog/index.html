@@ -174,16 +174,33 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Question as a Vector
+    <h2 class="entry-hint-parent">Experimenting budget forcing and test-time scaling [WIP]
     </h2>
   </header>
   <div class="entry-content">
-    <p> NOTE: Although the idea behind doing something similar to “Question as a vector” ruminated in my mind for quite some time, [1] definitely played a role in fueling the fire to write this idea and present some empirical evidence. So kudos to [1] and is a great read.
+    <p> [IMPORTANT]: Actively working on the blog.
+From the paper: https://arxiv.org/pdf/2501.19393 Figure 3. Budget forcing with s1-32B. The model tries to stop after “…is 2.”, but we suppress the end-of-thinking token delimiter instead appending “Wait” leading s1-32B to self-correct its answer.
+Interesting nuggets from s1 paper (methodology)
+They collected a dataset of 1k examples with reasoning traces from Google Gemini model and performed SFT (supervised fine tuning). They fix response lengths by adding “wait” tokens in certain cases to get models to generate longer CoT’s, verify, and correct itself, or halt token generation by introducing an EOT (end of thinking) token delimiter and the authors call this phenomenon as “budget forcing.” Budget Forcing Not to be picky or pedantic but budget forcing (BF) is still not a parallel inference scaling technique (as seen in o-1 or by Gemini Thinking). As the authors point out, we can think of BF as a sequential inference scaling technique. Despite the &lt;wait&gt; and &lt;think tokens at appropriate steps, the model is still generating one token at a time, the only difference being in total number of tokens.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-10 00:00:00 +0000 UTC'>February 10, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Akhil Pandey</footer>
+  <a class="entry-link" aria-label="post link to Experimenting budget forcing and test-time scaling [WIP]" href="https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Question as a Vector[WIP]
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> [IMPORTANT]: Actively working on the blog.
+NOTE: Although the idea behind doing something similar to “Question as a vector” ruminated in my mind for quite some time, [1] definitely played a role in fueling the fire to write this idea and present some empirical evidence. So kudos to [1] and is a great read.
 Background Growing up in an era where deep learning was becoming a tour de force, vectors, embeddings and representational learning was an intriguing phenomenon yet it was treated as, dare I say it, ‘fad’. Introduction to Statistical Learning was the foundation that gave me an inside overview into learning algorithms, the learning process and the broader sense of interpreting the outcomes and evaluations. Deep down for everyone, universal function approximation and neural networks seemed like a fascinating concept just because of its fantastic ability to learn over any dataset, but it seemed difficult to make the transition.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2024-12-29 00:00:00 +0000 UTC'>December 29, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Akhil Pandey</footer>
-  <a class="entry-link" aria-label="post link to Question as a Vector" href="https://akhilpandey95.github.io/blog/question-as-a-vector/"></a>
+  <a class="entry-link" aria-label="post link to Question as a Vector[WIP]" href="https://akhilpandey95.github.io/blog/question-as-a-vectorwip/"></a>
 </article>
 
 <article class="post-entry"> 
