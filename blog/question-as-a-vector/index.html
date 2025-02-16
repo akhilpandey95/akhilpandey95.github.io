@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Question as a Vector | Akhil Pandey</title>
+<meta name="keywords" content="">
+<meta name="description" content="Testing the empirical effectiveness of Questions as vectors">
+<meta name="author" content="Akhil Pandey">
+<link rel="canonical" href="https://akhilpandey95.github.io/blog/question-as-a-vector/">
+<meta name="google-site-verification" content="UA-135077366-1">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/blog/question-as-a-vector/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Question as a Vector" />
+<meta property="og:description" content="Testing the empirical effectiveness of Questions as vectors" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://akhilpandey95.github.io/blog/question-as-a-vector/" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-12-29T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Question as a Vector"/>
+<meta name="twitter:description" content="Testing the empirical effectiveness of Questions as vectors"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Blog",
+      "item": "https://akhilpandey95.github.io/blog/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Question as a Vector",
+      "item": "https://akhilpandey95.github.io/blog/question-as-a-vector/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Question as a Vector",
+  "name": "Question as a Vector",
+  "description": "Testing the empirical effectiveness of Questions as vectors",
+  "keywords": [
+    
+  ],
+  "articleBody": " NOTE: Although the idea behind doing something similar to “Question as a vector” ruminated in my mind for quite some time, [1] definitely played a role in fueling the fire to write this idea and present some empirical evidence. So kudos to [1] and is a great read.\nBackground Growing up in an era where deep learning was becoming a tour de force, vectors, embeddings and representational learning was an intriguing phenomenon yet it was treated as, dare I say it, ‘fad’. Introduction to Statistical Learning was the foundation that gave me an inside overview into learning algorithms, the learning process and the broader sense of interpreting the outcomes and evaluations. Deep down for everyone, universal function approximation and neural networks seemed like a fascinating concept just because of its fantastic ability to learn over any dataset, but it seemed difficult to make the transition.\nSo, by craft when I was advised to build machine learning models for any given dataset $D$, it was almost obvious to pull up scikit-learn module, utilize the classifier and regressor objects and “fit” the model over $D$. Rarely, it occurred to me to use the sklearn.neural_network.MLPClassifier object because it felt super intuitive to take hand crafted features, and a supervised learning algorithm train a classifier.\nNeural networks were more or less, if everything fails pick me please category of learning algorithms most people used when it came to tabular datasets. That said, as representational learning literature grew, the evidence of text based modality became an obvious choice to seemingly take “text” and map it out to the same previous output space, without the hand crafting of features.\nSo, when I say Question as a vector is a fringe idea, what I mean is I am retrofitting the incredible reflection and reasoning capabilities of large language models to traditional learning algorithms.\nas always, ridiculous thoughts begin at night :) Core idea Given a dataset $D$, which includes inputs $X$ where $X \\in \\mathbb{R}^n$ is a group of hand crafted features built from asking analytical or logical questions about $X$ and $Y$ is the target variable. The proposal here is to utilize LLM’s $f_{LLM}(X)$ to give us a vector $X_{LLM}$ and we utilize the composite feature vector $X_{LLM}$ to train a learning model.\nIdeally, it would be easier to evaluate the effectiveness of this approach if $D$ is a textual dataset where the initial $X$ is hand crafted and $X_{LLM}$ is generated by querying any LLM on the raw text of $X_i$.\nData Predominantly most of my work revolves around Science of Science and this idea was conceived when I was building a representational learning model to predict reproducibility of scientific articles [2]. So, using the ACMBadgesDataset mentioned in [2] and available from [3] like so:\nTBA References https://arxiv.org/pdf/2405.16714 https://dl.acm.org/doi/abs/10.1145/3627673.3679831 https://github.com/reproducibilityproject/NLRR/blob/main/data/dataloader.py ",
+  "wordCount" : "465",
+  "inLanguage": "en",
+  "datePublished": "2024-12-29T00:00:00Z",
+  "dateModified": "2024-12-29T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Akhil Pandey"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akhilpandey95.github.io/blog/question-as-a-vector/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Akhil Pandey",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akhilpandey95.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<script type="text/javascript" async 
+src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        
+        
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Preview': {visibility: 'hidden'}}
+        }
+    });
+</script>
+
+<body class="" id="top">
+    
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+    
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey (Alt + H)">Akhil Pandey</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://akhilpandey95.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/cv/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Question as a Vector
+    </h1>
+    <div class="post-description">
+      Testing the empirical effectiveness of Questions as vectors
+    </div>
+    <div class="post-meta"><span title='2024-12-29 00:00:00 +0000 UTC'>December 29, 2024</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Akhil Pandey
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#background" aria-label="Background">Background</a></li>
+                <li>
+                    <a href="#core-idea" aria-label="Core idea">Core idea</a></li>
+                <li>
+                    <a href="#data" aria-label="Data">Data</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><blockquote>
+<p>NOTE: Although the idea behind doing something similar to &ldquo;Question as a vector&rdquo; ruminated in my mind for quite some time, [1] definitely played a role in fueling the fire to write this idea and present some empirical evidence. So kudos to [1] and is a great read.</p></blockquote>
+<h3 id="background">Background<a hidden class="anchor" aria-hidden="true" href="#background">#</a></h3>
+<p>Growing up in an era where deep learning was becoming a tour de force, vectors, embeddings and representational learning was an intriguing phenomenon yet it was treated as, dare I say it, &lsquo;fad&rsquo;. Introduction to Statistical Learning was the foundation that gave me an inside overview into learning algorithms, the learning process and the broader sense of interpreting the outcomes and evaluations. Deep down for everyone, universal function approximation and neural networks seemed like a fascinating concept just because of its fantastic ability to learn over any dataset, but it seemed difficult to make the transition.</p>
+<p>So, by craft when I was advised to build machine learning models for any given dataset $D$, it was almost obvious to pull up <code>scikit-learn</code> module, utilize the classifier and regressor objects and &ldquo;fit&rdquo; the model over $D$. Rarely, it occurred to me to use the <code>sklearn.neural_network.MLPClassifier</code> object because it felt super intuitive to take hand crafted features, and a supervised learning algorithm train a classifier.</p>
+<p>Neural networks were more or less, if everything fails pick me please category of learning algorithms most people used when it came to tabular datasets. That said, as representational learning literature grew, the evidence of text based modality became an obvious choice to seemingly take &ldquo;text&rdquo; and map it out to the same previous output space, without the hand crafting of features.</p>
+<p>So, when I say Question as a vector is a fringe idea, what I mean is I am retrofitting the incredible reflection and reasoning capabilities of large language models to traditional learning algorithms.</p>
+<blockquote>
+<p>as always, ridiculous thoughts begin at night :)
+<img loading="lazy" src="https://akhilpandey95.github.io/img/qav_chatgpt_intro.png" alt="image"  />
+</p></blockquote>
+<h3 id="core-idea">Core idea<a hidden class="anchor" aria-hidden="true" href="#core-idea">#</a></h3>
+<p>Given a dataset $D$, which includes inputs $X$ where $X \in \mathbb{R}^n$ is a group of hand crafted features built from asking analytical or logical questions about $X$ and $Y$ is the target variable. The proposal here is to utilize LLM&rsquo;s $f_{LLM}(X)$ to give us a vector $X_{LLM}$ and we utilize the composite feature vector $X_{LLM}$ to train a learning model.</p>
+<p>Ideally, it would be easier to evaluate the effectiveness of this approach if $D$ is a textual dataset where the initial $X$ is hand crafted and $X_{LLM}$ is generated by querying any LLM on the raw text of $X_i$.</p>
+<h3 id="data">Data<a hidden class="anchor" aria-hidden="true" href="#data">#</a></h3>
+<p>Predominantly most of my work revolves around Science of Science and this idea was conceived when I was building a representational learning model to predict reproducibility of scientific articles [2]. So, using the <code>ACMBadgesDataset</code> mentioned in [2] and available from [3] like so:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">TBA</span>
+</span></span></code></pre></div><h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
+<ol>
+<li><a href="https://arxiv.org/pdf/2405.16714">https://arxiv.org/pdf/2405.16714</a></li>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/3627673.3679831">https://dl.acm.org/doi/abs/10.1145/3627673.3679831</a></li>
+<li><a href="https://github.com/reproducibilityproject/NLRR/blob/main/data/dataloader.py">https://github.com/reproducibilityproject/NLRR/blob/main/data/dataloader.py</a></li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://akhilpandey95.github.io/">Akhil Pandey</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

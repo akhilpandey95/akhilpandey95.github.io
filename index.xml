@@ -4,10 +4,17 @@
     <title>Akhil Pandey</title>
     <link>https://akhilpandey95.github.io/</link>
     <description>Recent content on Akhil Pandey</description>
-    <generator>Hugo -- 0.138.0</generator>
+    <generator>Hugo -- 0.143.1</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akhilpandey95.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Question as a Vector</title>
+      <link>https://akhilpandey95.github.io/blog/question-as-a-vector/</link>
+      <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/blog/question-as-a-vector/</guid>
+      <description>Testing the empirical effectiveness of Questions as vectors</description>
+    </item>
     <item>
       <title>Navigating the Landscape of Reproducible Research: A Predictive Modeling Approach</title>
       <link>https://akhilpandey95.github.io/projects/repropredmodeling/</link>
@@ -22,6 +29,13 @@
       <pubDate>Wed, 03 Jul 2024 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/projects/influencerepro/</guid>
       <description>ICSSI&amp;#39;24 Best Poster Award</description>
+    </item>
+    <item>
+      <title>Graphs, LLM&#39;s and Science of Science</title>
+      <link>https://akhilpandey95.github.io/blog/graphs-llms-and-science-of-science/</link>
+      <pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/blog/graphs-llms-and-science-of-science/</guid>
+      <description>Exploring the bridge between scientific knowledge and Large Language models</description>
     </item>
     <item>
       <title>Reproducibility Signals in Science: A preliminary analysis</title>
