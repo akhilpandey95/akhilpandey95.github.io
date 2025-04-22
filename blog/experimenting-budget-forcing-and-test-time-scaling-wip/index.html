@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Experimenting budget forcing and test-time scaling [WIP] | Akhil Pandey</title>
 <meta name="keywords" content="">
 <meta name="description" content="Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;">
 <meta name="author" content="Akhil Pandey">
-<link rel="canonical" href="https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/">
+<link rel="canonical" href="http://localhost:1313/blog/experimenting-budget-forcing-and-test-time-scaling-wip/">
 <meta name="google-site-verification" content="UA-135077366-1">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
+<link crossorigin="anonymous" href="http://localhost:1313/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/experimenting-budget-forcing-and-test-time-scaling-wip/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,71 +56,7 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Experimenting budget forcing and test-time scaling [WIP]" />
-<meta property="og:description" content="Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/" /><meta property="article:section" content="blog" />
-<meta property="article:published_time" content="2025-02-10T00:00:00+00:00" />
-<meta property="article:modified_time" content="2025-02-10T00:00:00+00:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Experimenting budget forcing and test-time scaling [WIP]"/>
-<meta name="twitter:description" content="Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Blog",
-      "item": "https://akhilpandey95.github.io/blog/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Experimenting budget forcing and test-time scaling [WIP]",
-      "item": "https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Experimenting budget forcing and test-time scaling [WIP]",
-  "name": "Experimenting budget forcing and test-time scaling [WIP]",
-  "description": "Testing the empirical effectiveness of \"s1-Simple test-time scaling\"",
-  "keywords": [
-    
-  ],
-  "articleBody": " [IMPORTANT]: Actively working on the blog.\nFrom the paper: https://arxiv.org/pdf/2501.19393 Figure 3. Budget forcing with s1-32B. The model tries to stop after “…is 2.”, but we suppress the end-of-thinking token delimiter instead appending “Wait” leading s1-32B to self-correct its answer.\nInteresting nuggets from s1 paper (methodology)\nThey collected a dataset of 1k examples with reasoning traces from Google Gemini model and performed SFT (supervised fine tuning). They fix response lengths by adding “wait” tokens in certain cases to get models to generate longer CoT’s, verify, and correct itself, or halt token generation by introducing an EOT (end of thinking) token delimiter and the authors call this phenomenon as “budget forcing.” Budget Forcing Not to be picky or pedantic but budget forcing (BF) is still not a parallel inference scaling technique (as seen in o-1 or by Gemini Thinking). As the authors point out, we can think of BF as a sequential inference scaling technique. Despite the and ",
-  "wordCount" : "526",
-  "inLanguage": "en",
-  "datePublished": "2025-02-10T00:00:00Z",
-  "dateModified": "2025-02-10T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Akhil Pandey"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Akhil Pandey",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://akhilpandey95.github.io/favicon.ico"
-    }
-  }
-}
-</script>
+</noscript>
 </head>
 
 <script type="text/javascript" async 
@@ -160,7 +96,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey (Alt + H)">Akhil Pandey</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Akhil Pandey (Alt + H)">Akhil Pandey</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -186,22 +122,22 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-
         </div>
         <ul id="menu">
             <li>
-                <a href="https://akhilpandey95.github.io/about/" title="About">
+                <a href="http://localhost:1313/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="https://akhilpandey95.github.io/blog/" title="Blog">
-                    <span>Blog</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
+                <a href="http://localhost:1313/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="https://akhilpandey95.github.io/cv/cv.pdf" title="CV">
+                <a href="http://localhost:1313/blog/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/cv/cv.pdf" title="CV">
                     <span>CV</span>
                 </a>
             </li>
@@ -250,7 +186,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-
 <p>Figure 3. Budget forcing with s1-32B. The model tries to stop
 after “&hellip;is 2.”, but we suppress the end-of-thinking token delimiter
 instead appending “Wait” leading s1-32B to self-correct its answer.</p></blockquote>
-<p><img loading="lazy" src="https://akhilpandey95.github.io/img/s1_1.png" alt="image"  />
+<p><img loading="lazy" src="http://localhost:1313/img/s1_1.png" alt="image"  />
 </p>
 <p><strong>Interesting nuggets from s1 paper (methodology)</strong></p>
 <ol>
@@ -261,10 +197,10 @@ instead appending “Wait” leading s1-32B to self-correct its answer.</p></blo
 Not to be picky or pedantic but <code>budget forcing (BF)</code> is still not a parallel inference scaling technique (as seen in o-1 or by Gemini Thinking). As the authors point out, we can think of <code>BF</code> as a sequential inference scaling technique. Despite the <code>&lt;wait&gt;</code> and <code>&lt;think</code> tokens at appropriate steps, the model is still generating one token at a time, the only difference being in total number of tokens.</p>
 <p>These two charts highlight the limitations, but they are still salient contributions from the <code>s1</code> paper:
 <!-- raw HTML omitted -->
-<img loading="lazy" src="https://akhilpandey95.github.io/img/s1_2.png" alt="image"  />
+<img loading="lazy" src="http://localhost:1313/img/s1_2.png" alt="image"  />
 
 <!-- raw HTML omitted -->
-<img loading="lazy" src="https://akhilpandey95.github.io/img/s1_3.png" alt="image"  />
+<img loading="lazy" src="http://localhost:1313/img/s1_3.png" alt="image"  />
 
 <!-- raw HTML omitted -->
 The important contribution here is <code>BF</code> method seems to be effective than other resource hungry inference-scaling techniques. A good test on how useful <code>BF</code> here could be is by testing a good instruct model (Claude or open weight models like Qwen 2.5) using CoT prompting and observe the quality of responses supplied by models trained with <code>BF</code> vs regular models with CoT prompts.</p>
@@ -272,7 +208,7 @@ The important contribution here is <code>BF</code> method seems to be effective 
 Although <code>BF</code> is compared against majority voting, and they found it to work well there are better compute optimal strategies
 to perform inference scaling. For more check paper: <a href="https://arxiv.org/pdf/2408.03314v1">https://arxiv.org/pdf/2408.03314v1</a>, especially section <strong>5.2</strong>. Key strategies that should be compared against <code>BF</code> are:
 <!-- raw HTML omitted -->
-<img loading="lazy" src="https://akhilpandey95.github.io/img/s1_4.png" alt="image"  />
+<img loading="lazy" src="http://localhost:1313/img/s1_4.png" alt="image"  />
 </p>
 <h3 id="what-is-scaling-at-test-time-">What is scaling at test time ?<a hidden class="anchor" aria-hidden="true" href="#what-is-scaling-at-test-time-">#</a></h3>
 <p>Given a question <code>Q</code> to a model <code>LM</code> you get a response <code>R</code>. This process is pretty familiar and is called inference, but the key takeaway here is until <code>o1</code>, there was a semi-fixed resource consumption and also an assumption that the compute required to answer <code>Q</code>. After the advent of <code>o1</code> compute on inference or test-time compute (TTC) dynamically increase their reasoning time during inference leading to more time thinking about <code>Q</code>, improving accuracy of <code>R</code> but at the cost of higher compute usage.</p>
@@ -304,7 +240,7 @@ strong reasoning performance?</p></blockquote>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://akhilpandey95.github.io/">Akhil Pandey</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">Akhil Pandey</a></span> · 
 
     <span>
         Powered by
