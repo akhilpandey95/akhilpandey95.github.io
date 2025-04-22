@@ -57,7 +57,14 @@ The genesis of Deep Learning began primarily in 2012 when researchers were able 
         }
 
     </style>
-</noscript><meta property="og:url" content="https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/">
+</noscript>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+
+<meta property="og:url" content="https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/">
   <meta property="og:site_name" content="Akhil Pandey">
   <meta property="og:title" content="How do we quantify uncertainty in deep learning models ?">
   <meta property="og:description" content="Neural Networks Everywhere The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.">
@@ -261,7 +268,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-
 <h3 id="how-do-these-models-perform-">How do these models perform ?<a hidden class="anchor" aria-hidden="true" href="#how-do-these-models-perform-">#</a></h3>
 <p>We can observe the performance of the models from Figure \ref{fig:uncertainty}. Figure \ref{fig:data} shows the data set that was used for evaluating the performance was Sine, consisting of 1500 samples in the range of $[-5, 5]$. The Aleatoric uncertainty that is inherent to the noise in the generated Sine Data can be observed in Figure \ref{fig:bnn_aleatoric}. The point that is ought to be noted is that the blue area encapsulates the noise inherent to the Sine Data. The Epistemic uncertainty from the predictions of the model can be observed in Figure \ref{fig:bnn_epistemic}. We can notice that the area that doesn&rsquo;t consist of samples shows a highlighted area indicating that the epistemic uncertainty is localized to the region where there aren&rsquo;t enough samples. This implies that the model is uncertain when trying to make a prediction on inputs that it hasn&rsquo;t seen before. This very behaviour enables Bayesian Neural Networks to stand out from deterministic models because the stochastic nature of the predictions is addressed and the standard error is plotted. Therefore, we are aware of the uncertainties in the predictions.</p>
 <p>The aforementioned benefits are not available when you use a deterministic model. The apparent observation from Figure \ref{fig:fcn} is the predictive mean of the model aligning with the true line, although the model performs a good job there is no7. The observations made on the performance of the models when using the Sine Data set is not limited in scope. We can extend these intuitions to other problems in the machine learning as well.</p>
-<!-- raw HTML omitted -->
+<img src="https://render.githubusercontent.com/render/math?math=e^{i +\pi} =x+1">
 <p>Eq. 1 outlines the posterior predictive distribution of the inputs and it highlights how the model has to learn over the entire distribution of values instead of point estimates when gathering the weights of the network. Eq. 1 is not analytically tractable and hence, the cost function that we use to train the Bayesian Neural Network has to learn over the variational distribution $q (\textbf{w} | \theta)$ of the  parameters. This problem is solved using KL divergence shown in Eq. 2 where the divergence of the true posterior distribution $p(\textbf{w} | D )$ and the variational distribution $q (\textbf{w} | \theta)$ is measured and the cost is calculated for every iteration.</p>
 <p>When we expand the KL terms in Eq. 2, we observe the equation split into three parts, and the Expectation of the first two just capture the divergence between the distributions and the last term captures the negative log-likelihood of the predictions. Eq. 4 simplifies the expression in Eq. 3 to approximate the cost of the predictions.</p>
 <h2 id="takeaways-">Takeaways ?<a hidden class="anchor" aria-hidden="true" href="#takeaways-">#</a></h2>
