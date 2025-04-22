@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blog on Akhil Pandey</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>https://akhilpandey95.github.io/blog/</link>
     <description>Recent content in Blog on Akhil Pandey</description>
     <generator>Hugo -- 0.146.5</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 10 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://akhilpandey95.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Experimenting budget forcing and test-time scaling [WIP]</title>
-      <link>http://localhost:1313/blog/experimenting-budget-forcing-and-test-time-scaling-wip/</link>
+      <link>https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/</link>
       <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/experimenting-budget-forcing-and-test-time-scaling-wip/</guid>
+      <guid>https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/</guid>
       <description>Testing the empirical effectiveness of &amp;#34;s1-Simple test-time scaling&amp;#34;</description>
     </item>
     <item>
       <title>Question as a Vector[WIP]</title>
-      <link>http://localhost:1313/blog/question-as-a-vectorwip/</link>
+      <link>https://akhilpandey95.github.io/blog/question-as-a-vectorwip/</link>
       <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/question-as-a-vectorwip/</guid>
+      <guid>https://akhilpandey95.github.io/blog/question-as-a-vectorwip/</guid>
       <description>Testing the empirical effectiveness of Questions as vectors</description>
     </item>
     <item>
       <title>Graphs, LLM&#39;s and Science of Science</title>
-      <link>http://localhost:1313/blog/graphs-llms-and-science-of-science/</link>
+      <link>https://akhilpandey95.github.io/blog/graphs-llms-and-science-of-science/</link>
       <pubDate>Sat, 18 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/graphs-llms-and-science-of-science/</guid>
+      <guid>https://akhilpandey95.github.io/blog/graphs-llms-and-science-of-science/</guid>
       <description>Exploring the bridge between scientific knowledge and Large Language models</description>
     </item>
     <item>
       <title>How do we quantify uncertainty in deep learning models ?</title>
-      <link>http://localhost:1313/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/</link>
+      <link>https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/</link>
       <pubDate>Fri, 07 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/</guid>
+      <guid>https://akhilpandey95.github.io/blog/how-do-we-quantify-uncertainty-in-deep-learning-models/</guid>
       <description>&lt;h3 id=&#34;neural-networks-everywhere&#34;&gt;Neural Networks Everywhere&lt;/h3&gt;
 &lt;p&gt;The genesis of Deep Learning began primarily in 2012 when researchers were able to capture the information present in millions of images and accurately predict class labels. This breakthrough was a culmination of multiple scientific developments. Quintessentially, Neural networks are universal functional approximators and this innate quality allows them to applied on diverse problem spaces. This is the fundamental reason behind the pervasive nature of Neural Networks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Morality - it&#39;s influence on thought and action</title>
-      <link>http://localhost:1313/blog/morality-its-influence-on-thought-and-action/</link>
+      <link>https://akhilpandey95.github.io/blog/morality-its-influence-on-thought-and-action/</link>
       <pubDate>Sun, 08 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/morality-its-influence-on-thought-and-action/</guid>
+      <guid>https://akhilpandey95.github.io/blog/morality-its-influence-on-thought-and-action/</guid>
       <description>&lt;p&gt;I am not a philosopher but I observe the fundamental nature of things in my surroundings. Right from my childhood to this moment when I am orchestrating this article there are countless thoughts that surround my head when my inner self whispers “morality”. My thought process takes quick writhing movements wandering around searching for answers. The reason for me writing this piece is to both look for answers and portray my ethos.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The three C&#39;s of Javascript</title>
-      <link>http://localhost:1313/blog/the-three-cs-of-javascript/</link>
+      <link>https://akhilpandey95.github.io/blog/the-three-cs-of-javascript/</link>
       <pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/the-three-cs-of-javascript/</guid>
+      <guid>https://akhilpandey95.github.io/blog/the-three-cs-of-javascript/</guid>
       <description>&lt;p&gt;You might be wondering what the three C’s are :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Currying&lt;/li&gt;
@@ -60,32 +60,32 @@
     </item>
     <item>
       <title>numgo - ND Array based math library for Go</title>
-      <link>http://localhost:1313/blog/numgo-nd-array-based-math-library-for-go/</link>
+      <link>https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/numgo-nd-array-based-math-library-for-go/</guid>
+      <guid>https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/</guid>
       <description>&lt;h1 id=&#34;numgo---nd-array-based-math-library-for-go&#34;&gt;numgo - ND Array based math library for Go&lt;/h1&gt;
 &lt;p&gt;Mathematical computations and statistical operations contribute immensely to the development of machine learning models in diverse disciplines. Arrays are the most frequently used data structure in most of these applications. Basing on this I have thought of porting python’s &lt;strong&gt;numpy&lt;/strong&gt; library to &lt;strong&gt;go-lang.&lt;/strong&gt; The name of the project is  &lt;a href=&#34;https://github.com/akhilpandey95/numgo&#34;&gt;numgo.&lt;/a&gt;  After learning &lt;strong&gt;go-lang&lt;/strong&gt; I always wanted to practically implement something with the knowledge I have gathered. The project therefore, meant a lot to me since It is both a programming excercise and an opportunity to build something in &lt;strong&gt;go-lang.&lt;/strong&gt; As mentioned before, the repository is inspired by numpy for python therefore, most of the concepts and ideas are broadly taken from numpy.&lt;/p&gt;</description>
     </item>
     <item>
       <title>pubundsci - An independent research study</title>
-      <link>http://localhost:1313/blog/pubundsci-an-independent-research-study/</link>
+      <link>https://akhilpandey95.github.io/blog/pubundsci-an-independent-research-study/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/pubundsci-an-independent-research-study/</guid>
+      <guid>https://akhilpandey95.github.io/blog/pubundsci-an-independent-research-study/</guid>
       <description>&lt;p&gt;While technological and scientific advancement paved its way in the 20th century giving scope for researchers to publish of a plethora of scientific literature, “Public Understanding of Science” has been at the center stage of discussion among researchers for the past decade. This very concern sprouts from the fact that most of the scientific reportage that occurs on News Media is subject to personal interpretation. Also, the misapprehensions of the scientific findings can cause repercussions of unimaginable scale in the real world.
 Let us consider a small use case. For suppose, “ABC” is a research organization that publishes a scientific finding regarding the relationship between pregnancy and theobromine. Now, there might be a news media outlet that picks the same research article and broadcasts the results in a science journalism segment. The problem arises if the findings in the research paper are incorrectly represented by the Media Outlets. If the research finding says “There is a 30% chance of not having a miscarriage during pregnancy if the woman has theobromine in her diet”, the media outlet would report it in the following way, “A recent finding suggests that chocolate is good for your health during pregnancy and it would help you to reduce the chance of a miscarriage”.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Compatibility for the Web</title>
-      <link>http://localhost:1313/blog/compatibility-for-the-web/</link>
+      <link>https://akhilpandey95.github.io/blog/compatibility-for-the-web/</link>
       <pubDate>Wed, 05 Oct 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/compatibility-for-the-web/</guid>
+      <guid>https://akhilpandey95.github.io/blog/compatibility-for-the-web/</guid>
       <description>&lt;p&gt;Webcompat, is one of the recent interests that I find myself occupied with. The community is wonderful and the whole idea of having a place where users can report problems is quite fantastic. I believe that this can evolve as something greater, since webcompat.com is not only a website that focusses on bug reporting and problems, since I believe that it is a common ecosystem where users, developers and site owners are notified with the issues on the web.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Tuning the GNU/Linux System</title>
-      <link>http://localhost:1313/blog/tuning-the-gnu/linux-system/</link>
+      <link>https://akhilpandey95.github.io/blog/tuning-the-gnu/linux-system/</link>
       <pubDate>Mon, 12 Sep 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/tuning-the-gnu/linux-system/</guid>
+      <guid>https://akhilpandey95.github.io/blog/tuning-the-gnu/linux-system/</guid>
       <description>&lt;p&gt;I always used to find myself in a difficult situation when I had to travel and work. The main reason for this is my machine had a GNU/Linux based distro running and I couldn’t stay away from a charging spot for more than two hours. I always was intrigued to explore this segment and solve this very problem in order to better my travel experience.
 Basically there are couple of things to be kept in mind before you go out and try the tricks mentioned here, Consider them basics; So they are :&lt;/p&gt;</description>
     </item>
