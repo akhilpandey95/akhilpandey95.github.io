@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Laying Foundations to Quantify the “Effort of Reproducibility” | Akhil Pandey</title>
+<title>Experimenting budget forcing and test-time scaling [WIP] | Akhil Pandey</title>
 <meta name="keywords" content="">
-<meta name="description" content="ACM/IEEE Conference, JCDL&#39;23">
+<meta name="description" content="Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;">
 <meta name="author" content="Akhil Pandey">
-<link rel="canonical" href="https://akhilpandey95.github.io/projects/effortly/">
+<link rel="canonical" href="https://akhilpandey95.github.io/wip/_bf/">
 <meta name="google-site-verification" content="G-PNYGCP0LEP">
 <link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.099211fa306ee9d3832d74800c30bc7d3c57caa99c36ff2fe1c6dfdba3a521d8.css" integrity="sha256-CZIR&#43;jBu6dODLXSADDC8fTxXyqmcNv8v4cbf26OlIdg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
@@ -19,7 +19,7 @@
 <link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/projects/effortly/">
+<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/wip/_bf/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,20 +71,18 @@
           gtag('js', new Date());
           gtag('config', 'G-PNYGCP0LEP');
         }
-      </script><meta property="og:url" content="https://akhilpandey95.github.io/projects/effortly/">
+      </script><meta property="og:url" content="https://akhilpandey95.github.io/wip/_bf/">
   <meta property="og:site_name" content="Akhil Pandey">
-  <meta property="og:title" content="Laying Foundations to Quantify the “Effort of Reproducibility”">
-  <meta property="og:description" content="ACM/IEEE Conference, JCDL&#39;23">
+  <meta property="og:title" content="Experimenting budget forcing and test-time scaling [WIP]">
+  <meta property="og:description" content="Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;">
   <meta property="og:locale" content="en-US">
   <meta property="og:type" content="article">
-    <meta property="article:section" content="projects">
-    <meta property="article:published_time" content="2023-06-26T00:00:00+00:00">
-    <meta property="article:modified_time" content="2023-06-26T00:00:00+00:00">
-    <meta property="og:image" content="https://akhilpandey95.github.io/img/effortly.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://akhilpandey95.github.io/img/effortly.png">
-<meta name="twitter:title" content="Laying Foundations to Quantify the “Effort of Reproducibility”">
-<meta name="twitter:description" content="ACM/IEEE Conference, JCDL&#39;23">
+    <meta property="article:section" content="wip">
+    <meta property="article:published_time" content="2025-02-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-10T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Experimenting budget forcing and test-time scaling [WIP]">
+<meta name="twitter:description" content="Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;">
 
 
 <script type="application/ld+json">
@@ -95,14 +93,14 @@
     {
       "@type": "ListItem",
       "position":  1 ,
-      "name": "Projects",
-      "item": "https://akhilpandey95.github.io/projects/"
+      "name": "Wip",
+      "item": "https://akhilpandey95.github.io/wip/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Laying Foundations to Quantify the “Effort of Reproducibility”",
-      "item": "https://akhilpandey95.github.io/projects/effortly/"
+      "name": "Experimenting budget forcing and test-time scaling [WIP]",
+      "item": "https://akhilpandey95.github.io/wip/_bf/"
     }
   ]
 }
@@ -111,24 +109,24 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Laying Foundations to Quantify the “Effort of Reproducibility”",
-  "name": "Laying Foundations to Quantify the “Effort of Reproducibility”",
-  "description": "ACM/IEEE Conference, JCDL'23",
+  "headline": "Experimenting budget forcing and test-time scaling [WIP]",
+  "name": "Experimenting budget forcing and test-time scaling [WIP]",
+  "description": "Testing the empirical effectiveness of \"s1-Simple test-time scaling\"",
   "keywords": [
     
   ],
-  "articleBody": "Abstract Why are some research studies easy to reproduce while others are difficult? Casting doubt on the accuracy of scientific work is not fruitful, especially when an individual researcher cannot reproduce the claims made in the paper. There could be many subjective reasons behind the inability to reproduce a scientific paper. The field of Machine Learning (ML) faces a reproducibility crisis, and surveying a portion of published articles has resulted in a group realization that although sharing code repositories would be appreciable, code bases are not the end all be all for determining the reproducibility of an article. Various parties involved in the publication process have come forward to address the reproducibility crisis and solutions such as badging articles as reproducible, reproducibility checklists at conferences (NeurIPS, ICML, ICLR, etc.), and sharing artifacts on OpenReview come across as promising solutions to the core problem. The breadth of literature on reproducibility focuses on measures required to avoid ir-reproducibility, and there is not much research into the effort behind reproducing these articles. In this paper, we investigate the factors that contribute to the easiness and difficulty of reproducing previously published studies and report on the foundational framework to quantify effort of reproducibility.\nAuthors: Akhil Pandey Akella, David Koop, Hamed Alhoori\nPaper: https://ieeexplore.ieee.org/abstract/document/10266070/\nCode: https://github.com/reproducibilityproject/effortly\n",
-  "wordCount" : "211",
+  "articleBody": " [IMPORTANT]: Actively working on the blog.\nFrom the paper: https://arxiv.org/pdf/2501.19393 Figure 3. Budget forcing with s1-32B. The model tries to stop after “…is 2.”, but we suppress the end-of-thinking token delimiter instead appending “Wait” leading s1-32B to self-correct its answer.\nInteresting nuggets from s1 paper (methodology)\nThey collected a dataset of 1k examples with reasoning traces from Google Gemini model and performed SFT (supervised fine tuning). They fix response lengths by adding “wait” tokens in certain cases to get models to generate longer CoT’s, verify, and correct itself, or halt token generation by introducing an EOT (end of thinking) token delimiter and the authors call this phenomenon as “budget forcing.” Budget Forcing Not to be picky or pedantic but budget forcing (BF) is still not a parallel inference scaling technique (as seen in o-1 or by Gemini Thinking). As the authors point out, we can think of BF as a sequential inference scaling technique. Despite the and ",
+  "wordCount" : "526",
   "inLanguage": "en",
-  "image":"https://akhilpandey95.github.io/img/effortly.png","datePublished": "2023-06-26T00:00:00Z",
-  "dateModified": "2023-06-26T00:00:00Z",
+  "datePublished": "2025-02-10T00:00:00Z",
+  "dateModified": "2025-02-10T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Akhil Pandey"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://akhilpandey95.github.io/projects/effortly/"
+    "@id": "https://akhilpandey95.github.io/wip/_bf/"
   },
   "publisher": {
     "@type": "Organization",
@@ -235,19 +233,15 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Laying Foundations to Quantify the “Effort of Reproducibility”
+      Experimenting budget forcing and test-time scaling [WIP]
     </h1>
     <div class="post-description">
-      ACM/IEEE Conference, JCDL&#39;23
+      Testing the empirical effectiveness of &#34;s1-Simple test-time scaling&#34;
     </div>
-    <div class="post-meta"><span title='2023-06-26 00:00:00 +0000 UTC'>June 26, 2023</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Akhil Pandey
+    <div class="post-meta"><span title='2025-02-10 00:00:00 +0000 UTC'>February 10, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Akhil Pandey
 
 </div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" src="https://akhilpandey95.github.io/img/effortly.png" alt="">
-        
-</figure><div class="toc">
+  </header> <div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>
@@ -255,21 +249,64 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#abstract" aria-label="Abstract">Abstract</a>
+                    <a href="#what-is-scaling-at-test-time-" aria-label="What is scaling at test time ?">What is scaling at test time ?</a></li>
+                <li>
+                    <a href="#isnt-deepseek-r1s-scaling-inference-time-" aria-label="Isn&rsquo;t Deepseek-R1&rsquo;s scaling inference time ?">Isn&rsquo;t Deepseek-R1&rsquo;s scaling inference time ?</a></li>
+                <li>
+                    <a href="#experiments" aria-label="Experiments">Experiments</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
                 </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h3 id="abstract">Abstract<a hidden class="anchor" aria-hidden="true" href="#abstract">#</a></h3>
-<p>Why are some research studies easy to reproduce while others are difficult? Casting doubt on the accuracy of scientific work is not fruitful, especially when an individual researcher cannot reproduce the claims made in the paper. There could be many subjective reasons behind the inability to reproduce a scientific paper. The field of Machine Learning (ML) faces a reproducibility crisis, and surveying a portion of published articles has resulted in a group realization that although sharing code repositories would be appreciable, code bases are not the end all be all for determining the reproducibility of an article. Various parties involved in the publication process have come forward to address the reproducibility crisis and solutions such as badging articles as reproducible, reproducibility checklists at conferences (NeurIPS, ICML, ICLR, etc.), and sharing artifacts on OpenReview come across as promising solutions to the core problem. The breadth of literature on reproducibility focuses on measures required to avoid ir-reproducibility, and there is not much research into the effort behind reproducing these articles. In this paper, we investigate the factors that contribute to the easiness and difficulty of reproducing previously published studies and report on the foundational framework to quantify effort of reproducibility.</p>
+  <div class="post-content"><blockquote>
+<p>[IMPORTANT]: Actively working on the blog.</p></blockquote>
+<p><strong>From the paper: <a href="https://arxiv.org/pdf/2501.19393">https://arxiv.org/pdf/2501.19393</a> <br/></strong></p>
 <blockquote>
-<p>Authors: <strong>Akhil Pandey Akella</strong>, David Koop, Hamed Alhoori</p></blockquote>
+<p>Figure 3. Budget forcing with s1-32B. The model tries to stop
+after “&hellip;is 2.”, but we suppress the end-of-thinking token delimiter
+instead appending “Wait” leading s1-32B to self-correct its answer.</p></blockquote>
+<p><img alt="image" loading="lazy" src="https://akhilpandey95.github.io/img/s1_1.png"></p>
+<p><strong>Interesting nuggets from s1 paper (methodology)</strong></p>
+<ol>
+<li>They collected a dataset of 1k examples with reasoning traces from Google Gemini model and performed SFT (supervised fine tuning).</li>
+<li>They fix response lengths by adding &ldquo;wait&rdquo; tokens in certain cases to get models to generate longer CoT&rsquo;s, verify, and correct itself, or halt token generation by introducing an EOT (end of thinking) token delimiter and the authors call this phenomenon as &ldquo;budget forcing.&rdquo;</li>
+</ol>
+<p><strong>Budget Forcing</strong>
+Not to be picky or pedantic but <code>budget forcing (BF)</code> is still not a parallel inference scaling technique (as seen in o-1 or by Gemini Thinking). As the authors point out, we can think of <code>BF</code> as a sequential inference scaling technique. Despite the <code>&lt;wait&gt;</code> and <code>&lt;think</code> tokens at appropriate steps, the model is still generating one token at a time, the only difference being in total number of tokens.</p>
+<p>These two charts highlight the limitations, but they are still salient contributions from the <code>s1</code> paper:
+<br/>
+<img alt="image" loading="lazy" src="https://akhilpandey95.github.io/img/s1_2.png">
+<br/>
+<img alt="image" loading="lazy" src="https://akhilpandey95.github.io/img/s1_3.png">
+</br>
+The important contribution here is <code>BF</code> method seems to be effective than other resource hungry inference-scaling techniques. A good test on how useful <code>BF</code> here could be is by testing a good instruct model (Claude or open weight models like Qwen 2.5) using CoT prompting and observe the quality of responses supplied by models trained with <code>BF</code> vs regular models with CoT prompts.</p>
+<p><strong>Compute optimal parallel inference scaling</strong>
+Although <code>BF</code> is compared against majority voting, and they found it to work well there are better compute optimal strategies
+to perform inference scaling. For more check paper: <a href="https://arxiv.org/pdf/2408.03314v1">https://arxiv.org/pdf/2408.03314v1</a>, especially section <strong>5.2</strong>. Key strategies that should be compared against <code>BF</code> are:
+<br/>
+<img alt="image" loading="lazy" src="https://akhilpandey95.github.io/img/s1_4.png"></p>
+<h3 id="what-is-scaling-at-test-time-">What is scaling at test time ?<a hidden class="anchor" aria-hidden="true" href="#what-is-scaling-at-test-time-">#</a></h3>
+<p>Given a question <code>Q</code> to a model <code>LM</code> you get a response <code>R</code>. This process is pretty familiar and is called inference, but the key takeaway here is until <code>o1</code>, there was a semi-fixed resource consumption and also an assumption that the compute required to answer <code>Q</code>. After the advent of <code>o1</code> compute on inference or test-time compute (TTC) dynamically increase their reasoning time during inference leading to more time thinking about <code>Q</code>, improving accuracy of <code>R</code> but at the cost of higher compute usage.</p>
+<h3 id="isnt-deepseek-r1s-scaling-inference-time-">Isn&rsquo;t Deepseek-R1&rsquo;s scaling inference time ?<a hidden class="anchor" aria-hidden="true" href="#isnt-deepseek-r1s-scaling-inference-time-">#</a></h3>
+<p><strong>Short answer</strong>: Nope</p>
+<p><strong>Long answer</strong>:
+DeepSeek stated that their main goal was to achieve strong reasoning capabilities by leveraging the principle of deep, step-by-step thinking. DeepSeek-R1 got nearly SoTA results on most reasoning datasets simply by leveraging pure RL (GRPO), good data quality mix, and an incredibly strong base model (DeepSeek-V3). So, they built a reasoning model that mimicks o-1, but the phenomenon of scaling at inference time is somewhat not disclosed in the paper. Also, page-1 from s1&rsquo;s paper: <a href="https://arxiv.org/pdf/2501.19393">https://arxiv.org/pdf/2501.19393</a> <br/></p>
 <blockquote>
-<p>Paper: <a href="https://ieeexplore.ieee.org/abstract/document/10266070/">https://ieeexplore.ieee.org/abstract/document/10266070/</a></p></blockquote>
-<blockquote>
-<p>Code: <a href="https://github.com/reproducibilityproject/effortly">https://github.com/reproducibilityproject/effortly</a></p></blockquote>
+<p>However, despite the large number of o1 replication attempts, none have openly replicated
+a clear test-time scaling behavior. Thus, we ask: what is
+the simplest approach to achieve both test-time scaling and
+strong reasoning performance?</p></blockquote>
+<h3 id="experiments">Experiments<a hidden class="anchor" aria-hidden="true" href="#experiments">#</a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">TBA
+</span></span></code></pre></div><h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
+<ol>
+<li><a href="https://arxiv.org/pdf/2501.19393">https://arxiv.org/pdf/2501.19393</a></li>
+<li><a href="https://arxiv.org/html/2408.03314v1">https://arxiv.org/html/2408.03314v1</a></li>
+</ol>
 
 
   </div>

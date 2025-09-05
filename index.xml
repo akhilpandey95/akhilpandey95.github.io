@@ -4,10 +4,17 @@
     <title>Akhil Pandey</title>
     <link>https://akhilpandey95.github.io/</link>
     <description>Recent content on Akhil Pandey</description>
-    <generator>Hugo -- 0.147.6</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akhilpandey95.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ReSci-Agent | Agentic PeerReview</title>
+      <link>https://akhilpandey95.github.io/projects/resciagent/</link>
+      <pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/resciagent/</guid>
+      <description>Systematically assessing scholarly works to identify novel, generalizable, and reproducible science</description>
+    </item>
     <item>
       <title>Large language models for Scientometrics</title>
       <link>https://akhilpandey95.github.io/projects/llmscisci/</link>
@@ -17,25 +24,24 @@
     </item>
     <item>
       <title>Experimenting budget forcing and test-time scaling [WIP]</title>
-      <link>https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/</link>
+      <link>https://akhilpandey95.github.io/wip/_bf/</link>
       <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://akhilpandey95.github.io/blog/experimenting-budget-forcing-and-test-time-scaling-wip/</guid>
+      <guid>https://akhilpandey95.github.io/wip/_bf/</guid>
       <description>Testing the empirical effectiveness of &amp;#34;s1-Simple test-time scaling&amp;#34;</description>
     </item>
     <item>
       <title>Question as a Vector[WIP]</title>
-      <link>https://akhilpandey95.github.io/blog/question-as-a-vectorwip/</link>
+      <link>https://akhilpandey95.github.io/wip/_qav/</link>
       <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://akhilpandey95.github.io/blog/question-as-a-vectorwip/</guid>
+      <guid>https://akhilpandey95.github.io/wip/_qav/</guid>
       <description>Testing the empirical effectiveness of Questions as vectors</description>
     </item>
     <item>
-      <title>Navigating the Landscape of Reproducible Research: A Predictive Modeling Approach</title>
+      <title>Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach</title>
       <link>https://akhilpandey95.github.io/projects/repropredmodeling/</link>
       <pubDate>Mon, 21 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/projects/repropredmodeling/</guid>
-      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
-&lt;p&gt;The reproducibility of scientific articles is central to the advancement of science. Despite this importance, evaluating reproducibility remains challenging due to the scarcity of ground truth data. Predictive models can address this limitation by streamlining the tedious evaluation process. Typically, a paper&amp;rsquo;s reproducibility is inferred based on the availability of artifacts such as code, data, or supplemental information, often without extensive empirical investigation. To address these issues, we utilized artifacts of papers as fundamental units to develop a novel, dual-spectrum framework that focuses on author-centric and external-agent perspectives. We used the author-centric spectrum, followed by the external-agent spectrum, to guide a structured, model-based approach to quantify and assess reproducibility. We explored the interdependencies between different factors influencing reproducibility and found that linguistic features such as readability and lexical diversity are strongly correlated with papers achieving the highest statuses on both spectrums. Our work provides a model-driven pathway for evaluating the reproducibility of scientific research.&lt;/p&gt;</description>
+      <description>CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach</description>
     </item>
     <item>
       <title>Influence of Reproducibility on Scientific Impact</title>
@@ -52,20 +58,18 @@
       <description>Exploring the bridge between scientific knowledge and Large Language models</description>
     </item>
     <item>
-      <title>Reproducibility Signals in Science: A preliminary analysis</title>
+      <title>Reproducibility Signals in Science, A preliminary analysis</title>
       <link>https://akhilpandey95.github.io/projects/reprosignals/</link>
       <pubDate>Wed, 01 Nov 2023 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/projects/reprosignals/</guid>
-      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
-&lt;p&gt;Reproducibility is an important feature of science; experiments are retested, and analyses are repeated. Trust in the findings increases when consistent results are achieved. Despite the importance of reproducibility, significant work is often involved in these efforts, and some published findings may not be reproducible due to oversights or errors. In this paper, we examine a myriad of features in scholarly articles published in computer science conferences and journals and test how they correlate with reproducibility. We collected data from three different sources that labeled publications as either reproducible or irreproducible and employed statistical significance tests to identify features of those publications that hold clues about reproducibility. We found the readability of the scholarly article and accessibility of the software artifacts through hyperlinks to be strong signals noticeable amongst reproducible scholarly articles.&lt;/p&gt;</description>
+      <description>The first Workshop on Information Extraction from Scientific Publications (WIESP), AACL-IJCNLP | ACL</description>
     </item>
     <item>
       <title>Laying Foundations to Quantify the “Effort of Reproducibility”</title>
       <link>https://akhilpandey95.github.io/projects/effortly/</link>
       <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/projects/effortly/</guid>
-      <description>&lt;h3 id=&#34;abstract&#34;&gt;Abstract&lt;/h3&gt;
-&lt;p&gt;Why are some research studies easy to reproduce while others are difficult? Casting doubt on the accuracy of scientific work is not fruitful, especially when an individual researcher cannot reproduce the claims made in the paper. There could be many subjective reasons behind the inability to reproduce a scientific paper. The field of Machine Learning (ML) faces a reproducibility crisis, and surveying a portion of published articles has resulted in a group realization that although sharing code repositories would be appreciable, code bases are not the end all be all for determining the reproducibility of an article. Various parties involved in the publication process have come forward to address the reproducibility crisis and solutions such as badging articles as reproducible, reproducibility checklists at conferences (NeurIPS, ICML, ICLR, etc.), and sharing artifacts on OpenReview come across as promising solutions to the core problem. The breadth of literature on reproducibility focuses on measures required to avoid ir-reproducibility, and there is not much research into the effort behind reproducing these articles. In this paper, we investigate the factors that contribute to the easiness and difficulty of reproducing previously published studies and report on the foundational framework to quantify effort of reproducibility.&lt;/p&gt;</description>
+      <description>ACM/IEEE Conference, JCDL&amp;#39;23</description>
     </item>
     <item>
       <title>A Brief Survey on Representation Learning based Graph Dimensionality Reduction Techniques</title>
