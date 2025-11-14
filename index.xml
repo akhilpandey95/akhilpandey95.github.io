@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Akhil Pandey</title>
+    <title>Akhil Pandey Akella</title>
     <link>https://akhilpandey95.github.io/</link>
-    <description>Recent content on Akhil Pandey</description>
+    <description>Recent content on Akhil Pandey Akella</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 05 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akhilpandey95.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Something new, hello &#34;notes&#34;</title>
+      <link>https://akhilpandey95.github.io/notes/something_new/</link>
+      <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/notes/something_new/</guid>
+      <description>Documenting learnings, scripts, tricks, knowledge in a different way</description>
+    </item>
     <item>
       <title>Pre-review to Peer review | Pitfalls of Automating Reviews using Large Language Models</title>
       <link>https://akhilpandey95.github.io/projects/lmrsd/</link>
