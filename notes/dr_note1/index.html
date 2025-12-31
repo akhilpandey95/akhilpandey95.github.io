@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>What is it about these Deep research models lately ? | Akhil Pandey Akella</title>
+<meta name="keywords" content="">
+<meta name="description" content="Understanding deep research agents/models/queries/tasks | Part 1">
+<meta name="author" content="Akhil Pandey">
+<link rel="canonical" href="https://akhilpandey95.github.io/notes/dr_note1/">
+<meta name="google-site-verification" content="G-PNYGCP0LEP">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.cc07dec7dd9f28dca2ede3805b2043470261714d96bb4606b7d2b8e0b76d86f8.css" integrity="sha256-zAfex92fKNyi7eOAWyBDRwJhcU2Wu0YGt9K44Ldthvg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/notes/dr_note1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><link rel="stylesheet" href="https://akhilpandey95.github.io/css/extended/override.css">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNYGCP0LEP"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-PNYGCP0LEP');
+        }
+      </script><meta property="og:url" content="https://akhilpandey95.github.io/notes/dr_note1/">
+  <meta property="og:site_name" content="Akhil Pandey Akella">
+  <meta property="og:title" content="What is it about these Deep research models lately ?">
+  <meta property="og:description" content="Understanding deep research agents/models/queries/tasks | Part 1">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2025-11-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-24T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="What is it about these Deep research models lately ?">
+<meta name="twitter:description" content="Understanding deep research agents/models/queries/tasks | Part 1">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Notes",
+      "item": "https://akhilpandey95.github.io/notes/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "What is it about these Deep research models lately ?",
+      "item": "https://akhilpandey95.github.io/notes/dr_note1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What is it about these Deep research models lately ?",
+  "name": "What is it about these Deep research models lately ?",
+  "description": "Understanding deep research agents/models/queries/tasks | Part 1",
+  "keywords": [
+    
+  ],
+  "articleBody": "Lately there is an surge in explosion of models, recipes and software libraries that are capable of doing deep research. The nature of what constitutes as a deep-research task would really depend on the person you’re asking but its undeniable that any deep-research query is i.) agentic, ii..) long-horizon, iii.) large scale information seeking and iv.) information consumption workflow.\nDeep-research agents can be used for various search directives, but they scour the information at a considerably high depth, gather the context of all of the crawled information into a final answer that hopefully gives valuable insights.[1]. Inherently, this is a huge time and effort saving exercise if the report generated in the end is of high quality.\nSpecialized models The training behind DR Tulu is quite interesting because it is the first open-weight model that is post-trained using a new rubrics framework, or RLER as they describe it in their Github repo. To be very honest, the repository, blog and README in DR Tulu huggingface provide extensive information about the model and evaluation that its not worth it for me repeat the same information. Although, I personally feel the demo mentioned here gives you a sneak peek into final document quality. One of the cooler things you get to see in the demo page is the answers under section “SimpleQA”, because typically people expect deep research agents to have incredibly verbose answers when the purpose can sometimes be channeled towards rolling out terse answers but searching deeply.\nFig 1. Open deep research model list observed from DR Tulu web annoucement page. Learn more\nFor those interested in quickly training a deep-research model that is similar to DR Tulu, the instructions here highlight that testing the setup using Qwen-3 0.6B on a single (assuming H100) gpu is possible. A key feature of the::\nFig 2. Tongyi DeepResearch agentic model benchmark results on several search benchmarks. More available\nFig 3. Input to output pipeline for a scientific world model involved in sophisticated autonomous discovery. More about Kosmos (https://edisonscientific.com/articles/announcing-kosmos) Structurally, are they different tho ? One would be interested to know what are the structural differences between each of the above mentioned options because the appeal of a deep-research.\nPersonally, I feel As a researcher, the biggest cognitive boost I can receieve is by having a reliable co-scientist capable of understanding my workflows for consumption(web), knowledge updates(memory), and selective recall of cosumed information(skills) at frequent/infrequent intervals such that I can play a productive role in\nReferences https://allenai.org/blog/dr-tulu https://tongyi-agent.github.io/blog/introducing-tongyi-deep-research/ https://edisonscientific.com/articles/announcing-kosmos ",
+  "wordCount" : "416",
+  "inLanguage": "en",
+  "datePublished": "2025-11-24T00:00:00Z",
+  "dateModified": "2025-11-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Akhil Pandey"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://akhilpandey95.github.io/notes/dr_note1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Akhil Pandey Akella",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://akhilpandey95.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+    
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      displayAlign: 'center',    /* truly center block math */
+      displayIndent: '0em',      /* kill any default indent */
+      "HTML-CSS": {
+        styles: {'.MathJax_Preview': {visibility: 'hidden'}}
+      }
+    });
+  </script>
+
+  
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+    async>
+  </script>
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey Akella (Alt + H)">Akhil Pandey Akella</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://akhilpandey95.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/notes/" title="Notes">
+                    <span>Notes</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://akhilpandey95.github.io/cv/cv.pdf" title="CV">
+                    <span>CV</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://akhilpandey95.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://akhilpandey95.github.io/notes/">Notes</a></div>
+    <h1 class="post-title entry-hint-parent">
+      What is it about these Deep research models lately ?
+    </h1>
+    <div class="post-description">
+      Understanding deep research agents/models/queries/tasks | Part 1
+    </div>
+    <div class="post-meta"><span title='2025-11-24 00:00:00 +0000 UTC'>November 24, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Akhil Pandey
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#specialized-models" aria-label="Specialized models">Specialized models</a></li>
+                <li>
+                    <a href="#structurally-are-they-different-tho-" aria-label="Structurally, are they different tho ?">Structurally, are they different tho ?</a></li>
+                <li>
+                    <a href="#personally-i-feel" aria-label="Personally, I feel">Personally, I feel</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Lately there is an surge in explosion of models, recipes and software libraries that are capable of doing deep research. The nature of what constitutes as a <em>deep-research</em> task would really depend on the person you&rsquo;re asking but its undeniable that any <em>deep-research</em> query is i.) <strong>agentic</strong>, ii..) <strong>long-horizon</strong>, iii.) large scale <strong>information seeking</strong> and iv.) <strong>information consumption</strong> workflow.</p>
+<p><em>Deep-research</em> agents can be used for various search directives, but they scour the information at a considerably high depth, gather the context of all of the crawled information into a final answer that hopefully gives valuable insights.<a href="https://allenai.org/blog/dr-tulu">[1]</a>. Inherently, this is a huge time and effort saving exercise if the report generated in the end is of high quality.</p>
+<h3 id="specialized-models">Specialized models<a hidden class="anchor" aria-hidden="true" href="#specialized-models">#</a></h3>
+<p>The training behind <em>DR Tulu</em> is quite interesting because it is the first open-weight model that is post-trained using a new rubrics framework, or RLER as they describe it in their Github repo. To be very honest, the repository, blog and README in <em>DR Tulu</em> huggingface provide extensive information about the model and evaluation that its not worth it for me repeat the same information. Although, I personally feel the demo mentioned <a href="https://dr-tulu.github.io/">here</a> gives you a sneak peek into final document quality. One of the cooler things you get to see in the demo page is the answers under section &ldquo;SimpleQA&rdquo;, because typically people expect deep research agents to have incredibly verbose answers when the purpose can sometimes be channeled towards rolling out terse answers but searching <em>deeply</em>.</p>
+<figure>
+    <a href="https://akhilpandey95.github.io/img/dr_model_list.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/dr_model_list.png" />
+    </a>
+    <figcaption>
+        <p>Fig 1. Open deep research model list observed from DR Tulu web annoucement page. <a href="https://allenai.org/blog/dr-tulu" target="_blank">Learn more</a></p>
+    </figcaption>
+</figure>
+<p>For those interested in quickly training a deep-research model that is similar to <em>DR Tulu</em>, the instructions <a href="https://github.com/rlresearch/dr-tulu/tree/main/rl/open-instruct">here</a> highlight that testing the setup using <strong>Qwen-3 0.6B</strong> on a single (assuming H100) gpu is possible. A key feature of the::</p>
+<figure>
+    <a href="https://akhilpandey95.github.io/img/dr_tongyi_results.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/dr_tongyi_results.png" />
+    </a>
+    <figcaption>
+        <p>Fig 2. Tongyi DeepResearch agentic model benchmark results on several search benchmarks. <a href="https://tongyi-agent.github.io/blog/introducing-tongyi-deep-research/" target="_blank">More available</a></p>
+    </figcaption>
+</figure>
+<figure>
+    <a href="https://akhilpandey95.github.io/img/kosmos.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/kosmos.png" />
+    </a>
+    <figcaption>
+        <p>Fig 3. Input to output pipeline for a scientific world model involved in sophisticated autonomous discovery. More about Kosmos (https://edisonscientific.com/articles/announcing-kosmos) 
+    </figcaption>
+</figure>
+<h3 id="structurally-are-they-different-tho-">Structurally, are they different tho ?<a hidden class="anchor" aria-hidden="true" href="#structurally-are-they-different-tho-">#</a></h3>
+<p>One would be interested to know what are the structural differences between each of the above mentioned options because
+the appeal of a <em>deep-research</em>.</p>
+<h3 id="personally-i-feel">Personally, I feel<a hidden class="anchor" aria-hidden="true" href="#personally-i-feel">#</a></h3>
+<p>As a researcher, the biggest cognitive boost I can receieve is by having a reliable co-scientist capable of understanding my
+workflows for consumption(web), knowledge updates(memory), and selective recall of cosumed information(skills) at frequent/infrequent
+intervals such that I can play a productive role in</p>
+<h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
+<ol>
+<li><a href="https://allenai.org/blog/dr-tulu">https://allenai.org/blog/dr-tulu</a></li>
+<li><a href="https://tongyi-agent.github.io/blog/introducing-tongyi-deep-research/">https://tongyi-agent.github.io/blog/introducing-tongyi-deep-research/</a></li>
+<li><a href="https://edisonscientific.com/articles/announcing-kosmos">https://edisonscientific.com/articles/announcing-kosmos</a></li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://akhilpandey95.github.io/">Akhil Pandey Akella</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
+
