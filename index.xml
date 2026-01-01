@@ -6,8 +6,15 @@
     <description>Recent content on Akhil Pandey Akella</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 24 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akhilpandey95.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pre-review to Peer review | Pitfalls of Automating Reviews using Large Language Models</title>
+      <link>https://akhilpandey95.github.io/projects/lmrsd/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/projects/lmrsd/</guid>
+      <description>Systematically assessing scholarly works to identify novel, generalizable, and reproducible science</description>
+    </item>
     <item>
       <title>What is it about these Deep research models lately ?</title>
       <link>https://akhilpandey95.github.io/notes/dr_note1/</link>
@@ -21,13 +28,6 @@
       <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/notes/something_new/</guid>
       <description>Documenting learnings, scripts, tricks, knowledge in a different way</description>
-    </item>
-    <item>
-      <title>Pre-review to Peer review | Pitfalls of Automating Reviews using Large Language Models</title>
-      <link>https://akhilpandey95.github.io/projects/lmrsd/</link>
-      <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
-      <guid>https://akhilpandey95.github.io/projects/lmrsd/</guid>
-      <description>Systematically assessing scholarly works to identify novel, generalizable, and reproducible science</description>
     </item>
     <item>
       <title>Sciscinet-v2, large-scale integrated datalake for science of science</title>
