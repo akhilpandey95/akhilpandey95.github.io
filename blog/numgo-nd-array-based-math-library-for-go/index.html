@@ -12,7 +12,7 @@ Mathematical computations and statistical operations contribute immensely to the
 <meta name="author" content="Akhil Pandey">
 <link rel="canonical" href="https://akhilpandey95.github.io/blog/numgo-nd-array-based-math-library-for-go/">
 <meta name="google-site-verification" content="G-PNYGCP0LEP">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.cc07dec7dd9f28dca2ede3805b2043470261714d96bb4606b7d2b8e0b76d86f8.css" integrity="sha256-zAfex92fKNyi7eOAWyBDRwJhcU2Wu0YGt9K44Ldthvg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.ee4228d3ed69c3d0066c8795680f83b12a96a25bb5d467be054337e5adf23538.css" integrity="sha256-7kIo0&#43;1pw9AGbIeVaA&#43;DsSqWolu11Ge&#43;BUM35a3yNTg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
@@ -62,7 +62,7 @@ Mathematical computations and statistical operations contribute immensely to the
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNYGCP0LEP"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -252,7 +252,7 @@ Mathematical computations and statistical operations contribute immensely to the
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">NDArray</span><span class="p">(</span><span class="nx">details</span><span class="w"> </span><span class="o">...</span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">NArray</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">NDArray</span><span class="p">(</span><span class="nx">details</span><span class="w"> </span><span class="o">...</span><span class="kt">float64</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">*</span><span class="nx">NArray</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">parameters</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">extract_parameters</span><span class="p">(</span><span class="nx">details</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">NArray</span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Data</span><span class="p">:</span><span class="w">    </span><span class="nf">NDArrayGenElements</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nx">details</span><span class="o">...</span><span class="p">),</span><span class="w">
@@ -260,7 +260,7 @@ Mathematical computations and statistical operations contribute immensely to the
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nx">Index</span><span class="p">:</span><span class="w">   </span><span class="nb">make</span><span class="p">([]</span><span class="kt">float64</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)),</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">n</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p><strong>Areas to be covered</strong></p>
 <p><code>numgo </code>aims to broadly cover the following concepts:</p>
 <ul>
@@ -275,16 +275,16 @@ Mathematical computations and statistical operations contribute immensely to the
 <p><strong>Usage</strong></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#34;fmt&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="s">&#34;github.com/akhilpandey95/numgo&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">NDArray</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w">  </span><span class="c1">// would init a NDArray of shape 3,3,3</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">Xrange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span><span class="w">     </span><span class="c1">// would print from 8 to 20</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">numgo</span><span class="p">.</span><span class="nf">Xrange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">))</span><span class="w"> </span><span class="c1">// would print from 8.1 to 8.9</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
 </span></span></span></code></pre></div><p>Documentation on other methods could be found  <a href="https://github.com/akhilpandey95/numGo/blob/master/README.md">here</a></p>
 <p><strong>v0.1</strong></p>
 <p>The package in its entirety is under development v0.1 will most likely be shipped by the end of December 2017 or mid January 2018.</p>

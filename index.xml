@@ -4,10 +4,17 @@
     <title>Akhil Pandey Akella</title>
     <link>https://akhilpandey95.github.io/</link>
     <description>Recent content on Akhil Pandey Akella</description>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo -- 0.154.2</generator>
     <language>en-US</language>
-    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akhilpandey95.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tinker, smol-RL and QDoRA</title>
+      <link>https://akhilpandey95.github.io/notes/tinker/</link>
+      <pubDate>Fri, 02 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://akhilpandey95.github.io/notes/tinker/</guid>
+      <description>Understanding deep research agents/models/queries/tasks | Part 1</description>
+    </item>
     <item>
       <title>Pre-review to Peer review | Pitfalls of Automating Reviews using Large Language Models</title>
       <link>https://akhilpandey95.github.io/projects/lmrsd/</link>

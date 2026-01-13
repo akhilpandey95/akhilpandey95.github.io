@@ -18,7 +18,7 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
 <meta name="author" content="Akhil Pandey">
 <link rel="canonical" href="https://akhilpandey95.github.io/blog/the-three-cs-of-javascript/">
 <meta name="google-site-verification" content="G-PNYGCP0LEP">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.cc07dec7dd9f28dca2ede3805b2043470261714d96bb4606b7d2b8e0b76d86f8.css" integrity="sha256-zAfex92fKNyi7eOAWyBDRwJhcU2Wu0YGt9K44Ldthvg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.ee4228d3ed69c3d0066c8795680f83b12a96a25bb5d467be054337e5adf23538.css" integrity="sha256-7kIo0&#43;1pw9AGbIeVaA&#43;DsSqWolu11Ge&#43;BUM35a3yNTg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
@@ -68,7 +68,7 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNYGCP0LEP"></script>
       <script>
         var doNotTrack = false;
-        if ( false ) {
+        if ( true ) {
           var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
           var doNotTrack = (dnt == "1" || dnt == "yes");
         }
@@ -253,7 +253,7 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>So for the above code,</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">add</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">);</span> <span class="c1">// gives 25
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">add</span><span class="p">(</span><span class="mi">12</span><span class="p">)(</span><span class="mi">13</span><span class="p">);</span> <span class="c1">// gives 25
+</span></span></span><span class="line"><span class="cl"><span class="nx">add</span><span class="p">(</span><span class="mi">12</span><span class="p">)(</span><span class="mi">13</span><span class="p">);</span> <span class="c1">// gives 25
 </span></span></span></code></pre></div><p>The curry method works by creating a closure that holds that original function and the arguments to curry. It returns a function that, when invoked, returns the result of calling that original function, passing it all of the arguments from the invocation of curry and the current invocation.</p>
 <p><strong>Closures :</strong></p>
 <p>Simply put, a closure is an inner function that has access to the outer (enclosing) function’s variables scope chain. Except the parameters and variables that which are defined using this and arguments all, the inner functions have access to all the parameters and variables of the function in which those are defined.</p>
@@ -268,13 +268,13 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// this wont work as part of Js closures
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">counter_foo</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">counter_foo</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">a</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// this also wont work as part of Js closures
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">counter_bar</span><span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">counter_bar</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">go</span><span class="p">()</span> <span class="p">{</span> <span class="nx">c</span><span class="o">+=</span> <span class="mi">1</span><span class="p">;}</span>
 </span></span><span class="line"><span class="cl">    <span class="nx">go</span><span class="p">();</span>
@@ -282,7 +282,7 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// this will work as part of Js closures
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">counter_closure</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">counter_closure</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">incr</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="nx">incr</span><span class="o">+=</span> <span class="mi">1</span><span class="p">;}</span>
 </span></span><span class="line"><span class="cl"><span class="p">})();</span>
@@ -291,13 +291,13 @@ Before I start, let me tell you that in Javascript Functions are Objects. So eve
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter1</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter1</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter1</span><span class="p">());</span> <span class="c1">// since we are added the counter three times the value of a is set to 3.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">show</span><span class="p">(</span><span class="nx">counter_foo</span><span class="p">());</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_foo</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_foo</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_foo</span><span class="p">());</span> <span class="c1">//similar to the above but doesnot set the value of a to 3, but returns undefined.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">show</span><span class="p">(</span><span class="nx">counter_bar</span><span class="p">());</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_bar</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_bar</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_bar</span><span class="p">());</span> <span class="c1">// Neither this works which will always set the value to 1
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">show</span><span class="p">(</span><span class="nx">counter_closure</span><span class="p">());</span>
+</span></span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_closure</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_closure</span><span class="p">());</span>
 </span></span><span class="line"><span class="cl"><span class="nx">show</span><span class="p">(</span><span class="nx">counter_closure</span><span class="p">());</span> <span class="c1">// Now this is called closures implementation in Js
 </span></span></span></code></pre></div><p>Function Closures in Javascript is all about how are the variables being treated and referred to in the local or global scope. In Js variables can be given : ‘local scope’ ‘global scope’ There is no inbuilt concept for something called private variables, so when there is a requirement for such a scenario Closures are written in Js in order to make scope for variables that are private in scope. Observing the functions ‘counter1()’, ‘counter_foo()’ and ‘counter_bar()’ there is a similarity that can be observed, Basically we can understand that closures are nothing but self invoking functions in Js. Observe the example ‘counter_closure()’ where in we are calling the function thrice and hoping to increment the functional value each time when we call the function. So this self invoking function runs only once but it increments the value each time it is called. The scope of the variable is protected by the anonymous return function making us assume that this can be called implementation of private variables in Js.</p>
