@@ -7,7 +7,7 @@
 <meta name="robots" content="index, follow">
 <title>Tinker, smol-RL and QDoRA | Akhil Pandey Akella</title>
 <meta name="keywords" content="">
-<meta name="description" content="Understanding deep research agents/models/queries/tasks | Part 1">
+<meta name="description" content="Observations from Tinker RL training API abstractions for post-training models">
 <meta name="author" content="Akhil Pandey">
 <link rel="canonical" href="https://akhilpandey95.github.io/notes/tinker/">
 <meta name="google-site-verification" content="G-PNYGCP0LEP">
@@ -74,7 +74,7 @@
       </script><meta property="og:url" content="https://akhilpandey95.github.io/notes/tinker/">
   <meta property="og:site_name" content="Akhil Pandey Akella">
   <meta property="og:title" content="Tinker, smol-RL and QDoRA">
-  <meta property="og:description" content="Understanding deep research agents/models/queries/tasks | Part 1">
+  <meta property="og:description" content="Observations from Tinker RL training API abstractions for post-training models">
   <meta property="og:locale" content="en-US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="notes">
@@ -82,7 +82,7 @@
     <meta property="article:modified_time" content="2026-01-02T00:00:00+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tinker, smol-RL and QDoRA">
-<meta name="twitter:description" content="Understanding deep research agents/models/queries/tasks | Part 1">
+<meta name="twitter:description" content="Observations from Tinker RL training API abstractions for post-training models">
 
 
 <script type="application/ld+json">
@@ -111,12 +111,12 @@
   "@type": "BlogPosting",
   "headline": "Tinker, smol-RL and QDoRA",
   "name": "Tinker, smol-RL and QDoRA",
-  "description": "Understanding deep research agents/models/queries/tasks | Part 1",
+  "description": "Observations from Tinker RL training API abstractions for post-training models",
   "keywords": [
     
   ],
-  "articleBody": "Releasing on Jan 16th, :)\nReferences 1. https://www.answer.ai/posts/2024-04-26-fsdp-qdora-llama3.html 2. https://thinkingmachines.ai/blog/lora/ 3. https://thinkingmachines.ai/blog/tinker-general-availability/ 4. https://arxiv.org/pdf/2512.16649 5. https://arxiv.org/pdf/2512.07783v1 6. https://allenai.org/blog/olmo3 7. https://huggingface.co/collections/nvidia/nvidia-nemotron-v3 Cite @misc{akhil2025notesdrnote1, author = {Akella, Akhil Pandey}, title = {Tinker, smol-RL and QDoRA}, year = {2026}, month = {January}, url = {https://akhilpandey95.github.io/notes/tinker/}, note = {Accessed: } } ",
-  "wordCount" : "47",
+  "articleBody": "Reproducibility is a bedrock of scientific progress An underlying principle that governed my doctoral research [1] in applying representational learning to understand reproducibilty, was the idea that “Reproducibility is a bedrock of scientific progress” [2]. Naturally, seeing Thinky talk about non-determinism and reframing the discussion around reproducibility in large language models made me realize, that reproducibility has become an ideal that fewer and fewer researchers, engineers, hobbyists alike believed truly across any scientific project.\nA while ago when I created a lecture mini-series with interactive notebooks showing how to use LLMs for computational social science research [3], I’ve used the following code which was part of a helper function for loading the model and generating the outputs and the code disables sampling and does a greedy search to return similar model outputs to portray a deterministic behaviour. Code (taken from [3]) for this abstraction would be:\n# @title 2.2 Testing the functions on a simple prompt # model model_id = 'llama3.2-3b' # acceleration device = 'cuda' # init model-tokenizer model, tokenizer = None, None # sample input prompt text = \"\"\"What is the systematic overestimation bias in the paper below ? -------- ABSTRACT: Our results show that all models exhibit weak correlation with human peer reviewers (0.15), with systematic overestimation bias of 3-5 points and uniformly high confidence scores (8.0-9.0/10) despite prediction errors. ----- \"\"\" # get the model tokenizer pair model, tokenizer = load_model(model_id, device=device) # null outpput outputs, new_tokens = None, None # seed for reproducibility set_seed(2025) # set top_p and temperature to none model.generation_config.temperature=None model.generation_config.top_p=None # get attention mask and input ids input_encoded = tokenizer(text, padding=True, return_tensors=\"pt\") input_encoded_ids = input_encoded.input_ids.to(device) input_encoded_attn_mask = input_encoded.attention_mask.to(device) input_shape = input_encoded_ids.shape[1] # model.generate() with torch.no_grad(): # routine model.generate() outputs = model.generate( input_ids=input_encoded_ids, attention_mask=input_encoded_attn_mask, max_new_tokens=64, do_sample=False, num_beams=1, pad_token_id=tokenizer.pad_token_id, eos_token_id=tokenizer.eos_token_id ) # decode model.generate() output response = tokenizer.decode(outputs[0][input_shape:], skip_special_tokens=True) print(\"----------------------------------\") print(\"LLM Answer:\") pprint.pp(response, depth=2, indent=4, compact=True) print(\"----------------------------------\") # empty cuda cache torch.cuda.empty_cache() # gc del model, tokenizer gc.collect() and the the above would give the following output (no matter how many times one runs it):\n---------------------------------- Using cuda to load ./Llama3.2-3B-Instruct/hf/ ---------------------------------- Loading checkpoint shards: 100% 2/2 [00:04\u003c00:00, 1.91s/it] Setting \u003c|finetune_right_pad_id|\u003e token for ./Llama3.2-3B-Instruct/hf/ Model-tokenizer Load Time:, 5.051675796508789 seconds ---------------------------------- ---------------------------------- LLM Answer: ('The paper is discussing the results of a study on the performance of machine ' 'learning models in predicting human peer review scores. The systematic ' 'overestimation bias refers to the tendency of the models to consistently ' 'overestimate the actual scores given by human peer reviewers.\\n' '\\n' 'In this case, the systematic overestimation bias is 3-5') ---------------------------------- Need for $tinker$ Personally, I’ve never done experiments or ablations pertaining to changing the model type, adjusting dtype to notice downstream differences in the output response. While its obvious that changing numerical precision (fp16, bf16, fp32, fp8, etc) will induce changes to the final output, I’ve always conviniently used bf16 and simply assumed deterministic generation for scientific hypothesis generation, and information extraction tasks meant using seed, and transparent workflow parameters combined with sampling methods and temperature to achieve determinism. While this is a naive assumption, it still was practically useful for my experiments.\nIt was my understanding that deterministic generation was possible assuming you perform greedy sampling and more often than not, it comes at a cost (annecdotally speaking) and that cost often revolves around creativity. The references to the challenges outlined in [2] at the beginning were fair given how numerical instability can affect MoE models causing non-deterministic log probabilities. I personally never encountered this issue because I stored the log-probs and never used them for analysis, and additionally I used dense models frequently for all of my experiments. That said, figuring out all of these smaller ticks and tips for determinism can be a slight inconvenience for training(more inconvenient) and inference alike. Naturally, remembering all of these parameters makes the art of training models, iterating through variations a smaller hassle.\nTinker’s announcement [4] was definitely a refreshing validation to my desire of having a scikit-learn like API that can perform the heavy-lifting from a machine ops standpoint and I can deal with the data, parameters, and learning paradigm.\nJust-RL, $tinker$ and hello world !! The recent paper Just-RL [5] on training a small language model (relatively) on various tasks just might be the right starting point to test tinker’s RLVR, and RLHF setups.\nReferences 1. https://huskiecommons.lib.niu.edu/allgraduate-thesesdissertations/7947/ 2. https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/ 3. https://github.com/akhilpandey95/LLMSciSci 4. https://thinkingmachines.ai/blog/tinker-general-availability/ 5. https://arxiv.org/pdf/2512.16649 6. https://www.answer.ai/posts/2024-04-26-fsdp-qdora-llama3.html 7. https://thinkingmachines.ai/blog/lora/ 8. https://arxiv.org/pdf/2512.07783v1 9. https://allenai.org/blog/olmo3 10. https://huggingface.co/collections/nvidia/nvidia-nemotron-v3 Cite @misc{akhil2025notesdrnote1, author = {Akella, Akhil Pandey}, title = {Tinker, smol-RL and QDoRA}, year = {2026}, month = {January}, url = {https://akhilpandey95.github.io/notes/tinker/}, note = {Accessed: } } ",
+  "wordCount" : "770",
   "inLanguage": "en",
   "datePublished": "2026-01-02T00:00:00Z",
   "dateModified": "2026-01-02T00:00:00Z",
@@ -236,9 +236,9 @@
       Tinker, smol-RL and QDoRA
     </h1>
     <div class="post-description">
-      Understanding deep research agents/models/queries/tasks | Part 1
+      Observations from Tinker RL training API abstractions for post-training models
     </div>
-    <div class="post-meta"><span title='2026-01-02 00:00:00 +0000 UTC'>January 2, 2026</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Akhil Pandey
+    <div class="post-meta"><span title='2026-01-02 00:00:00 +0000 UTC'>January 2, 2026</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Akhil Pandey
 
 </div>
   </header> <div class="toc">
@@ -249,6 +249,12 @@
 
         <div class="inner"><ul>
                 <li>
+                    <a href="#reproducibility-is-a-bedrock-of-scientific-progress" aria-label="Reproducibility is a bedrock of scientific progress">Reproducibility is a bedrock of scientific progress</a></li>
+                <li>
+                    <a href="#need-for-tinker" aria-label="Need for $tinker$">Need for $tinker$</a></li>
+                <li>
+                    <a href="#just-rl-tinker-and-hello-world-" aria-label="Just-RL, $tinker$ and hello world !!">Just-RL, $tinker$ and hello world !!</a></li>
+                <li>
                     <a href="#references" aria-label="References">References</a></li>
                 <li>
                     <a href="#cite" aria-label="Cite">Cite</a>
@@ -258,15 +264,140 @@
     </details>
 </div>
 
-  <div class="post-content"><p>Releasing on Jan 16th, :)</p>
+  <div class="post-content"><h3 id="reproducibility-is-a-bedrock-of-scientific-progress">Reproducibility is a bedrock of scientific progress<a hidden class="anchor" aria-hidden="true" href="#reproducibility-is-a-bedrock-of-scientific-progress">#</a></h3>
+<p>An underlying principle that governed my doctoral research [1] in applying
+representational learning to understand <em>reproducibilty</em>, was the idea that
+&ldquo;<em>Reproducibility is a bedrock of scientific progress</em>&rdquo; [2]. Naturally, seeing
+<strong><a href="https://thinkingmachines.ai/">Thinky</a></strong> talk about non-determinism and
+reframing the discussion around reproducibility in large language models made
+me realize, that <em>reproducibility</em> has become an ideal that fewer and fewer
+researchers, engineers, hobbyists alike believed truly across any scientific project.</p>
+<p>A while ago when I created a lecture mini-series with interactive notebooks showing
+how to use LLMs for computational social science research [3], I&rsquo;ve used the following
+code which was part of a helper function for loading the model and generating the outputs
+and the code disables sampling and does a greedy search to return similar model outputs
+to portray a deterministic behaviour. Code (taken from [3]) for this abstraction would be:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1"># @title 2.2 Testing the functions on a simple prompt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># model</span>
+</span></span><span class="line"><span class="cl"><span class="n">model_id</span> <span class="o">=</span> <span class="s1">&#39;llama3.2-3b&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># acceleration</span>
+</span></span><span class="line"><span class="cl"><span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># init model-tokenizer</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># sample input prompt</span>
+</span></span><span class="line"><span class="cl"><span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;What is the systematic overestimation bias in the paper below ? 
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">--------
+</span></span></span><span class="line"><span class="cl"><span class="s2">ABSTRACT:
+</span></span></span><span class="line"><span class="cl"><span class="s2">Our results show that all models exhibit weak correlation with 
+</span></span></span><span class="line"><span class="cl"><span class="s2">human peer reviewers (0.15), with systematic overestimation 
+</span></span></span><span class="line"><span class="cl"><span class="s2">bias of 3-5 points and uniformly high confidence scores 
+</span></span></span><span class="line"><span class="cl"><span class="s2">(8.0-9.0/10) despite prediction errors.
+</span></span></span><span class="line"><span class="cl"><span class="s2">-----
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># get the model tokenizer pair</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># null outpput</span>
+</span></span><span class="line"><span class="cl"><span class="n">outputs</span><span class="p">,</span> <span class="n">new_tokens</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># seed for reproducibility</span>
+</span></span><span class="line"><span class="cl"><span class="n">set_seed</span><span class="p">(</span><span class="mi">2025</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># set top_p and temperature to none</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">generation_config</span><span class="o">.</span><span class="n">temperature</span><span class="o">=</span><span class="kc">None</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">generation_config</span><span class="o">.</span><span class="n">top_p</span><span class="o">=</span><span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># get attention mask and input ids</span>
+</span></span><span class="line"><span class="cl"><span class="n">input_encoded</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&#34;pt&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">input_encoded_ids</span> <span class="o">=</span> <span class="n">input_encoded</span><span class="o">.</span><span class="n">input_ids</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">input_encoded_attn_mask</span> <span class="o">=</span> <span class="n">input_encoded</span><span class="o">.</span><span class="n">attention_mask</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">input_shape</span> <span class="o">=</span> <span class="n">input_encoded_ids</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># model.generate()</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># routine model.generate()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">input_ids</span><span class="o">=</span><span class="n">input_encoded_ids</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">attention_mask</span><span class="o">=</span><span class="n">input_encoded_attn_mask</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">do_sample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">num_beams</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">pad_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">eos_token_id</span><span class="o">=</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># decode model.generate() output</span>
+</span></span><span class="line"><span class="cl"><span class="n">response</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">input_shape</span><span class="p">:],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;----------------------------------&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;LLM Answer:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">pprint</span><span class="o">.</span><span class="n">pp</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">compact</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;----------------------------------&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># empty cuda cache</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># gc</span>
+</span></span><span class="line"><span class="cl"><span class="k">del</span> <span class="n">model</span><span class="p">,</span> <span class="n">tokenizer</span>
+</span></span><span class="line"><span class="cl"><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span></span></code></pre></div><p>and the the above would give the following output (no matter how many times one runs it):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">----------------------------------
+</span></span><span class="line"><span class="cl">Using cuda to load ./Llama3.2-3B-Instruct/hf/
+</span></span><span class="line"><span class="cl">----------------------------------
+</span></span><span class="line"><span class="cl">Loading checkpoint shards: 100% 2/2 [00:04&lt;00:00,  1.91s/it]
+</span></span><span class="line"><span class="cl">Setting &lt;|finetune_right_pad_id|&gt; token for ./Llama3.2-3B-Instruct/hf/
+</span></span><span class="line"><span class="cl">Model-tokenizer Load Time:, 5.051675796508789 seconds
+</span></span><span class="line"><span class="cl">----------------------------------
+</span></span><span class="line"><span class="cl">----------------------------------
+</span></span><span class="line"><span class="cl">LLM Answer:
+</span></span><span class="line"><span class="cl">(&#39;The paper is discussing the results of a study on the performance of machine &#39;
+</span></span><span class="line"><span class="cl"> &#39;learning models in predicting human peer review scores. The systematic &#39;
+</span></span><span class="line"><span class="cl"> &#39;overestimation bias refers to the tendency of the models to consistently &#39;
+</span></span><span class="line"><span class="cl"> &#39;overestimate the actual scores given by human peer reviewers.\n&#39;
+</span></span><span class="line"><span class="cl"> &#39;\n&#39;
+</span></span><span class="line"><span class="cl"> &#39;In this case, the systematic overestimation bias is 3-5&#39;)
+</span></span><span class="line"><span class="cl">----------------------------------
+</span></span></code></pre></div><h3 id="need-for-tinker">Need for $tinker$<a hidden class="anchor" aria-hidden="true" href="#need-for-tinker">#</a></h3>
+<p>Personally, I&rsquo;ve never done experiments or ablations pertaining to changing the
+model type, adjusting <code>dtype</code> to notice downstream differences in the output
+response. While its obvious that changing numerical precision (<code>fp16</code>, <code>bf16</code>, <code>fp32</code>, <code>fp8</code>, etc)
+will induce changes to the final output, I&rsquo;ve always conviniently used <code>bf16</code>
+and simply assumed deterministic generation for scientific hypothesis generation,
+and information extraction tasks meant using <code>seed</code>, and transparent workflow parameters
+combined with <em>sampling</em> methods and <code>temperature</code> to achieve determinism. While
+this is a naive assumption, it still was practically useful for my experiments.</p>
+<p>It was my understanding that deterministic generation was possible assuming you
+perform <em>greedy sampling</em> and more often than not, it comes at a cost (annecdotally speaking)
+and that cost often revolves around creativity. The references to the challenges
+outlined in [2] at the beginning were fair given how numerical instability can affect
+MoE models causing non-deterministic log probabilities. I personally never encountered
+this issue because I stored the log-probs and never used them for analysis, and additionally
+I used dense models frequently for all of my experiments. That said, figuring out all of these
+smaller ticks and tips for determinism can be a slight inconvenience for training(more inconvenient)
+and inference alike.  Naturally, remembering all of these parameters makes the art of training models,
+iterating through variations a smaller hassle.</p>
+<p>Tinker&rsquo;s announcement [4] was definitely a refreshing validation to my desire of having a scikit-learn
+like API that can perform the heavy-lifting from a machine ops standpoint and I can deal with the data,
+parameters, and learning paradigm.</p>
+<h3 id="just-rl-tinker-and-hello-world-">Just-RL, $tinker$ and hello world !!<a hidden class="anchor" aria-hidden="true" href="#just-rl-tinker-and-hello-world-">#</a></h3>
+<p>The recent paper <em>Just-RL</em> [5] on training a small language model (relatively) on various
+tasks just might be the right starting point to test tinker&rsquo;s RLVR, and RLHF setups.</p>
 <h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> https://www.answer.ai/posts/2024-04-26-fsdp-qdora-llama3.html
-</span></span><span class="line"><span class="cl"><span class="k">2.</span> https://thinkingmachines.ai/blog/lora/
-</span></span><span class="line"><span class="cl"><span class="k">3.</span> https://thinkingmachines.ai/blog/tinker-general-availability/
-</span></span><span class="line"><span class="cl"><span class="k">4.</span> https://arxiv.org/pdf/2512.16649
-</span></span><span class="line"><span class="cl"><span class="k">5.</span> https://arxiv.org/pdf/2512.07783v1
-</span></span><span class="line"><span class="cl"><span class="k">6.</span> https://allenai.org/blog/olmo3
-</span></span><span class="line"><span class="cl"><span class="k">7.</span> https://huggingface.co/collections/nvidia/nvidia-nemotron-v3
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> https://huskiecommons.lib.niu.edu/allgraduate-thesesdissertations/7947/
+</span></span><span class="line"><span class="cl"><span class="k">2.</span> https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/
+</span></span><span class="line"><span class="cl"><span class="k">3.</span> https://github.com/akhilpandey95/LLMSciSci
+</span></span><span class="line"><span class="cl"><span class="k">4.</span> https://thinkingmachines.ai/blog/tinker-general-availability/
+</span></span><span class="line"><span class="cl"><span class="k">5.</span> https://arxiv.org/pdf/2512.16649
+</span></span><span class="line"><span class="cl"><span class="k">6.</span> https://www.answer.ai/posts/2024-04-26-fsdp-qdora-llama3.html
+</span></span><span class="line"><span class="cl"><span class="k">7.</span> https://thinkingmachines.ai/blog/lora/
+</span></span><span class="line"><span class="cl"><span class="k">8.</span> https://arxiv.org/pdf/2512.07783v1
+</span></span><span class="line"><span class="cl"><span class="k">9.</span> https://allenai.org/blog/olmo3
+</span></span><span class="line"><span class="cl"><span class="k">10.</span> https://huggingface.co/collections/nvidia/nvidia-nemotron-v3
 </span></span></code></pre></div><h3 id="cite">Cite<a hidden class="anchor" aria-hidden="true" href="#cite">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bibtex" data-lang="bibtex"><span class="line"><span class="cl"><span class="nc">@misc</span><span class="p">{</span><span class="nl">akhil2025notesdrnote1</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="na">author</span>       <span class="p">=</span> <span class="s">{Akella, Akhil Pandey}</span><span class="p">,</span>
