@@ -4,14 +4,14 @@
     <title>Notes on Akhil Pandey Akella</title>
     <link>https://akhilpandey95.github.io/notes/</link>
     <description>Recent content in Notes on Akhil Pandey Akella</description>
-    <generator>Hugo -- 0.156.0</generator>
+    <generator>Hugo -- 0.157.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://akhilpandey95.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tinker, smol-RL and QDoRA (Part 2)</title>
       <link>https://akhilpandey95.github.io/notes/tinker_part2/</link>
-      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://akhilpandey95.github.io/notes/tinker_part2/</guid>
       <description>Part 2 teaser and setup for smol-RL experiments with Tinker</description>
     </item>

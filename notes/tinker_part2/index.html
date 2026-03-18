@@ -11,7 +11,7 @@
 <meta name="author" content="Akhil Pandey">
 <link rel="canonical" href="https://akhilpandey95.github.io/notes/tinker_part2/">
 <meta name="google-site-verification" content="G-PNYGCP0LEP">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.ee4228d3ed69c3d0066c8795680f83b12a96a25bb5d467be054337e5adf23538.css" integrity="sha256-7kIo0&#43;1pw9AGbIeVaA&#43;DsSqWolu11Ge&#43;BUM35a3yNTg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.c3e9fb114031703a9265f63b96980ee572b41de03cf836930dcdcb70356da920.css" integrity="sha256-w&#43;n7EUAxcDqSZfY7lpgO5XK0HeA8&#43;DaTDc3LcDVtqSA=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
@@ -78,8 +78,8 @@
   <meta property="og:locale" content="en-US">
   <meta property="og:type" content="article">
     <meta property="article:section" content="notes">
-    <meta property="article:published_time" content="2026-02-11T00:00:00+00:00">
-    <meta property="article:modified_time" content="2026-02-11T00:00:00+00:00">
+    <meta property="article:published_time" content="2026-03-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-06T00:00:00+00:00">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tinker, smol-RL and QDoRA (Part 2)">
 <meta name="twitter:description" content="Part 2 teaser and setup for smol-RL experiments with Tinker">
@@ -115,11 +115,11 @@
   "keywords": [
     
   ],
-  "articleBody": "Part 2 goes live on Mar 06, 2026 This is a short preface to Part 2. The full write-up will be published on Mar 06, 2026. If you want the context from Part 1 first, start here: Tinker, smol-RL and QDoRA.\nTLDR; In Part 1, I framed reproducibility as a practical problem in modern LLM work, not just a philosophical ideal. Even with greedy decoding and fixed seeds, determinism can break in subtle ways: GPU type, numerical precision, kernel choices, and non-deterministic log-probs in MoE models all conspire to make “run it again” less reliable than we like to admit. That led to a simple question: do we need a better abstraction layer so that the model ops complexity is hidden but the critical knobs for determinism are explicit and repeatable?\nThat is where Tinker felt like a useful shift. A scikit-learn style API for post-training models makes it easier to standardize the boring but fragile pieces: reproducibility settings, dataset plumbing, and stable training/inference pipelines. Part 1 closed on a concrete premise: the Just-RL paper looks like the right starting point for testing Tinker’s RLVR and RLHF setups on a small model before scaling.\nPart 2 will use that premise directly: start with a small, practical Just-RL style setup and run it through Tinker’s RLVR/RLHF abstractions to see what actually stays deterministic and what doesn’t. I also plan to connect that to QDoRA in a small, controlled setting so the interaction between low-rank adaptation, precision choices, and stability is visible rather than hand-waved.\nReferences 1. https://arxiv.org/pdf/2402.03300 2. https://arxiv.org/pdf/2205.01833 3. https://arxiv.org/pdf/2402.09353 4. https://www.science.org/doi/10.1126/science.1240474 Cite @misc{akhil2026notesdrnote2, author = {Akella, Akhil Pandey}, title = {Tinker, smol-RL and QDoRA (Part 2)}, year = {2026}, month = {February}, url = {https://akhilpandey95.github.io/notes/tinker_part2/}, note = {Accessed: } } ",
-  "wordCount" : "291",
+  "articleBody": "Context This post is a continuation of an article, so it’d be ideal/nice if you read the first part of this post here: Tinker, smol-RL and QDoRA.\nTLDR; (Part-1) In Part 1, I showcase how reproducibility poses a practical problem in modern LLM work, not just a philosophical ideal. Even with greedy decoding and fixed seeds, determinism can break in subtle ways: GPU type, numerical precision, kernel choices, and non-deterministic log-probs in MoE models all conspire to make “run it again” less reliable than we like to admit. That led to a simple question: do we need a better abstraction layer so that the model ops complexity is hidden but the critical knobs for determinism are explicit and repeatable? Tinker reminded me of scikit-learn style API but for post-training models and the cookbook makes it easier to standardize the fragile pieces of post-training like reproducibility settings, dataset pre-processing, and stable training/inference pipelines. In Part 1, I talk about the Just-RL paper and how its a great starting point for testing Tinker’s RLVR and RLHF setups on a small models before scaling data and model size.\nIntroduction In this post, we will use the premise from the previous post to start with a small, practical Just-RL style setup and run it through Tinker’s RLVR/RLHF abstractions to see what actually stays deterministic and what doesn’t. I also plan to connect that to QDoRA in a small, controlled setting so the interaction between low-rank adaptation, precision choices, and stability is visible rather than hand-waved. In this post we will take a look at:\na controlled RL-only sequence on single-turn disruption classification prompt changes, reward changes, and contract changes on a frozen split one RL follow-up (Exp5) that tests class-weighted reward shaping to-do:\nthe planned QDoRA SFT baseline on the same task a real SFT-vs-RL comparison the Part 1 adversarial two-agent setup the joint disruption-plus-novelty objective the reproducibility sweep over dtype, hardware, kernels, or repeated runs Data The setup also matters because these runs do not begin from a generic instruction-tuning dataset. The broader corpus behind the disruption experiments is a SciSciNet/OpenAlex-style paper collection with 1,972,797 records. At the metadata level, each record can carry fields like openalex_id, title, abstract, publication_year, cited_by_count, cd_index, novelty_score, conventionality_score, disruption_label, novelty_label, primary_field, and concepts. For the actual RL experiments, though, I used a fixed JSONL slice: data/sci_balanced_from2m_no_ovr.rl_balanced.jsonl. A quick polars pass gives the main shape of that file:\n\u003e\u003e\u003e import polars as pl \u003e\u003e\u003e df = pl.scan_ndjson(\"data/sci_balanced_from2m_no_ovr.rl_balanced.jsonl\") \u003e\u003e\u003e df.collect_schema().names() ['openalex_id', 'title', 'abstract', 'publication_year', 'cited_by_count', 'cd_index', 'novelty_score', 'conventionality_score', 'disruption_label', 'novelty_label', 'primary_field', 'concepts'] \u003e\u003e\u003e df.select(pl.len()).collect().item() 600000 \u003e\u003e\u003e df.group_by(\"disruption_label\") ... .agg(pl.len().alias(\"n\")) ... .sort(\"disruption_label\") ... .collect() shape: (3, 2) ┌──────────────────┬────────┐ │ disruption_label ┆ n │ │ --- ┆ --- │ │ str ┆ u32 │ ╞══════════════════╪════════╡ │ consolidating ┆ 200000 │ │ disruptive ┆ 200000 │ │ neutral ┆ 200000 │ └──────────────────┴────────┘ \u003e\u003e\u003e df.select( ... pl.col(\"publication_year\").min().alias(\"min_year\"), ... pl.col(\"publication_year\").max().alias(\"max_year\"), ... pl.col(\"cited_by_count\").median().alias(\"median_citations\"), ... pl.col(\"cited_by_count\").quantile(0.9).alias(\"p90_citations\"), ... pl.col(\"cited_by_count\").max().alias(\"max_citations\"), ... ).collect() shape: (1, 5) ┌──────────┬──────────┬──────────────────┬───────────────┬───────────────┐ │ min_year ┆ max_year ┆ median_citations ┆ p90_citations ┆ max_citations │ │ --- ┆ --- ┆ --- ┆ --- ┆ --- │ │ i64 ┆ i64 ┆ f64 ┆ f64 ┆ i64 │ ╞══════════╪══════════╪══════════════════╪═══════════════╪═══════════════╡ │ 1875 ┆ 2024 ┆ 12.0 ┆ 90.0 ┆ 21559 │ └──────────┴──────────┴──────────────────┴───────────────┴───────────────┘ That small block already says most of what matters for interpreting the later runs. The file is not a toy benchmark, but it is also not the full upstream corpus. It is a balanced 600k slice with 200k examples per disruption class, and each example carries enough structure to be more than plain text: title, abstract, year, citation count, field, and the citation-derived disruption label. In practice, though, the runtime loader narrows this further and only uses the six fields that matter for the disruption task: title, abstract, publication_year, cited_by_count, primary_field, and disruption_label.\nThe important point here is that these labels are not arbitrary buckets I made up for the RL loop. The disruption labels come from citation-network behavior, and the novelty/conventionality fields come from how unusual or familiar a paper’s reference combinations look relative to the background literature. Even though the current RL sequence only uses disruption_label, the wider corpus already carries the fuller science-of-science structure.\nFor disruption, the intuition is: what do future papers do after they cite a focal paper? If later work cites the focal paper without also citing its references, the focal work looks more disruptive. If later work keeps citing the focal paper together with the papers it built on, the work looks more consolidating. Values near the middle behave more like neutral. The figure below is the cleanest visual explanation of that idea from Wu, Wang, and Evans, Large teams develop and small teams disrupt science and technology.\nFig. Reference view of disruption from Wu, Wang, and Evans, Large teams develop and small teams disrupt science and technology, Nature (2019).\nThat paper figure is the clean conceptual picture. For this post, though, the more useful question is: what does cd_index actually look like in the balanced JSONL that feeds the RL runs? The next plot recreates the panel b idea on the 600k slice used here. Two details matter. First, the slice is already balanced for training, so it should not be read as the natural frequency profile of the full 1.97M-paper source corpus. Second, the actual metadata thresholds in this dataset are much tighter than the older shorthand I used in Part 1: cd_index \u003c= -0.001 is consolidating, -0.001 \u003c cd_index \u003c 0.001 is neutral, and cd_index \u003e= 0.001 is disruptive. The tall spike at 0 is not a plotting bug; it is the empirical shape of the slice, where a large fraction of the neutral mass sits exactly at or extremely close to zero.\nFig. Dataset view of cd_index on the balanced 600k RL slice. The x-axis is shown on a signed log scale and the y-axis is paper frequency on a log scale; the shaded bands mark the dataset cutoffs for consolidating, neutral, and disruptive.\nFor novelty and conventionality, the logic is different. Here the question is not whether a paper overturns or develops prior citation pathways, but whether the combinations of prior work it cites are unusual or familiar. In the Uzzi et al. framing, the left tail corresponds to more novel combinations and the right side corresponds to more conventional combinations. That is why the corpus stores both novelty_score and conventionality_score: a paper can be mostly grounded in familiar prior work while still injecting a smaller amount of unusual combination. The figure below is from Uzzi et al., Atypical Combinations and Scientific Impact.\nFig. Reference view of novelty and conventionality from Uzzi et al., Atypical Combinations and Scientific Impact, Science (2013).\nThe broader provenance is still useful context. This balanced JSONL was carved out of a much larger SciSciNet/OpenAlex-style paper corpus with 1,972,797 records, where the raw disruption distribution is naturally skewed: about 247,090 papers are labeled disruptive, about 583,215 are consolidating, and about 1,142,492 are neutral. So the experiments here are not using the world as-is; they are using a balanced slice of a much more imbalanced scientific-impact distribution. That distinction ends up mattering quite a bit once the reward starts encouraging the model to exploit class asymmetries.\nFor the main four-run sequence, the loader then shuffles this JSONL with seed = 0, takes the first 5000 rows for train and the next 500 for test, and uses group_size = 2 for train versus group_size = 1 for eval. That sounds like a small implementation detail, but it is exactly the sort of detail that becomes important once the RL loop starts over-optimizing a proxy rather than learning the balanced classifier one might naively expect.\nExperiment Frame Before the charts, I need to say what these runs actually are, because otherwise Baseline, Exp1, Exp2, Exp3, Exp4, and Exp5 are just names on an axis.\nPart 1 ended with a broader experimental agenda: Tinker, Just-RL, QDoRA, adversarial reasoning, novelty labels, and eventually an SFT-vs-RL comparison. The evidence below is narrower than that. Every numbered run in this section is an RL run on the disruption task only. The planned QDoRA SFT baseline belongs to the larger Part 2 program, but it is not one of the artifacts summarized here yet. The same goes for the Part 1 adversarial two-agent setup and the joint disruption-plus-novelty objective. Those ideas still matter, but they are not what the next tables and plots are evaluating.\nThe actual task here is much simpler:\n$$ x_i = (\\text{title}_i,\\ \\text{abstract}_i,\\ \\text{publication year}_i,\\ \\text{citation count}_i,\\ \\text{field}_i), $$\n$$ y_i \\in {\\texttt{disruptive},\\ \\texttt{consolidating},\\ \\texttt{neutral}}. $$\nGiven a paper record $x_i$, the model emits a machine-readable prediction $\\hat{y}_i$ as JSON, and the RL loop optimizes\n$$ R_i = R_{\\text{parse}} + R_{\\text{contract}} + R_{\\text{task}} + R_{\\text{think}}. $$\nIn plain English, the reward has four moving parts: did the raw text parse as JSON, did it satisfy the required key/value contract, did it predict the right class, and did it avoid forbidden raw output.\nFor the baseline and Exp1, the reward was intentionally soft on semantic mistakes:\n$$ \\text{valid + correct} = +0.75, $$\n$$ \\text{valid + wrong} = 0.0, $$\n$$ \\text{invalid payload} = -0.5, $$\n$$ \\text{raw JSON failure} = -1.0. $$\nwith an additional -1.0 penalty for raw tags.\nFor Exp2, Exp3, and Exp4, the reward kept the same parse penalties but made label correctness matter much more:\n$$ \\text{valid + correct} = +1.05, $$\n$$ \\text{valid + wrong} = -0.55, $$\n$$ \\text{invalid payload} = -0.75, $$\n$$ \\text{raw JSON failure} = -1.0. $$\nagain with the same extra -1.0 penalty for raw tags.\nExp5 is still RL, not SFT. It keeps the stronger Exp2-Exp4 reward shape, but multiplies correct disruptive predictions by 3x, so a valid correct disruptive answer can earn +3.05 while a valid wrong answer is still -0.55.\nThe other useful distinction is the output contract. Baseline through Exp3 asked the model for a richer four-key JSON object: disruption_label, label_justification, evidence_signals, and confidence. Exp4 and Exp5 cut that down to just disruption_label and confidence. That simplification turns out to matter a lot.\nAll of the runs below share the same fixed backbone: meta-llama/Llama-3.1-8B-Instruct, the same 5000 / 500 split, the same batch_size = 16, the same group_size = 2 for train, the same group_size = 1 for eval, and the same seed = 0. What changes from run to run is the prompt, the reward, or the contract.\nThat is the shortest run map:\nRun type change i was testing for Baseline RL reference run whether the default contract + task setup was even usable Exp1 RL add explicit disruption-label ontology to the prompt whether semantics were under-specified Exp2 RL strengthen the task reward whether correctness pressure, not prompt wording, was the bottleneck Exp3 RL add decision checklist and mini examples whether the disruptive vs consolidating boundary needed sharper calibration Exp4 RL shrink output JSON to two keys and cut max_tokens to 64 whether contract simplification would recover reliability Exp5 RL follow-up keep the simpler contract, upweight correct disruptive predictions by 3x whether a blunt class-weight fix could prevent disruptive collapse Eval Snapshot With that structure in place, step 250 is the first checkpoint where Baseline through Exp4 are directly comparable on the same held-out 500 papers. The three views below are not the whole training story. Together, they are just the shortest way to answer one question: after 250 RL updates, did each run improve by learning the task better, or by finding a safer class bias?\nFig. Output contract view across Baseline through experiment 4 checking label_match, parse_ok, and format_strict_ok.\nFig: Class balance view across Baseline through experiment 4 checking recall on disruptive, consolidating, and neutral classes.\nFig: Reliability view across Baseline through experiment 4 to check invalid output rate.\nRun Main change label_match parse_ok format_strict_ok disruptive recall consolidating recall neutral recall invalid rate Baseline reference RL setup 0.326 0.966 0.918 0.0897 0.2108 0.6085 0.082 Exp1 ontology prompt 0.316 0.974 0.960 0.2414 0.4096 0.2910 0.040 Exp2 stronger semantic reward 0.362 0.978 0.976 0.0621 0.7048 0.2910 0.024 Exp3 boundary-calibration prompt 0.356 0.944 0.906 0.1034 0.4458 0.4709 0.094 Exp4 2-key contract + max_tokens=64 0.396 0.998 0.998 0.0069 0.2831 0.7937 0.002 Read from left to right, the sequence makes a lot more sense now.\nThe baseline says the loop is operationally alive, but it is semantically conservative. It mostly hides inside neutral. Exp1 is the first real semantic move because the ontology prompt revives disruptive without breaking the contract. Exp2 proves that reward shaping can move the scalar metric, but it does so by leaning hard into consolidating. Exp3 gives up some contract hygiene to recover a more believable three-class boundary. Exp4 then solves the contract side almost perfectly, but it solves it while nearly erasing disruptive.\nThat is why the next sentence matters more than the top-line label_match: the runs are not all optimizing the same failure mode. Exp4 is the cleanest contract and the best raw step-250 scalar score. It is not the best balanced classifier. If I recompute held-out macro-F1 at step 250, the ordering is Exp3 ~ 0.337, Exp1 ~ 0.317, Exp2 ~ 0.309, Exp4 ~ 0.292, Baseline ~ 0.288. So the most reliable JSON checkpoint and the most balanced semantic checkpoint are not the same run.\nIf I’m being blunt, that is the whole problem in miniature. Once the parser stops being the main bottleneck, the policy finds easier ways to win the objective. So the next move after Exp4 is not “use a bigger model” or “add more output fields back.” The next move is to fix the objective mismatch more directly.\nExp5: A Follow-Up, Not A Different Training Paradigm This is exactly where Exp5 comes in. It is still an RL run. It is not the missing QDoRA SFT baseline. I ran it because Exp4 made the remaining failure mode too obvious: the contract was clean, but disruptive had effectively vanished. So the crude intervention was to say: fine, make correct disruptive predictions much more valuable and see what happens.\nThat gives the following held-out trajectory:\nStep label_match macro-F1 predicted disruptive share disruptive recall min class recall 0 0.3360 0.3003 0.0955 0.0823 0.0823 250 0.3445 0.2489 0.8295 0.8009 0.0132 500 0.3495 0.1819 0.9885 0.9928 0.0000 2000 0.3465 0.1716 1.0000 1.0000 0.0000 This is useful, but mostly as a negative result. At step 250, Exp5 can look superficially better if I only look at the rare class in isolation. Disruptive recall jumps from 0.0823 to 0.8009, and the contract remains almost perfect. But that is not a balanced classifier getting smarter. It is the policy discovering that the cheapest path to reward is to call almost everything disruptive.\nThe most revealing column in that table is not even label_match. It is predicted disruptive share. The run goes from 9.6% disruptive predictions at step 0, to 83.0% at step 250, to 98.9% at step 500, and then effectively 100%. So Exp5 is not a rescue of the Exp4 failure mode. It is the same reward-hacking pattern in the opposite direction.\nThat is actually a useful design lesson. A blunt class-weight bump is too coarse. It keeps the contract clean, but it just rotates the collapse. If I want a real frontier shift from here, the selector or the reward has to care about balanced behavior directly, not only about getting one neglected class back into the output stream.\nReferences 1. https://arxiv.org/pdf/2402.03300 2. https://arxiv.org/pdf/2205.01833 3. https://arxiv.org/pdf/2402.09353 4. https://www.science.org/doi/10.1126/science.1240474 5. https://www.nature.com/articles/s41586-019-0941-9 Cite @misc{akhil2026notesdrnote2, author = {Akella, Akhil Pandey}, title = {Tinker, smol-RL and QDoRA (Part 2)}, year = {2026}, month = {February}, url = {https://akhilpandey95.github.io/notes/tinker_part2/}, note = {Accessed: } } ",
+  "wordCount" : "2596",
   "inLanguage": "en",
-  "datePublished": "2026-02-11T00:00:00Z",
-  "dateModified": "2026-02-11T00:00:00Z",
+  "datePublished": "2026-03-06T00:00:00Z",
+  "dateModified": "2026-03-06T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Akhil Pandey"
@@ -238,20 +238,30 @@
     <div class="post-description">
       Part 2 teaser and setup for smol-RL experiments with Tinker
     </div>
-    <div class="post-meta"><span title='2026-02-11 00:00:00 +0000 UTC'>February 11, 2026</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Akhil Pandey
+    <div class="post-meta"><span title='2026-03-06 00:00:00 +0000 UTC'>March 6, 2026</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Akhil Pandey
 
 </div>
   </header> <div class="toc">
-    <details >
+    <details  open>
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">Table of Contents</span>
         </summary>
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#part-2-goes-live-on-mar-06-2026" aria-label="Part 2 goes live on Mar 06, 2026">Part 2 goes live on Mar 06, 2026</a></li>
+                    <a href="#context" aria-label="Context">Context</a></li>
                 <li>
-                    <a href="#tldr" aria-label="TLDR;">TLDR;</a></li>
+                    <a href="#tldr-part-1" aria-label="TLDR; (Part-1)">TLDR; (Part-1)</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#data" aria-label="Data">Data</a></li>
+                <li>
+                    <a href="#experiment-frame" aria-label="Experiment Frame">Experiment Frame</a></li>
+                <li>
+                    <a href="#eval-snapshot" aria-label="Eval Snapshot">Eval Snapshot</a></li>
+                <li>
+                    <a href="#exp5-a-follow-up-not-a-different-training-paradigm" aria-label="Exp5: A Follow-Up, Not A Different Training Paradigm">Exp5: A Follow-Up, Not A Different Training Paradigm</a></li>
                 <li>
                     <a href="#references" aria-label="References">References</a></li>
                 <li>
@@ -262,17 +272,353 @@
     </details>
 </div>
 
-  <div class="post-content"><h3 id="part-2-goes-live-on-mar-06-2026">Part 2 goes live on Mar 06, 2026<a hidden class="anchor" aria-hidden="true" href="#part-2-goes-live-on-mar-06-2026">#</a></h3>
-<p>This is a short preface to Part 2. The full write-up will be published on Mar 06, 2026. If you want the context from Part 1 first, start here: <a href="../tinker/">Tinker, smol-RL and QDoRA</a>.</p>
-<h3 id="tldr">TLDR;<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h3>
-<p>In Part 1, I framed reproducibility as a practical problem in modern LLM work, not just a philosophical ideal. Even with greedy decoding and fixed seeds, determinism can break in subtle ways: GPU type, numerical precision, kernel choices, and non-deterministic log-probs in MoE models all conspire to make &ldquo;run it again&rdquo; less reliable than we like to admit. That led to a simple question: do we need a better abstraction layer so that the model ops complexity is hidden but the critical knobs for determinism are explicit and repeatable?</p>
-<p>That is where Tinker felt like a useful shift. A scikit-learn style API for post-training models makes it easier to standardize the boring but fragile pieces: reproducibility settings, dataset plumbing, and stable training/inference pipelines. Part 1 closed on a concrete premise: the <em>Just-RL</em> paper looks like the right starting point for testing Tinker&rsquo;s RLVR and RLHF setups on a small model before scaling.</p>
-<p>Part 2 will use that premise directly: start with a small, practical <em>Just-RL</em> style setup and run it through Tinker&rsquo;s RLVR/RLHF abstractions to see what actually stays deterministic and what doesn&rsquo;t. I also plan to connect that to QDoRA in a small, controlled setting so the interaction between low-rank adaptation, precision choices, and stability is visible rather than hand-waved.</p>
+  <div class="post-content"><h3 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h3>
+<p>This post is a continuation of an article, so it&rsquo;d be ideal/nice if you read the first part of this post here: <a href="../tinker/">Tinker, smol-RL and QDoRA</a>.</p>
+<h3 id="tldr-part-1">TLDR; (Part-1)<a hidden class="anchor" aria-hidden="true" href="#tldr-part-1">#</a></h3>
+<p>In <a href="../tinker/">Part 1</a>, I showcase how reproducibility poses a practical problem in modern LLM work, not just a philosophical ideal. Even with greedy decoding and fixed seeds, determinism can break in subtle ways: GPU type, numerical precision, kernel choices, and non-deterministic log-probs in MoE models all conspire to make &ldquo;run it again&rdquo; less reliable than we like to admit. That led to a simple question: do we need a better abstraction layer so that the model ops complexity is hidden but the critical knobs for determinism are explicit and repeatable? Tinker reminded me of scikit-learn style API but for post-training models and the cookbook makes it easier to standardize the fragile pieces of post-training like reproducibility settings, dataset pre-processing, and stable training/inference pipelines. In Part 1, I talk about the <em>Just-RL</em> paper and how its a great starting point for testing Tinker&rsquo;s RLVR and RLHF setups on a small models before scaling data and model size.</p>
+<h3 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h3>
+<p>In this post, we will use the premise from the previous post to start with a small, practical <em>Just-RL</em> style setup and run it through Tinker&rsquo;s RLVR/RLHF abstractions to see what actually stays deterministic and what doesn&rsquo;t. I also plan to connect that to QDoRA in a small, controlled setting so the interaction between low-rank adaptation, precision choices, and stability is visible rather than hand-waved. In this post we will take a look at:</p>
+<ul>
+<li>a controlled RL-only sequence on single-turn disruption classification</li>
+<li>prompt changes, reward changes, and contract changes on a frozen split</li>
+<li>one RL follow-up (<code>Exp5</code>) that tests class-weighted reward shaping</li>
+</ul>
+<p><strong>to-do</strong>:</p>
+<ul>
+<li>the planned QDoRA SFT baseline on the same task</li>
+<li>a real SFT-vs-RL comparison</li>
+<li>the Part 1 adversarial two-agent setup</li>
+<li>the joint disruption-plus-novelty objective</li>
+<li>the reproducibility sweep over dtype, hardware, kernels, or repeated runs</li>
+</ul>
+<h3 id="data">Data<a hidden class="anchor" aria-hidden="true" href="#data">#</a></h3>
+<p>The setup also matters because these runs do not begin from a generic instruction-tuning dataset. The broader corpus behind the disruption experiments is a SciSciNet/OpenAlex-style paper collection with <code>1,972,797</code> records. At the metadata level, each record can carry fields like <code>openalex_id</code>, <code>title</code>, <code>abstract</code>, <code>publication_year</code>, <code>cited_by_count</code>, <code>cd_index</code>, <code>novelty_score</code>, <code>conventionality_score</code>, <code>disruption_label</code>, <code>novelty_label</code>, <code>primary_field</code>, and <code>concepts</code>. For the actual RL experiments, though, I used a fixed JSONL slice: <code>data/sci_balanced_from2m_no_ovr.rl_balanced.jsonl</code>. A quick <code>polars</code> pass gives the main shape of that file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">scan_ndjson</span><span class="p">(</span><span class="s2">&#34;data/sci_balanced_from2m_no_ovr.rl_balanced.jsonl&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">collect_schema</span><span class="p">()</span><span class="o">.</span><span class="n">names</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="s1">&#39;openalex_id&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;abstract&#39;</span><span class="p">,</span> <span class="s1">&#39;publication_year&#39;</span><span class="p">,</span> <span class="s1">&#39;cited_by_count&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="s1">&#39;cd_index&#39;</span><span class="p">,</span> <span class="s1">&#39;novelty_score&#39;</span><span class="p">,</span> <span class="s1">&#39;conventionality_score&#39;</span><span class="p">,</span> <span class="s1">&#39;disruption_label&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="s1">&#39;novelty_label&#39;</span><span class="p">,</span> <span class="s1">&#39;primary_field&#39;</span><span class="p">,</span> <span class="s1">&#39;concepts&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">len</span><span class="p">())</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="mi">600000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">group_by</span><span class="p">(</span><span class="s2">&#34;disruption_label&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span> <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">len</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;n&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span> <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&#34;disruption_label&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span> <span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">┌──────────────────┬────────┐</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="n">disruption_label</span> <span class="err">┆</span> <span class="n">n</span>      <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="o">---</span>              <span class="err">┆</span> <span class="o">---</span>    <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="nb">str</span>              <span class="err">┆</span> <span class="n">u32</span>    <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">╞══════════════════╪════════╡</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="n">consolidating</span>    <span class="err">┆</span> <span class="mi">200000</span> <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="n">disruptive</span>       <span class="err">┆</span> <span class="mi">200000</span> <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="n">neutral</span>          <span class="err">┆</span> <span class="mi">200000</span> <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">└──────────────────┴────────┘</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>     <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;publication_year&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;min_year&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>     <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;publication_year&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;max_year&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>     <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;cited_by_count&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;median_citations&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>     <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;cited_by_count&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;p90_citations&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>     <span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&#34;cited_by_count&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&#34;max_citations&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span> <span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">shape</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="err">┌──────────┬──────────┬──────────────────┬───────────────┬───────────────┐</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="n">min_year</span> <span class="err">┆</span> <span class="n">max_year</span> <span class="err">┆</span> <span class="n">median_citations</span> <span class="err">┆</span> <span class="n">p90_citations</span> <span class="err">┆</span> <span class="n">max_citations</span> <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="o">---</span>      <span class="err">┆</span> <span class="o">---</span>      <span class="err">┆</span> <span class="o">---</span>              <span class="err">┆</span> <span class="o">---</span>           <span class="err">┆</span> <span class="o">---</span>           <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="n">i64</span>      <span class="err">┆</span> <span class="n">i64</span>      <span class="err">┆</span> <span class="n">f64</span>              <span class="err">┆</span> <span class="n">f64</span>           <span class="err">┆</span> <span class="n">i64</span>           <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">╞══════════╪══════════╪══════════════════╪═══════════════╪═══════════════╡</span>
+</span></span><span class="line"><span class="cl"><span class="err">│</span> <span class="mi">1875</span>     <span class="err">┆</span> <span class="mi">2024</span>     <span class="err">┆</span> <span class="mf">12.0</span>             <span class="err">┆</span> <span class="mf">90.0</span>          <span class="err">┆</span> <span class="mi">21559</span>         <span class="err">│</span>
+</span></span><span class="line"><span class="cl"><span class="err">└──────────┴──────────┴──────────────────┴───────────────┴───────────────┘</span>
+</span></span></code></pre></div><p>That small block already says most of what matters for interpreting the later runs. The file is not a toy benchmark, but it is also not the full upstream corpus. It is a balanced <code>600k</code> slice with <code>200k</code> examples per disruption class, and each example carries enough structure to be more than plain text: title, abstract, year, citation count, field, and the citation-derived disruption label. In practice, though, the runtime loader narrows this further and only uses the six fields that matter for the disruption task: <code>title</code>, <code>abstract</code>, <code>publication_year</code>, <code>cited_by_count</code>, <code>primary_field</code>, and <code>disruption_label</code>.</p>
+<p>The important point here is that these labels are not arbitrary buckets I made up for the RL loop. The disruption labels come from citation-network behavior, and the novelty/conventionality fields come from how unusual or familiar a paper&rsquo;s reference combinations look relative to the background literature. Even though the current RL sequence only uses <code>disruption_label</code>, the wider corpus already carries the fuller science-of-science structure.</p>
+<p>For disruption, the intuition is: what do future papers do after they cite a focal paper? If later work cites the focal paper without also citing its references, the focal work looks more <code>disruptive</code>. If later work keeps citing the focal paper together with the papers it built on, the work looks more <code>consolidating</code>. Values near the middle behave more like <code>neutral</code>. The figure below is the cleanest visual explanation of that idea from Wu, Wang, and Evans, <a href="https://www.nature.com/articles/s41586-019-0941-9"><em>Large teams develop and small teams disrupt science and technology</em></a>.</p>
+<figure style="text-align: center;">
+    <a href="https://akhilpandey95.github.io/img/disruption.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/disruption.png" />
+    </a>
+    <figcaption style="text-align: center;">
+        <p style="text-align: center;">Fig. Reference view of disruption from Wu, Wang, and Evans, <a href="https://www.nature.com/articles/s41586-019-0941-9"><em>Large teams develop and small teams disrupt science and technology</em></a>, Nature (2019).</p>
+    </figcaption>
+</figure>
+<p>That paper figure is the clean conceptual picture. For this post, though, the more useful question is: what does <code>cd_index</code> actually look like in the balanced JSONL that feeds the RL runs? The next plot recreates the panel <code>b</code> idea on the <code>600k</code> slice used here. Two details matter. First, the slice is already balanced for training, so it should not be read as the natural frequency profile of the full <code>1.97M</code>-paper source corpus. Second, the actual metadata thresholds in this dataset are much tighter than the older shorthand I used in Part 1: <code>cd_index &lt;= -0.001</code> is <code>consolidating</code>, <code>-0.001 &lt; cd_index &lt; 0.001</code> is <code>neutral</code>, and <code>cd_index &gt;= 0.001</code> is <code>disruptive</code>. The tall spike at <code>0</code> is not a plotting bug; it is the empirical shape of the slice, where a large fraction of the <code>neutral</code> mass sits exactly at or extremely close to zero.</p>
+<figure style="text-align: center;">
+    <a href="https://akhilpandey95.github.io/img/tinker_part2_disruption_distribution.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/tinker_part2_disruption_distribution.png" />
+    </a>
+    <figcaption style="text-align: center;">
+        <p style="text-align: center;">Fig. Dataset view of <code>cd_index</code> on the balanced <code>600k</code> RL slice. The x-axis is shown on a signed log scale and the y-axis is paper frequency on a log scale; the shaded bands mark the dataset cutoffs for <code>consolidating</code>, <code>neutral</code>, and <code>disruptive</code>.</p>
+    </figcaption>
+</figure>
+<p>For novelty and conventionality, the logic is different. Here the question is not whether a paper overturns or develops prior citation pathways, but whether the combinations of prior work it cites are unusual or familiar. In the Uzzi et al. framing, the left tail corresponds to more <code>novel</code> combinations and the right side corresponds to more <code>conventional</code> combinations. That is why the corpus stores both <code>novelty_score</code> and <code>conventionality_score</code>: a paper can be mostly grounded in familiar prior work while still injecting a smaller amount of unusual combination. The figure below is from Uzzi et al., <a href="https://www.science.org/doi/abs/10.1126/science.1240474"><em>Atypical Combinations and Scientific Impact</em></a>.</p>
+<figure style="text-align: center;">
+    <a href="https://akhilpandey95.github.io/img/novelty_conventionality.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/novelty_conventionality.png" />
+    </a>
+    <figcaption style="text-align: center;">
+        <p style="text-align: center;">Fig. Reference view of novelty and conventionality from Uzzi et al., <a href="https://www.science.org/doi/abs/10.1126/science.1240474"><em>Atypical Combinations and Scientific Impact</em></a>, Science (2013).</p>
+    </figcaption>
+</figure>
+<p>The broader provenance is still useful context. This balanced JSONL was carved out of a much larger SciSciNet/OpenAlex-style paper corpus with <code>1,972,797</code> records, where the raw disruption distribution is naturally skewed: about <code>247,090</code> papers are labeled <code>disruptive</code>, about <code>583,215</code> are <code>consolidating</code>, and about <code>1,142,492</code> are <code>neutral</code>. So the experiments here are not using the world as-is; they are using a balanced slice of a much more imbalanced scientific-impact distribution. That distinction ends up mattering quite a bit once the reward starts encouraging the model to exploit class asymmetries.</p>
+<p>For the main four-run sequence, the loader then shuffles this JSONL with <code>seed = 0</code>, takes the first <code>5000</code> rows for train and the next <code>500</code> for test, and uses <code>group_size = 2</code> for train versus <code>group_size = 1</code> for eval. That sounds like a small implementation detail, but it is exactly the sort of detail that becomes important once the RL loop starts over-optimizing a proxy rather than learning the balanced classifier one might naively expect.</p>
+<h3 id="experiment-frame">Experiment Frame<a hidden class="anchor" aria-hidden="true" href="#experiment-frame">#</a></h3>
+<p>Before the charts, I need to say what these runs actually are, because otherwise <code>Baseline</code>, <code>Exp1</code>, <code>Exp2</code>, <code>Exp3</code>, <code>Exp4</code>, and <code>Exp5</code> are just names on an axis.</p>
+<p>Part 1 ended with a broader experimental agenda: Tinker, <em>Just-RL</em>, QDoRA, adversarial reasoning, novelty labels, and eventually an SFT-vs-RL comparison. The evidence below is narrower than that. Every numbered run in this section is an RL run on the disruption task only. The planned QDoRA SFT baseline belongs to the larger Part 2 program, but it is not one of the artifacts summarized here yet. The same goes for the Part 1 adversarial two-agent setup and the joint disruption-plus-novelty objective. Those ideas still matter, but they are not what the next tables and plots are evaluating.</p>
+<p>The actual task here is much simpler:</p>
+<p>$$
+x_i = (\text{title}_i,\ \text{abstract}_i,\ \text{publication year}_i,\ \text{citation count}_i,\ \text{field}_i),
+$$</p>
+<p>$$
+y_i \in {\texttt{disruptive},\ \texttt{consolidating},\ \texttt{neutral}}.
+$$</p>
+<p>Given a paper record $x_i$, the model emits a machine-readable prediction $\hat{y}_i$ as JSON, and the RL loop optimizes</p>
+<p>$$
+R_i = R_{\text{parse}} + R_{\text{contract}} + R_{\text{task}} + R_{\text{think}}.
+$$</p>
+<p>In plain English, the reward has four moving parts: did the raw text parse as JSON, did it satisfy the required key/value contract, did it predict the right class, and did it avoid forbidden raw <code>&lt;think&gt;</code> output.</p>
+<p>For the baseline and <code>Exp1</code>, the reward was intentionally soft on semantic mistakes:</p>
+<p>$$
+\text{valid + correct} = +0.75,
+$$</p>
+<p>$$
+\text{valid + wrong} = 0.0,
+$$</p>
+<p>$$
+\text{invalid payload} = -0.5,
+$$</p>
+<p>$$
+\text{raw JSON failure} = -1.0.
+$$</p>
+<p>with an additional <code>-1.0</code> penalty for raw <code>&lt;think&gt;</code> tags.</p>
+<p>For <code>Exp2</code>, <code>Exp3</code>, and <code>Exp4</code>, the reward kept the same parse penalties but made label correctness matter much more:</p>
+<p>$$
+\text{valid + correct} = +1.05,
+$$</p>
+<p>$$
+\text{valid + wrong} = -0.55,
+$$</p>
+<p>$$
+\text{invalid payload} = -0.75,
+$$</p>
+<p>$$
+\text{raw JSON failure} = -1.0.
+$$</p>
+<p>again with the same extra <code>-1.0</code> penalty for raw <code>&lt;think&gt;</code> tags.</p>
+<p><code>Exp5</code> is still RL, not SFT. It keeps the stronger <code>Exp2</code>-<code>Exp4</code> reward shape, but multiplies correct <code>disruptive</code> predictions by <code>3x</code>, so a valid correct <code>disruptive</code> answer can earn <code>+3.05</code> while a valid wrong answer is still <code>-0.55</code>.</p>
+<p>The other useful distinction is the output contract. <code>Baseline</code> through <code>Exp3</code> asked the model for a richer four-key JSON object: <code>disruption_label</code>, <code>label_justification</code>, <code>evidence_signals</code>, and <code>confidence</code>. <code>Exp4</code> and <code>Exp5</code> cut that down to just <code>disruption_label</code> and <code>confidence</code>. That simplification turns out to matter a lot.</p>
+<p>All of the runs below share the same fixed backbone: <code>meta-llama/Llama-3.1-8B-Instruct</code>, the same <code>5000 / 500</code> split, the same <code>batch_size = 16</code>, the same <code>group_size = 2</code> for train, the same <code>group_size = 1</code> for eval, and the same <code>seed = 0</code>. What changes from run to run is the prompt, the reward, or the contract.</p>
+<p>That is the shortest run map:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Run</th>
+          <th>type</th>
+          <th>change</th>
+          <th>i was testing for</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Baseline</td>
+          <td>RL</td>
+          <td>reference run</td>
+          <td>whether the default contract + task setup was even usable</td>
+      </tr>
+      <tr>
+          <td><code>Exp1</code></td>
+          <td>RL</td>
+          <td>add explicit disruption-label ontology to the prompt</td>
+          <td>whether semantics were under-specified</td>
+      </tr>
+      <tr>
+          <td><code>Exp2</code></td>
+          <td>RL</td>
+          <td>strengthen the task reward</td>
+          <td>whether correctness pressure, not prompt wording, was the bottleneck</td>
+      </tr>
+      <tr>
+          <td><code>Exp3</code></td>
+          <td>RL</td>
+          <td>add decision checklist and mini examples</td>
+          <td>whether the <code>disruptive</code> vs <code>consolidating</code> boundary needed sharper calibration</td>
+      </tr>
+      <tr>
+          <td><code>Exp4</code></td>
+          <td>RL</td>
+          <td>shrink output JSON to two keys and cut <code>max_tokens</code> to <code>64</code></td>
+          <td>whether contract simplification would recover reliability</td>
+      </tr>
+      <tr>
+          <td><code>Exp5</code></td>
+          <td>RL follow-up</td>
+          <td>keep the simpler contract, upweight correct <code>disruptive</code> predictions by <code>3x</code></td>
+          <td>whether a blunt class-weight fix could prevent <code>disruptive</code> collapse</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="eval-snapshot">Eval Snapshot<a hidden class="anchor" aria-hidden="true" href="#eval-snapshot">#</a></h3>
+<p>With that structure in place, step <code>250</code> is the first checkpoint where <code>Baseline</code> through <code>Exp4</code> are directly comparable on the same held-out <code>500</code> papers. The three views below are not the whole training story. Together, they are just the shortest way to answer one question: after <code>250</code> RL updates, did each run improve by learning the task better, or by finding a safer class bias?</p>
+<figure style="text-align: center;">
+    <a href="https://akhilpandey95.github.io/img/tinker_part2_eval250_contract.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/tinker_part2_eval250_contract.png" />
+    </a>
+    <figcaption style="text-align: center;">
+        <p style="text-align: center;">Fig. Output contract view across Baseline through experiment 4 checking <code>label_match</code>, <code>parse_ok</code>, and <code>format_strict_ok</code>.</p>
+    </figcaption>
+</figure>
+<figure style="text-align: center;">
+    <a href="https://akhilpandey95.github.io/img/tinker_part2_eval250_recall.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/tinker_part2_eval250_recall.png" />
+    </a>
+    <figcaption style="text-align: center;">
+        <p style="text-align: center;">Fig: Class balance view across Baseline through experiment 4 checking recall on <code>disruptive, consolidating</code>, and <code>neutral</code> classes.</p>
+    </figcaption>
+</figure>
+<figure style="text-align: center;">
+    <a href="https://akhilpandey95.github.io/img/tinker_part2_eval250_invalid.png" target="_blank">
+        <img src="https://akhilpandey95.github.io/img/tinker_part2_eval250_invalid.png" />
+    </a>
+    <figcaption style="text-align: center;">
+        <p style="text-align: center;">Fig: Reliability view across Baseline through experiment 4 to check invalid output rate.</p>
+    </figcaption>
+</figure>
+<table>
+  <thead>
+      <tr>
+          <th>Run</th>
+          <th>Main change</th>
+          <th><code>label_match</code></th>
+          <th><code>parse_ok</code></th>
+          <th><code>format_strict_ok</code></th>
+          <th><code>disruptive</code> recall</th>
+          <th><code>consolidating</code> recall</th>
+          <th><code>neutral</code> recall</th>
+          <th>invalid rate</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Baseline</td>
+          <td>reference RL setup</td>
+          <td>0.326</td>
+          <td>0.966</td>
+          <td>0.918</td>
+          <td>0.0897</td>
+          <td>0.2108</td>
+          <td>0.6085</td>
+          <td>0.082</td>
+      </tr>
+      <tr>
+          <td><code>Exp1</code></td>
+          <td>ontology prompt</td>
+          <td>0.316</td>
+          <td>0.974</td>
+          <td>0.960</td>
+          <td>0.2414</td>
+          <td>0.4096</td>
+          <td>0.2910</td>
+          <td>0.040</td>
+      </tr>
+      <tr>
+          <td><code>Exp2</code></td>
+          <td>stronger semantic reward</td>
+          <td>0.362</td>
+          <td>0.978</td>
+          <td>0.976</td>
+          <td>0.0621</td>
+          <td>0.7048</td>
+          <td>0.2910</td>
+          <td>0.024</td>
+      </tr>
+      <tr>
+          <td><code>Exp3</code></td>
+          <td>boundary-calibration prompt</td>
+          <td>0.356</td>
+          <td>0.944</td>
+          <td>0.906</td>
+          <td>0.1034</td>
+          <td>0.4458</td>
+          <td>0.4709</td>
+          <td>0.094</td>
+      </tr>
+      <tr>
+          <td><code>Exp4</code></td>
+          <td>2-key contract + <code>max_tokens=64</code></td>
+          <td>0.396</td>
+          <td>0.998</td>
+          <td>0.998</td>
+          <td>0.0069</td>
+          <td>0.2831</td>
+          <td>0.7937</td>
+          <td>0.002</td>
+      </tr>
+  </tbody>
+</table>
+<p>Read from left to right, the sequence makes a lot more sense now.</p>
+<p>The baseline says the loop is operationally alive, but it is semantically conservative. It mostly hides inside <code>neutral</code>. <code>Exp1</code> is the first real semantic move because the ontology prompt revives <code>disruptive</code> without breaking the contract. <code>Exp2</code> proves that reward shaping can move the scalar metric, but it does so by leaning hard into <code>consolidating</code>. <code>Exp3</code> gives up some contract hygiene to recover a more believable three-class boundary. <code>Exp4</code> then solves the contract side almost perfectly, but it solves it while nearly erasing <code>disruptive</code>.</p>
+<p>That is why the next sentence matters more than the top-line <code>label_match</code>: the runs are not all optimizing the same failure mode. <code>Exp4</code> is the cleanest contract and the best raw step-<code>250</code> scalar score. It is not the best balanced classifier. If I recompute held-out macro-F1 at step <code>250</code>, the ordering is <code>Exp3 ~ 0.337</code>, <code>Exp1 ~ 0.317</code>, <code>Exp2 ~ 0.309</code>, <code>Exp4 ~ 0.292</code>, <code>Baseline ~ 0.288</code>. So the most reliable JSON checkpoint and the most balanced semantic checkpoint are not the same run.</p>
+<p>If I’m being blunt, that is the whole problem in miniature. Once the parser stops being the main bottleneck, the policy finds easier ways to win the objective. So the next move after <code>Exp4</code> is not &ldquo;use a bigger model&rdquo; or &ldquo;add more output fields back.&rdquo; The next move is to fix the objective mismatch more directly.</p>
+<h3 id="exp5-a-follow-up-not-a-different-training-paradigm">Exp5: A Follow-Up, Not A Different Training Paradigm<a hidden class="anchor" aria-hidden="true" href="#exp5-a-follow-up-not-a-different-training-paradigm">#</a></h3>
+<p>This is exactly where <code>Exp5</code> comes in. It is still an RL run. It is not the missing QDoRA SFT baseline. I ran it because <code>Exp4</code> made the remaining failure mode too obvious: the contract was clean, but <code>disruptive</code> had effectively vanished. So the crude intervention was to say: fine, make correct <code>disruptive</code> predictions much more valuable and see what happens.</p>
+<p>That gives the following held-out trajectory:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th><code>label_match</code></th>
+          <th>macro-F1</th>
+          <th>predicted <code>disruptive</code> share</th>
+          <th><code>disruptive</code> recall</th>
+          <th>min class recall</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>0</code></td>
+          <td>0.3360</td>
+          <td>0.3003</td>
+          <td>0.0955</td>
+          <td>0.0823</td>
+          <td>0.0823</td>
+      </tr>
+      <tr>
+          <td><code>250</code></td>
+          <td>0.3445</td>
+          <td>0.2489</td>
+          <td>0.8295</td>
+          <td>0.8009</td>
+          <td>0.0132</td>
+      </tr>
+      <tr>
+          <td><code>500</code></td>
+          <td>0.3495</td>
+          <td>0.1819</td>
+          <td>0.9885</td>
+          <td>0.9928</td>
+          <td>0.0000</td>
+      </tr>
+      <tr>
+          <td><code>2000</code></td>
+          <td>0.3465</td>
+          <td>0.1716</td>
+          <td>1.0000</td>
+          <td>1.0000</td>
+          <td>0.0000</td>
+      </tr>
+  </tbody>
+</table>
+<p>This is useful, but mostly as a negative result. At step <code>250</code>, <code>Exp5</code> can look superficially better if I only look at the rare class in isolation. <code>Disruptive</code> recall jumps from <code>0.0823</code> to <code>0.8009</code>, and the contract remains almost perfect. But that is not a balanced classifier getting smarter. It is the policy discovering that the cheapest path to reward is to call almost everything <code>disruptive</code>.</p>
+<p>The most revealing column in that table is not even <code>label_match</code>. It is predicted <code>disruptive</code> share. The run goes from <code>9.6%</code> disruptive predictions at step <code>0</code>, to <code>83.0%</code> at step <code>250</code>, to <code>98.9%</code> at step <code>500</code>, and then effectively <code>100%</code>. So <code>Exp5</code> is not a rescue of the <code>Exp4</code> failure mode. It is the same reward-hacking pattern in the opposite direction.</p>
+<p>That is actually a useful design lesson. A blunt class-weight bump is too coarse. It keeps the contract clean, but it just rotates the collapse. If I want a real frontier shift from here, the selector or the reward has to care about balanced behavior directly, not only about getting one neglected class back into the output stream.</p>
 <h3 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="k">1.</span> https://arxiv.org/pdf/2402.03300
 </span></span><span class="line"><span class="cl"><span class="k">2.</span> https://arxiv.org/pdf/2205.01833
 </span></span><span class="line"><span class="cl"><span class="k">3.</span> https://arxiv.org/pdf/2402.09353
 </span></span><span class="line"><span class="cl"><span class="k">4.</span> https://www.science.org/doi/10.1126/science.1240474
+</span></span><span class="line"><span class="cl"><span class="k">5.</span> https://www.nature.com/articles/s41586-019-0941-9
 </span></span></code></pre></div><h3 id="cite">Cite<a hidden class="anchor" aria-hidden="true" href="#cite">#</a></h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bibtex" data-lang="bibtex"><span class="line"><span class="cl"><span class="nc">@misc</span><span class="p">{</span><span class="nl">akhil2026notesdrnote2</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="na">author</span>       <span class="p">=</span> <span class="s">{Akella, Akhil Pandey}</span><span class="p">,</span>
