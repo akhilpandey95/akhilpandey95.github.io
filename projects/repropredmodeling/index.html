@@ -1,187 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach | Akhil Pandey Akella</title>
-<meta name="keywords" content="">
-<meta name="description" content="CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
-<meta name="author" content="Akhil Pandey">
-<link rel="canonical" href="https://akhilpandey95.github.io/projects/repropredmodeling/">
-<meta name="google-site-verification" content="G-PNYGCP0LEP">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.c3e9fb114031703a9265f63b96980ee572b41de03cf836930dcdcb70356da920.css" integrity="sha256-w&#43;n7EUAxcDqSZfY7lpgO5XK0HeA8&#43;DaTDc3LcDVtqSA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/projects/repropredmodeling/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><link rel="stylesheet" href="https://akhilpandey95.github.io/css/extended/override.css">
-
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNYGCP0LEP"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-PNYGCP0LEP');
-        }
-      </script><meta property="og:url" content="https://akhilpandey95.github.io/projects/repropredmodeling/">
-  <meta property="og:site_name" content="Akhil Pandey Akella">
-  <meta property="og:title" content="Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
-  <meta property="og:description" content="CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
-  <meta property="og:locale" content="en-US">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="projects">
-    <meta property="article:published_time" content="2024-10-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-21T00:00:00+00:00">
-    <meta property="og:image" content="https://akhilpandey95.github.io/img/phi_external_longformer_model_confidence.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://akhilpandey95.github.io/img/phi_external_longformer_model_confidence.png">
-<meta name="twitter:title" content="Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
-<meta name="twitter:description" content="CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Projects",
-      "item": "https://akhilpandey95.github.io/projects/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach",
-      "item": "https://akhilpandey95.github.io/projects/repropredmodeling/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach",
-  "name": "Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach",
-  "description": "CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach",
-  "keywords": [
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow">
+    <title>Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach | Akhil Pandey Akella</title>
+    <meta name="description" content="CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
+    <meta name="author" content="Akhil Pandey Akella">
+    <link rel="canonical" href="https://akhilpandey95.github.io/projects/repropredmodeling/">
+    <meta property="og:url" content="https://akhilpandey95.github.io/projects/repropredmodeling/">
+    <meta property="og:site_name" content="Akhil Pandey Akella">
+    <meta property="og:title" content="Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
+    <meta property="og:description" content="CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
+    <meta property="og:locale" content="en-US">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
+    <meta name="twitter:description" content="CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach">
+    <link rel="stylesheet" href="/css/site.css">
+    <meta name="theme-color" content="#2e2e33">
+    <meta name="msapplication-TileColor" content="#2e2e33">
     
-  ],
-  "articleBody": "Abstract The reproducibility of scientific articles is central to the advancement of science. Despite this importance, evaluating reproducibility remains challenging due to the scarcity of ground truth data. Predictive models can address this limitation by streamlining the tedious evaluation process. Typically, a paper’s reproducibility is inferred based on the availability of artifacts such as code, data, or supplemental information, often without extensive empirical investigation. To address these issues, we utilized artifacts of papers as fundamental units to develop a novel, dual-spectrum framework that focuses on author-centric and external-agent perspectives. We used the author-centric spectrum, followed by the external-agent spectrum, to guide a structured, model-based approach to quantify and assess reproducibility. We explored the interdependencies between different factors influencing reproducibility and found that linguistic features such as readability and lexical diversity are strongly correlated with papers achieving the highest statuses on both spectrums. Our work provides a model-driven pathway for evaluating the reproducibility of scientific research.\nAuthors: Akhil Pandey Akella, Sagnik Ray Choudhury, David Koop, Hamed Alhoori\nPaper: https://dl.acm.org/doi/10.1145/3627673.3679831\nCode: https://github.com/reproducibilityproject/NLRR\n",
-  "wordCount" : "170",
-  "inLanguage": "en",
-  "image":"https://akhilpandey95.github.io/img/phi_external_longformer_model_confidence.png","datePublished": "2024-10-21T00:00:00Z",
-  "dateModified": "2024-10-21T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Akhil Pandey"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://akhilpandey95.github.io/projects/repropredmodeling/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Akhil Pandey Akella",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://akhilpandey95.github.io/favicon.ico"
-    }
-  }
-}
-</script>
     
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      displayAlign: 'center',    /* truly center block math */
-      displayIndent: '0em',      /* kill any default indent */
-      "HTML-CSS": {
-        styles: {'.MathJax_Preview': {visibility: 'hidden'}}
-      }
-    });
-  </script>
-
-  
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
-    async>
-  </script>
-
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        displayAlign: 'center',
+        displayIndent: '0em',
+        "HTML-CSS": {
+          styles: {'.MathJax_Preview': {visibility: 'hidden'}}
+        }
+      });
+    </script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
 </head>
-
 <body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.body.classList.add("dark");
+    } else if (localStorage.getItem("pref-theme") !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.body.classList.add("dark");
     }
-
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey Akella (Alt + H)">Akhil Pandey Akella</a>
+            <a href="/" accesskey="h" title="Akhil Pandey Akella (Alt + H)">Akhil Pandey Akella</a>
+            
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -204,103 +76,61 @@
                     </svg>
                 </button>
             </div>
+            
         </div>
         <ul id="menu">
+        
             <li>
-                <a href="https://akhilpandey95.github.io/about/" title="About">
+                <a href="/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
+        
             <li>
-                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
-                    <span>Projects</span>
+                <a href="/projects/" title="Projects">
+                    <span class="active">Projects</span>
                 </a>
             </li>
+        
             <li>
-                <a href="https://akhilpandey95.github.io/notes/" title="Notes">
+                <a href="/notes/" title="Notes">
                     <span>Notes</span>
                 </a>
             </li>
+        
             <li>
-                <a href="https://akhilpandey95.github.io/cv/cv.pdf" title="CV">
+                <a href="/cv/cv.pdf" title="CV">
                     <span>CV</span>
                 </a>
             </li>
+        
         </ul>
     </nav>
 </header>
 <main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach
-    </h1>
-    <div class="post-description">
-      CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach
-    </div>
-    <div class="post-meta"><span title='2024-10-21 00:00:00 +0000 UTC'>October 21, 2024</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Akhil Pandey
-
-</div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" src="https://akhilpandey95.github.io/img/phi_external_longformer_model_confidence.png" alt="">
-        
-</figure><div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><ul>
-                <li>
-                    <a href="#abstract" aria-label="Abstract">Abstract</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><h3 id="abstract">Abstract<a hidden class="anchor" aria-hidden="true" href="#abstract">#</a></h3>
-<p>The reproducibility of scientific articles is central to the advancement of science. Despite this importance, evaluating reproducibility remains challenging due to the scarcity of ground truth data. Predictive models can address this limitation by streamlining the tedious evaluation process. Typically, a paper&rsquo;s reproducibility is inferred based on the availability of artifacts such as code, data, or supplemental information, often without extensive empirical investigation. To address these issues, we utilized artifacts of papers as fundamental units to develop a novel, dual-spectrum framework that focuses on author-centric and external-agent perspectives. We used the author-centric spectrum, followed by the external-agent spectrum, to guide a structured, model-based approach to quantify and assess reproducibility. We explored the interdependencies between different factors influencing reproducibility and found that linguistic features such as readability and lexical diversity are strongly correlated with papers achieving the highest statuses on both spectrums. Our work provides a model-driven pathway for evaluating the reproducibility of scientific research.</p>
+    <article class="post-single"><header class="post-header"><h1 class="post-title">Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach</h1><div class="post-description">CIKM-24 Full-paper | Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach</div><div class="post-meta">Oct 21, 2024&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Akhil Pandey</div></header><figure class="entry-cover"><a href="/img/phi_external_longformer_model_confidence.png"><img loading="lazy" src="/img/phi_external_longformer_model_confidence.png" alt="Navigating the Landscape of Reproducible Research, A Predictive Modeling Approach"></a></figure><div class="toc"><details open><summary accesskey="c" title="(Alt + C)"><span class="details">Table of Contents</span></summary><div class="inner"><ul><li class="toc-level-3"><a href="#abstract">Abstract</a></li></ul></div></details></div><div class="post-content"><h3 id="abstract">Abstract<a hidden class="anchor" aria-hidden="true" href="#abstract">#</a></h3>
+<p>The reproducibility of scientific articles is central to the advancement of science. Despite this importance, evaluating reproducibility remains challenging due to the scarcity of ground truth data. Predictive models can address this limitation by streamlining the tedious evaluation process. Typically, a paper's reproducibility is inferred based on the availability of artifacts such as code, data, or supplemental information, often without extensive empirical investigation. To address these issues, we utilized artifacts of papers as fundamental units to develop a novel, dual-spectrum framework that focuses on author-centric and external-agent perspectives. We used the author-centric spectrum, followed by the external-agent spectrum, to guide a structured, model-based approach to quantify and assess reproducibility. We explored the interdependencies between different factors influencing reproducibility and found that linguistic features such as readability and lexical diversity are strongly correlated with papers achieving the highest statuses on both spectrums. Our work provides a model-driven pathway for evaluating the reproducibility of scientific research.</p>
 <blockquote>
 <p>Authors: <strong>Akhil Pandey Akella</strong>, Sagnik Ray Choudhury, David Koop, Hamed Alhoori</p>
 </blockquote>
 <blockquote>
-<p>Paper: <a href="https://dl.acm.org/doi/10.1145/3627673.3679831">https://dl.acm.org/doi/10.1145/3627673.3679831</a></p>
+<p>Paper: https://dl.acm.org/doi/10.1145/3627673.3679831</p>
 </blockquote>
 <blockquote>
-<p>Code: <a href="https://github.com/reproducibilityproject/NLRR">https://github.com/reproducibilityproject/NLRR</a></p>
+<p>Code: https://github.com/reproducibilityproject/NLRR</p>
 </blockquote>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-  </footer>
-</article>
-    </main>
-    
+</div></article>
+</main>
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://akhilpandey95.github.io/">Akhil Pandey Akella</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    <span>&copy; 2026 <a href="/">Akhil Pandey Akella</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
-
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById("menu");
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");
         menu.onscroll = function () {
@@ -312,12 +142,14 @@
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
+            var node = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+            if (!node) {
+                return;
+            }
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                node.scrollIntoView({ behavior: "smooth" });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                node.scrollIntoView();
             }
             if (id === "top") {
                 history.replaceState(null, null, " ");
@@ -327,33 +159,29 @@
         });
     });
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
+    var topLink = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+            topLink.style.visibility = "visible";
+            topLink.style.opacity = "1";
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            topLink.style.visibility = "hidden";
+            topLink.style.opacity = "0";
         }
     };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
+    let themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            if (document.body.className.includes("dark")) {
+                document.body.classList.remove("dark");
+                localStorage.setItem("pref-theme", "light");
+            } else {
+                document.body.classList.add("dark");
+                localStorage.setItem("pref-theme", "dark");
+            }
+        });
+    }
 </script>
 </body>
-
 </html>
-

@@ -1,187 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Large language models for Scientometrics | Akhil Pandey Akella</title>
-<meta name="keywords" content="">
-<meta name="description" content="Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics&#34;">
-<meta name="author" content="Akhil Pandey">
-<link rel="canonical" href="https://akhilpandey95.github.io/projects/llmscisci/">
-<meta name="google-site-verification" content="G-PNYGCP0LEP">
-<link crossorigin="anonymous" href="https://akhilpandey95.github.io/assets/css/stylesheet.c3e9fb114031703a9265f63b96980ee572b41de03cf836930dcdcb70356da920.css" integrity="sha256-w&#43;n7EUAxcDqSZfY7lpgO5XK0HeA8&#43;DaTDc3LcDVtqSA=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://akhilpandey95.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://akhilpandey95.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://akhilpandey95.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://akhilpandey95.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://akhilpandey95.github.io/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://akhilpandey95.github.io/projects/llmscisci/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><link rel="stylesheet" href="https://akhilpandey95.github.io/css/extended/override.css">
-
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNYGCP0LEP"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-PNYGCP0LEP');
-        }
-      </script><meta property="og:url" content="https://akhilpandey95.github.io/projects/llmscisci/">
-  <meta property="og:site_name" content="Akhil Pandey Akella">
-  <meta property="og:title" content="Large language models for Scientometrics">
-  <meta property="og:description" content="Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics&#34;">
-  <meta property="og:locale" content="en-US">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="projects">
-    <meta property="article:published_time" content="2025-04-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-04-21T00:00:00+00:00">
-    <meta property="og:image" content="https://akhilpandey95.github.io/img/LLMSciSci_GRPO_dataset.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://akhilpandey95.github.io/img/LLMSciSci_GRPO_dataset.png">
-<meta name="twitter:title" content="Large language models for Scientometrics">
-<meta name="twitter:description" content="Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics&#34;">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Projects",
-      "item": "https://akhilpandey95.github.io/projects/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Large language models for Scientometrics",
-      "item": "https://akhilpandey95.github.io/projects/llmscisci/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Large language models for Scientometrics",
-  "name": "Large language models for Scientometrics",
-  "description": "Experiments, and how-to guide for the lecture \"Large language models for Scientometrics\"",
-  "keywords": [
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow">
+    <title>Large language models for Scientometrics | Akhil Pandey Akella</title>
+    <meta name="description" content="Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics">
+    <meta name="author" content="Akhil Pandey Akella">
+    <link rel="canonical" href="https://akhilpandey95.github.io/projects/llmscisci/">
+    <meta property="og:url" content="https://akhilpandey95.github.io/projects/llmscisci/">
+    <meta property="og:site_name" content="Akhil Pandey Akella">
+    <meta property="og:title" content="Large language models for Scientometrics">
+    <meta property="og:description" content="Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics">
+    <meta property="og:locale" content="en-US">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Large language models for Scientometrics">
+    <meta name="twitter:description" content="Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics">
+    <link rel="stylesheet" href="/css/site.css">
+    <meta name="theme-color" content="#2e2e33">
+    <meta name="msapplication-TileColor" content="#2e2e33">
     
-  ],
-  "articleBody": "About Large Language Models:\nThe capabilities of Large Language Models (LLM’s) to process data from different modalities and excel at different tasks ranging from information extraction, question and answering, math, coding, and recently reasoning simply shows the potential of this technology. Intuitively the complexities of training these models on different datasets/data mixes, opting different architectural choices, choosing different alignment strategies [1] seemingly could suggest picking a specific model for each task, but LLM’s are geared towards being considered as general task solvers.\n(Credit: Davide Bonazzi) from Discover Magazine\nDataset Customized MLRC Data built from [2]. Study-1: For this study we are going to test out three use-cases, Labelling, Information Extraction, and LLM as a Judge. We are going to use the dataset from the paper Laying Foundations to Quantify the “Effort of Reproducibility” [2]. The dataset and the tasks outline a good experimentation framework to effectively utilize Large language models for computational social science tasks [3].\nIn-context-learning notebook: Study-2: For this study we are going to use the Reproducibility dataset from the paper Laying Foundations to Quantify the “Effort of Reproducibility” [2] to preference tune answers using the Direct Preference Optimization(DPO) algorithm. DPO unlike other reinforcement algorithms directly applies maximum likelihood on the preference dataset to perform implicit reward modeling. Ideally, similar to most RL algorithms we would be applying the same reward maximization via KL divergence constraint. Theoretically, DPO is RL free, and doing a simple classification on a given a dataset $D$ that includes chosen and rejected responses. Learn more about DPO from the original paper [4].\n$$ L_{DPO}(\\pi_{LLMSciSci}: \\pi_{LLM-instruct}) ;=; - ,\\mathbb{E}{\\bigl(x,,r^+,,r^-\\bigr) \\sim D_{ReproEffortDataset}} \\Bigl[ \\log ,\\sigma!\\Bigl( r_\\theta(x,r^+) ;-; r_\\theta(x,r^-) \\Bigr) \\Bigr] $$\n$$ r_\\theta(x, r) ;=; \\beta ,\\log \\frac{\\pi_{LLMSciSci}(r ,\\vert, x)}{\\pi_{LLM-instruct}(r ,\\vert, x)} $$\nwhere the $r_{\\theta}$ is computed\nusing $r^+$(human preferred response), and $r^-$(rejected responses). for the models $\\pi_{LLMSciSci}$ and $\\pi_{LLM-instruct}$. $r_{\\theta}$ captures the log-probability of the chosen vs rejected responses on $D_{ReproEffortDataset}$. $\\pi_{LLM-instruct}$ is the instruct-tuned open weight reference model. $\\pi_{LLMSciSci}$ is the final RL model intended to be preference-tuned on $D_{ReproEffortDataset}$. DPO Notebook: Study-3: For this study we are going to use the Reproducibility dataset from the paper Laying Foundations to Quantify the “Effort of Reproducibility” [2] to optimize policy gradients using Group Relative Policy Optimization(GRPO) algorithm. GRPO is an online learning algorithm where the model uses generated completions to learn how to maximize advantages and get better at generating completions at every given step. Learn more about the GRPO from the original paper [5].\nFormat rewards\n$$ R_{\\text{format}}(c) = \\begin{cases} 1.0 \u0026 \\text{if } c \\text{ matches pattern } \\texttt{… …} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\nLabel rewards\n$$ R_{\\text{label}}(c) = \\begin{cases} 0.5 \u0026 \\text{if } c \\text{ matches format AND } \\text{extracttext}(c, \\text{“label”}) \\text{ is valid onehot} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\nStepwise rewards\n$$ R_{\\text{stepwise}}(c) = r_1 + r_2 + r_3 + r_4 $$\n$$ r_1 = \\begin{cases} 0.125 \u0026 \\text{if there exists non-empty text within } \\texttt{…} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\n$$ r_2 = \\begin{cases} 0.125 \u0026 \\text{if text consists only of 0’s and 1’s (ignoring brackets, commas, whitespace)} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\n$$ r_3 = \\begin{cases} 0.125 \u0026 \\text{if text starts with ‘[’ and ends with ‘]’} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\n$$ r_4 = \\begin{cases} 0.625 \u0026 \\text{if text passes the } \\textit{isvalidonehot()} \\text{check} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\nHamming loss correctness reward\n$$ R_{\\text{hamming}}(p, c, \\text{doi}, \\text{ltype}) = \\begin{cases} 1 - HL(y_{\\text{true}}, y_{\\text{pred}}) \u0026 \\text{if } \\text{extracttext}(c, \\text{“label”}) \\text{ is valid onehot} \\ 0.0 \u0026 \\text{otherwise} \\end{cases} $$\nConditional Reasoning trace length award\n$$ R_{\\text{condcotsteplabel}}(c) = \\begin{cases} R_{\\text{stepwise}}(c) + \\alpha \\cdot R_{\\text{cotlength}}(c) \u0026 \\text{if } R_{\\text{stepwise}}(c) \\geq \\tau \\ R_{\\text{stepwise}}(c) \u0026 \\text{otherwise} \\end{cases} $$\nGRPO Notebook: References(s): A Survey of Large Language Models Laying Foundations to Quantify the “Effort of Reproducibility” Can Large Language Models Transform Computational Social Science? Direct Preference Optimization: Your Language Model is Secretly a Reward Model DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models Authors and Contributors: Akhil Pandey, Want to contribute see your name here :), Open an Issue ?\nAcknowledgement The computing resources for this work is supported in part by the Google Cloud Research Credits Grant 331845891, and Lambda Labs Credits through the support program D1: CSC-SUPPORT-CDFF-2025-3-31.\n",
-  "wordCount" : "709",
-  "inLanguage": "en",
-  "image":"https://akhilpandey95.github.io/img/LLMSciSci_GRPO_dataset.png","datePublished": "2025-04-21T00:00:00Z",
-  "dateModified": "2025-04-21T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "Akhil Pandey"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://akhilpandey95.github.io/projects/llmscisci/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Akhil Pandey Akella",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://akhilpandey95.github.io/favicon.ico"
-    }
-  }
-}
-</script>
     
-  
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      displayAlign: 'center',    /* truly center block math */
-      displayIndent: '0em',      /* kill any default indent */
-      "HTML-CSS": {
-        styles: {'.MathJax_Preview': {visibility: 'hidden'}}
-      }
-    });
-  </script>
-
-  
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
-    async>
-  </script>
-
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        displayAlign: 'center',
+        displayIndent: '0em',
+        "HTML-CSS": {
+          styles: {'.MathJax_Preview': {visibility: 'hidden'}}
+        }
+      });
+    </script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
 </head>
-
 <body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.body.classList.add("dark");
+    } else if (localStorage.getItem("pref-theme") !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.body.classList.add("dark");
     }
-
 </script>
-
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://akhilpandey95.github.io/" accesskey="h" title="Akhil Pandey Akella (Alt + H)">Akhil Pandey Akella</a>
+            <a href="/" accesskey="h" title="Akhil Pandey Akella (Alt + H)">Akhil Pandey Akella</a>
+            
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -204,100 +76,55 @@
                     </svg>
                 </button>
             </div>
+            
         </div>
         <ul id="menu">
+        
             <li>
-                <a href="https://akhilpandey95.github.io/about/" title="About">
+                <a href="/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
+        
             <li>
-                <a href="https://akhilpandey95.github.io/projects/" title="Projects">
-                    <span>Projects</span>
+                <a href="/projects/" title="Projects">
+                    <span class="active">Projects</span>
                 </a>
             </li>
+        
             <li>
-                <a href="https://akhilpandey95.github.io/notes/" title="Notes">
+                <a href="/notes/" title="Notes">
                     <span>Notes</span>
                 </a>
             </li>
+        
             <li>
-                <a href="https://akhilpandey95.github.io/cv/cv.pdf" title="CV">
+                <a href="/cv/cv.pdf" title="CV">
                     <span>CV</span>
                 </a>
             </li>
+        
         </ul>
     </nav>
 </header>
 <main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      Large language models for Scientometrics
-    </h1>
-    <div class="post-description">
-      Experiments, and how-to guide for the lecture &#34;Large language models for Scientometrics&#34;
-    </div>
-    <div class="post-meta"><span title='2025-04-21 00:00:00 +0000 UTC'>April 21, 2025</span>&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Akhil Pandey
-
-</div>
-  </header> 
-<figure class="entry-cover">
-        <img loading="eager" src="https://akhilpandey95.github.io/img/LLMSciSci_GRPO_dataset.png" alt="">
-        
-</figure><div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
-
-        <div class="inner"><ul>
-                <li>
-                    <a href="#about" aria-label="About">About</a></li>
-                <li>
-                    <a href="#dataset" aria-label="Dataset">Dataset</a></li>
-                <li>
-                    <a href="#study-1" aria-label="Study-1:">Study-1:</a></li>
-                <li>
-                    <a href="#in-context-learning-notebook" aria-label="In-context-learning notebook:">In-context-learning notebook:</a></li>
-                <li>
-                    <a href="#study-2" aria-label="Study-2:">Study-2:</a></li>
-                <li>
-                    <a href="#dpo-notebook" aria-label="DPO Notebook:">DPO Notebook:</a></li>
-                <li>
-                    <a href="#study-3" aria-label="Study-3:">Study-3:</a></li>
-                <li>
-                    <a href="#grpo-notebook" aria-label="GRPO Notebook:">GRPO Notebook:</a></li>
-                <li>
-                    <a href="#referencess" aria-label="References(s):">References(s):</a></li>
-                <li>
-                    <a href="#authors-and-contributors" aria-label="Authors and Contributors:">Authors and Contributors:</a></li>
-                <li>
-                    <a href="#acknowledgement" aria-label="Acknowledgement">Acknowledgement</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><h3 id="about">About<a hidden class="anchor" aria-hidden="true" href="#about">#</a></h3>
+    <article class="post-single"><header class="post-header"><h1 class="post-title">Large language models for Scientometrics</h1><div class="post-description">Experiments, and how-to guide for the lecture &quot;Large language models for Scientometrics</div><div class="post-meta">Apr 21, 2025&nbsp;·&nbsp;4 min&nbsp;·&nbsp;Akhil Pandey</div></header><figure class="entry-cover"><a href="/img/LLMSciSci_GRPO_dataset.png"><img loading="lazy" src="/img/LLMSciSci_GRPO_dataset.png" alt="Large language models for Scientometrics"></a></figure><div class="toc"><details open><summary accesskey="c" title="(Alt + C)"><span class="details">Table of Contents</span></summary><div class="inner"><ul><li class="toc-level-3"><a href="#about">About</a></li><li class="toc-level-3"><a href="#dataset">Dataset</a></li><li class="toc-level-3"><a href="#study-1">Study-1:</a></li><li class="toc-level-3"><a href="#in-context-learning-notebook">In-context-learning notebook:</a></li><li class="toc-level-3"><a href="#study-2">Study-2:</a></li><li class="toc-level-3"><a href="#dpo-notebook">DPO Notebook:</a></li><li class="toc-level-3"><a href="#study-3">Study-3:</a></li><li class="toc-level-3"><a href="#grpo-notebook">GRPO Notebook:</a></li><li class="toc-level-3"><a href="#references-s">References(s):</a></li><li class="toc-level-3"><a href="#authors-and-contributors">Authors and Contributors:</a></li><li class="toc-level-3"><a href="#acknowledgement">Acknowledgement</a></li></ul></div></details></div><div class="post-content"><h3 id="about">About<a hidden class="anchor" aria-hidden="true" href="#about">#</a></h3>
 <p><strong>Large Language Models:</strong></p>
-<p>The capabilities of Large Language Models (<strong>LLM&rsquo;s</strong>) to process data from different modalities and excel at different tasks ranging from information extraction, question and answering, math, coding, and recently reasoning simply shows the potential of this technology. Intuitively the complexities of training these models on different datasets/data mixes, opting different architectural choices, choosing different alignment strategies <strong>[1]</strong> seemingly could suggest picking a specific model for each task, but <strong>LLM&rsquo;s</strong> are geared towards being considered as general task solvers.</p>
-<p><img alt="image" loading="lazy" src="https://akhilpandey95.github.io/img/SciSci.png"></p>
+<p>The capabilities of Large Language Models (<strong>LLM's</strong>) to process data from different modalities and excel at different tasks ranging from information extraction, question and answering, math, coding, and recently reasoning simply shows the potential of this technology. Intuitively the complexities of training these models on different datasets/data mixes, opting different architectural choices, choosing different alignment strategies <strong>[1]</strong> seemingly could suggest picking a specific model for each task, but <strong>LLM's</strong> are geared towards being considered as general task solvers.</p>
+<p><img src="/img/SciSci.png" alt="image" /></p>
 <blockquote>
 <p>(Credit: Davide Bonazzi) from <a href="https://www.discovermagazine.com/the-sciences/the-science-of-science"><em>Discover Magazine</em></a></p>
 </blockquote>
 <h3 id="dataset">Dataset<a hidden class="anchor" aria-hidden="true" href="#dataset">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext"><span class="line"><span class="cl">Customized MLRC Data built from [2].
-</span></span></code></pre></div><p><img alt="image" loading="lazy" src="https://akhilpandey95.github.io/img/LLMSciSci_dataset.png"></p>
+<pre><code class="language-plaintext">Customized MLRC Data built from [2].
+</code></pre>
+<p><img src="/img/LLMSciSci_dataset.png" alt="image" /></p>
 <h3 id="study-1">Study-1:<a hidden class="anchor" aria-hidden="true" href="#study-1">#</a></h3>
-<p>For this study we are going to test out three use-cases, <strong>Labelling</strong>, <strong>Information Extraction</strong>, and <strong>LLM as a Judge</strong>. We are going to use the dataset from the paper <u>Laying Foundations to Quantify the &ldquo;Effort of Reproducibility&rdquo;</u> <strong>[2]</strong>. The dataset and the tasks outline a good experimentation framework to effectively utilize Large language models for computational social science tasks <strong>[3]</strong>.</p>
+<p>For this study we are going to test out three use-cases, <strong>Labelling</strong>, <strong>Information Extraction</strong>, and <strong>LLM as a Judge</strong>. We are going to use the dataset from the paper <u>Laying Foundations to Quantify the "Effort of Reproducibility"</u> <strong>[2]</strong>. The dataset and the tasks outline a good experimentation framework to effectively utilize Large language models for computational social science tasks <strong>[3]</strong>.</p>
 <h3 id="in-context-learning-notebook">In-context-learning notebook:<a hidden class="anchor" aria-hidden="true" href="#in-context-learning-notebook">#</a></h3>
-<p><a href="https://colab.research.google.com/github/akhilpandey95/LLMSciSci/blob/main/notebooks/LLMs_SciSci_ICL.ipynb"><img alt="Open In Colab" loading="lazy" src="https://colab.research.google.com/assets/colab-badge.svg"></a></p>
+<p><a href="https://colab.research.google.com/github/akhilpandey95/LLMSciSci/blob/main/notebooks/LLMs_SciSci_ICL.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
 <h3 id="study-2">Study-2:<a hidden class="anchor" aria-hidden="true" href="#study-2">#</a></h3>
-<p>For this study we are going to use the Reproducibility dataset from the paper <u>Laying Foundations to Quantify the &ldquo;Effort of Reproducibility&rdquo;</u> <strong>[2]</strong> to preference tune answers using the <strong>Direct Preference Optimization(DPO)</strong> algorithm. <em>DPO</em> unlike other reinforcement algorithms directly applies maximum likelihood on the preference dataset to perform implicit reward modeling. Ideally, similar to most RL algorithms we would be applying the same reward maximization via <strong>KL</strong> divergence constraint. Theoretically, <em>DPO</em> is RL free, and doing a simple classification on a given a dataset $D$ that includes <strong>chosen</strong> and <strong>rejected</strong> responses. Learn more about <em>DPO</em> from the original paper <strong>[4]</strong>.</p>
+<p>For this study we are going to use the Reproducibility dataset from the paper <u>Laying Foundations to Quantify the "Effort of Reproducibility"</u> <strong>[2]</strong> to preference tune answers using the <strong>Direct Preference Optimization(DPO)</strong> algorithm. <em>DPO</em> unlike other reinforcement algorithms directly applies maximum likelihood on the preference dataset to perform implicit reward modeling. Ideally, similar to most RL algorithms we would be applying the same reward maximization via <strong>KL</strong> divergence constraint. Theoretically, <em>DPO</em> is RL free, and doing a simple classification on a given a dataset $D$ that includes <strong>chosen</strong> and <strong>rejected</strong> responses. Learn more about <em>DPO</em> from the original paper <strong>[4]</strong>.</p>
 <p>$$
 L_{DPO}(\pi_{LLMSciSci}: \pi_{LLM-instruct})
 ;=; - ,\mathbb{E}{\bigl(x,,r^+,,r^-\bigr) \sim D_{ReproEffortDataset}}
@@ -321,18 +148,18 @@ $$</p>
 <li>$\pi_{LLMSciSci}$ is the final RL model intended to be preference-tuned on $D_{ReproEffortDataset}$.</li>
 </ul>
 <h3 id="dpo-notebook">DPO Notebook:<a hidden class="anchor" aria-hidden="true" href="#dpo-notebook">#</a></h3>
-<p><a href="https://colab.research.google.com/github/akhilpandey95/LLMSciSci/blob/main/notebooks/LLMs_SciSci_DPO.ipynb"><img alt="Open In Colab" loading="lazy" src="https://colab.research.google.com/assets/colab-badge.svg"></a></p>
+<p><a href="https://colab.research.google.com/github/akhilpandey95/LLMSciSci/blob/main/notebooks/LLMs_SciSci_DPO.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
 <h3 id="study-3">Study-3:<a hidden class="anchor" aria-hidden="true" href="#study-3">#</a></h3>
-<p>For this study we are going to use the Reproducibility dataset from the paper <u>Laying Foundations to Quantify the &ldquo;Effort of Reproducibility&rdquo;</u> <strong>[2]</strong> to optimize policy gradients using <strong>Group Relative Policy Optimization(GRPO)</strong> algorithm. <em>GRPO</em> is an online learning algorithm where the model uses generated completions to learn how to maximize advantages and get better at generating completions at every given step. Learn more about the <em>GRPO</em> from the original paper <strong>[5]</strong>.</p>
+<p>For this study we are going to use the Reproducibility dataset from the paper <u>Laying Foundations to Quantify the "Effort of Reproducibility"</u> <strong>[2]</strong> to optimize policy gradients using <strong>Group Relative Policy Optimization(GRPO)</strong> algorithm. <em>GRPO</em> is an online learning algorithm where the model uses generated completions to learn how to maximize advantages and get better at generating completions at every given step. Learn more about the <em>GRPO</em> from the original paper <strong>[5]</strong>.</p>
 <p><strong>Format rewards</strong></p>
 <p>$$
-R_{\text{format}}(c) = \begin{cases} 1.0 &amp; \text{if } c \text{ matches pattern } \texttt{<think>&hellip;<think> <label>&hellip;</label>} \ 0.0 &amp; \text{otherwise} \end{cases}
+R_{\text{format}}(c) = \begin{cases} 1.0 &amp; \text{if } c \text{ matches pattern } \texttt{<think>...<think> <label>...</label>} \ 0.0 &amp; \text{otherwise} \end{cases}
 $$</p>
 <p><strong>Label rewards</strong></p>
 <p>$$
 R_{\text{label}}(c) =
 \begin{cases}
-0.5 &amp; \text{if } c \text{ matches format AND } \text{extracttext}(c, \text{&ldquo;label&rdquo;}) \text{ is valid onehot} \
+0.5 &amp; \text{if } c \text{ matches format AND } \text{extracttext}(c, \text{"label"}) \text{ is valid onehot} \
 0.0 &amp; \text{otherwise}
 \end{cases}
 $$</p>
@@ -343,21 +170,21 @@ $$</p>
 <p>$$
 r_1 =
 \begin{cases}
-0.125 &amp; \text{if there exists non-empty text within } \texttt{<label>&hellip;</label>} \
+0.125 &amp; \text{if there exists non-empty text within } \texttt{<label>...</label>} \
 0.0 &amp; \text{otherwise}
 \end{cases}
 $$</p>
 <p>$$
 r_2 =
 \begin{cases}
-0.125 &amp; \text{if text consists only of 0&rsquo;s and 1&rsquo;s (ignoring brackets, commas, whitespace)} \
+0.125 &amp; \text{if text consists only of 0's and 1's (ignoring brackets, commas, whitespace)} \
 0.0 &amp; \text{otherwise}
 \end{cases}
 $$</p>
 <p>$$
 r_3 =
 \begin{cases}
-0.125 &amp; \text{if text starts with &lsquo;[&rsquo; and ends with &lsquo;]&rsquo;} \
+0.125 &amp; \text{if text starts with '[' and ends with ']'} \
 0.0 &amp; \text{otherwise}
 \end{cases}
 $$</p>
@@ -372,7 +199,7 @@ $$</p>
 <p>$$
 R_{\text{hamming}}(p, c, \text{doi}, \text{ltype}) =
 \begin{cases}
-1 - HL(y_{\text{true}}, y_{\text{pred}}) &amp; \text{if } \text{extracttext}(c, \text{&ldquo;label&rdquo;}) \text{ is valid onehot} \
+1 - HL(y_{\text{true}}, y_{\text{pred}}) &amp; \text{if } \text{extracttext}(c, \text{"label"}) \text{ is valid onehot} \
 0.0 &amp; \text{otherwise}
 \end{cases}
 $$</p>
@@ -385,8 +212,8 @@ R_{\text{stepwise}}(c) &amp; \text{otherwise}
 \end{cases}
 $$</p>
 <h3 id="grpo-notebook">GRPO Notebook:<a hidden class="anchor" aria-hidden="true" href="#grpo-notebook">#</a></h3>
-<p><a href="https://colab.research.google.com/github/akhilpandey95/LLMSciSci/blob/main/notebooks/LLMs_SciSci_GRPO.ipynb"><img alt="Open In Colab" loading="lazy" src="https://colab.research.google.com/assets/colab-badge.svg"></a></p>
-<h3 id="referencess">References(s):<a hidden class="anchor" aria-hidden="true" href="#referencess">#</a></h3>
+<p><a href="https://colab.research.google.com/github/akhilpandey95/LLMSciSci/blob/main/notebooks/LLMs_SciSci_GRPO.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+<h3 id="references-s">References(s):<a hidden class="anchor" aria-hidden="true" href="#references-s">#</a></h3>
 <ol>
 <li><a href="https://arxiv.org/abs/2303.18223">A Survey of Large Language Models</a></li>
 <li><a href="https://ieeexplore.ieee.org/abstract/document/10266070">Laying Foundations to Quantify the “Effort of Reproducibility”</a></li>
@@ -402,34 +229,18 @@ $$</p>
   <img src="https://lambda.ai/hubfs/lambda%20logo%202.svg" width="150" height="auto" alt="Lambda logo">
   <img src="https://www.gstatic.com/devrel-devsite/prod/v0e0f589edd85502a40d78d7d0825db8ea5ef3b99ab4070381ee86977c9168730/cloud/images/cloud-logo.svg" width="150" height="auto" alt="GCP">
 </figure>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-  </footer>
-</article>
-    </main>
-    
+</div></article>
+</main>
 <footer class="footer">
-        <span>&copy; 2026 <a href="https://akhilpandey95.github.io/">Akhil Pandey Akella</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
+    <span>&copy; 2026 <a href="/">Akhil Pandey Akella</a></span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
-
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById("menu");
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");
         menu.onscroll = function () {
@@ -441,12 +252,14 @@ $$</p>
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
+            var node = document.querySelector(`[id='${decodeURIComponent(id)}']`);
+            if (!node) {
+                return;
+            }
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                node.scrollIntoView({ behavior: "smooth" });
             } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+                node.scrollIntoView();
             }
             if (id === "top") {
                 history.replaceState(null, null, " ");
@@ -456,33 +269,29 @@ $$</p>
         });
     });
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
+    var topLink = document.getElementById("top-link");
     window.onscroll = function () {
         if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+            topLink.style.visibility = "visible";
+            topLink.style.opacity = "1";
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            topLink.style.visibility = "hidden";
+            topLink.style.opacity = "0";
         }
     };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
+    let themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            if (document.body.className.includes("dark")) {
+                document.body.classList.remove("dark");
+                localStorage.setItem("pref-theme", "light");
+            } else {
+                document.body.classList.add("dark");
+                localStorage.setItem("pref-theme", "dark");
+            }
+        });
+    }
 </script>
 </body>
-
 </html>
-
