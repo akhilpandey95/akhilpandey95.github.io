@@ -18,6 +18,9 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Tinker, smol-RL and QDoRA (Part 2)">
     <meta name="twitter:description" content="Part 2 teaser and setup for smol-RL experiments with Tinker">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/site.css">
     <meta name="theme-color" content="#2e2e33">
     <meta name="msapplication-TileColor" content="#2e2e33">
@@ -41,7 +44,7 @@
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     
 </head>
-<body class="" id="top">
+<body class="noir-single section-notes" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add("dark");
@@ -108,7 +111,7 @@
     </nav>
 </header>
 <main class="main">
-    <article class="post-single"><header class="post-header"><div class="breadcrumbs"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/notes/">Notes</a>&nbsp;»&nbsp;tinker_part2</div><h1 class="post-title">Tinker, smol-RL and QDoRA (Part 2)</h1><div class="post-description">Part 2 teaser and setup for smol-RL experiments with Tinker</div><div class="post-meta">Mar 6, 2026&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Akhil Pandey</div></header><div class="toc"><details open><summary accesskey="c" title="(Alt + C)"><span class="details">Table of Contents</span></summary><div class="inner"><ul><li class="toc-level-3"><a href="#context">Context</a></li><li class="toc-level-3"><a href="#tldr-part-1">TLDR; (Part-1)</a></li><li class="toc-level-3"><a href="#introduction">Introduction</a></li><li class="toc-level-3"><a href="#data">Data</a></li><li class="toc-level-3"><a href="#experiment-frame">Experiment Frame</a></li><li class="toc-level-3"><a href="#eval-snapshot">Eval Snapshot</a></li><li class="toc-level-3"><a href="#exp5-a-follow-up-not-a-different-training-paradigm">Exp5: A Follow-Up, Not A Different Training Paradigm</a></li><li class="toc-level-3"><a href="#references">References</a></li><li class="toc-level-3"><a href="#cite">Cite</a></li></ul></div></details></div><div class="post-content"><h3 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h3>
+    <article class="post-single journal-article"><header class="post-header journal-header"><div class="breadcrumbs"><a href="/">Home</a>&nbsp;»&nbsp;<a href="/notes/">Notes</a>&nbsp;»&nbsp;tinker_part2</div><div class="journal-overline"><span class="journal-pill">Note</span><span class="journal-overline-meta">Mar 6, 2026&nbsp;·&nbsp;13 min&nbsp;·&nbsp;Akhil Pandey</span></div><h1 class="post-title">Tinker, smol-RL and QDoRA (Part 2)</h1><div class="post-description journal-standfirst">Part 2 teaser and setup for smol-RL experiments with Tinker</div></header><div class="journal-body-grid journal-body-grid-single"><div class="journal-body"><div class="post-content"><h3 id="context">Context<a hidden class="anchor" aria-hidden="true" href="#context">#</a></h3>
 <p>This post is a continuation of an article, so it'd be ideal/nice if you read the first part of this post here: <a href="../tinker/">Tinker, smol-RL and QDoRA</a>.</p>
 <h3 id="tldr-part-1">TLDR; (Part-1)<a hidden class="anchor" aria-hidden="true" href="#tldr-part-1">#</a></h3>
 <p>In <a href="../tinker/">Part 1</a>, I showcase how reproducibility poses a practical problem in modern LLM work, not just a philosophical ideal. Even with greedy decoding and fixed seeds, determinism can break in subtle ways: GPU type, numerical precision, kernel choices, and non-deterministic log-probs in MoE models all conspire to make "run it again" less reliable than we like to admit. That led to a simple question: do we need a better abstraction layer so that the model ops complexity is hidden but the critical knobs for determinism are explicit and repeatable? Tinker reminded me of scikit-learn style API but for post-training models and the cookbook makes it easier to standardize the fragile pieces of post-training like reproducibility settings, dataset pre-processing, and stable training/inference pipelines. In Part 1, I talk about the <em>Just-RL</em> paper and how its a great starting point for testing Tinker's RLVR and RLHF setups on a small models before scaling data and model size.</p>
@@ -322,7 +325,7 @@ $$</p>
   note         = {Accessed: }
 }
 </code></pre>
-</div></article>
+</div></div></div></article>
 </main>
 <footer class="footer">
     <span>&copy; 2026 <a href="/">Akhil Pandey Akella</a></span>
